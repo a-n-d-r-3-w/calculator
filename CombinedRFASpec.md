@@ -118,11 +118,9 @@ Goals of the proposed workflow.
 [This section calls out particular aspects of the functional design that we are asking teams to document at a more detailed level of description.  These areas are being highlighted because they represent areas that many teams across development need to improve their skill at documenting.]
 
 #### Testability ####
-[Testability is the degree to which software or a component can be tested efficiently and completely. Testability is a way of ensuring quality. Just like quality cannot be added in a product as a separate ingredient, testability follows the same trend. It has to be gradually built into the product over time
 
-Initiate the discussion “How are we going to test this software?” and provide necessary input to the software test procedure document. Ensure that the all the use-cases/workflows described in the R-Spec can be tested.
+To help ensure the product is high-quality, I will do the following:
 
-Product quality will be addressed by the following:
 1. Strive to abide by the test-driven development process
 1. Strive for at least 90% line coverage from unit tests
 1. Use JSLint to validate JavaScript code
@@ -133,11 +131,6 @@ Product quality will be addressed by the following:
 ##### GUI Testability #####
 
 If the final artifact involves creating a GUI, ensure that it is designed to be accessible and 'useable' by the automated test infrastructure. Review the GUI [http://inside-files/dev/tools/tia/teststandards/GuiTesting.shtml testing guidelines].
-
-##### API Testability #####
-Ensure that various software components that are visible and accessible to the customer can be tested. Additionally, ensure that design provides the flexibility to allow unit/component level testing.
-
-References: For further references please follow the [http://inside.mathworks.com/wiki/Software_Testability_Resources link].
 
 #### Known Edge Cases ####
 [Describe any situations where the user has a valid, although uncommon use case.
@@ -178,9 +171,9 @@ You may also want to consider whether or not any of these ideas are [http://shar
 * Other]
 
 #### Overview ####
-[Give a brief overview of the design]
 
-The architectural design cosiderations include testability and extensibility.
+The architectural design considerations include testability and extensibility. For example, developers should be able to
+easily add and test new operations, or add and test new views that use the same model.
 
 #### Distribution ####
 
