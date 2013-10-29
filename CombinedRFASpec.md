@@ -132,21 +132,25 @@ Consider the [http://inside.mathworks.com/wiki/I18n_Guideline#Functional_Design 
 Delete the unused section if appropriate.]
 
 ##### GUI Design Description #####
+
 [Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png)
 
-Buttons:
-- Clear
-- Related to operands
+Buttons will be divided into 4 sections. The intent is for users to interact with the calculator primarily from 
+left to right.
+1. Clear
+1. Related to operands
   - Digits
   - Plus-minus sign
   - Decimal point
-- Arithmetic operators
-- Equals sign
+1. Arithmetic operators
+1. Equals sign
 
-The digits buttons will start with 1-2-3 on the top row instead of 7-8-9 on the top row, because
+The top row of digits buttons consists of 1-2-3 instead of 7-8-9 because
 [this article](http://abcnews.go.com/Technology/story?id=119296&page=1) says that a Bell Labs study
-concluded that "the three-by-three version with 1-2-3 in the top row was the easiest for people to master."
+concluded that a layout "with 1-2-3 in the top row was the easiest for people to master."
 
+
+Other considerations:
 - Distinct elements for operands and operators
 - Color themes
 - Robust to window resizing
