@@ -144,9 +144,8 @@ Buttons:
 - Equals sign
 
 The digits buttons will start with 1-2-3 on the top row instead of 7-8-9 on the top row, because
-[this article](http://abcnews.go.com/Technology/story?id=119296&page=1) says that
-"The real answer seems to lie in a study conducted at Bell Labs titled 'Human Factor Engineering Studies of the Design and Use of Pushbutton Telephone Sets.' Published in the July 1960 issue of the Bell System Technical Journal, the report says that researchers tested a number different layouts including the three-by-three matrix with the zero at the bottom; versions with two rows of five numbers, arrayed either horizontally or vertically; and circular configurations with numbers laid out in clockwise and counterclockwise fashion. The study concluded that the three-by-three version with 1-2-3 in the top row was the easiest for people to master."
-
+[this article](http://abcnews.go.com/Technology/story?id=119296&page=1) says that a Bell Labs study
+concluded that "the three-by-three version with 1-2-3 in the top row was the easiest for people to master."
 
 - Distinct elements for operands and operators
 - Color themes
