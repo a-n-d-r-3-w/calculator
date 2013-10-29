@@ -59,6 +59,10 @@ Bob wants to figure out what his monthly income and expenses are.
    1. Statement: The user can chain operations
    1. Use Case Identifier and/or Rationale
    1. Priority: Must Have
+1. Very large number
+   1. Statement: When the user produces a result with an absolute value greater than 999,999,999,999, then an error is displayed
+   1. Use Case Identifier and/or Rationale
+   1. Priority: Must Have
 
 ##### Non-Functional Requirements (Performance, Reliability, I18N, L10N, others) #####
 
