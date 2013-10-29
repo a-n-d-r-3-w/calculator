@@ -121,10 +121,10 @@ Goals of the proposed workflow.
 
 To help ensure the product is high-quality, I will do the following:
 
+1. Use JSLint to validate JavaScript code
+1. Use the W3C Markup Validation Service to validate HTML code
 1. Strive to abide by the test-driven development process
 1. Strive for at least 90% line coverage from unit tests
-1. Use JSLint to validate JavaScript code
-1. Use HTML validation to validate HTML code
 1. Write model tests
 1. Write view tests
 
