@@ -135,6 +135,8 @@ Delete the unused section if appropriate.]
 
 [Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png)
 
+![Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png "Mockup")
+
 Buttons will be divided into 4 sections. The intent is for users to interact with the calculator primarily from 
 left to right.
 1. Clear
