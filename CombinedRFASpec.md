@@ -198,16 +198,10 @@ easily add and test new operations, or add and test new views that use the same 
 #### Testability ####
 
 #### Third Party Dependencies ####
-[Is there any third-party software used in the architecture?  If so, describe any licensing or distribution issues.]
 
-#### Internal Product Dependencies ####
-
-#### I18N ####
-Consider [http://inside.mathworks.com/wiki/I18n_Guideline#Architectural_Design|I18n Guidelines for Architectural_Design]
+The architecture uses the Dojo Toolkit and QUnit.
 
 #### Scalability and Performance ####
-
-#### Deprecated Functionality ####
 
 ### Alternate Architectural Designs Considered ###
 [Provide a list of alternate architectural designs considered and why they were rejected (e.g. cost/benefit analysis).]
