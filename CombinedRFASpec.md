@@ -40,24 +40,13 @@ Bob wants to figure out what his monthly income and expenses are.
 1. The user can chain operations
 1. When the user produces a result with an absolute value greater than 999,999,999,999, then an error is displayed
 
-##### Non-Functional Requirements (Performance, Reliability, I18N, L10N, others) #####
+##### Non-Functional Requirements #####
 
-1. Supported browsers
-   1. Statement: The user can use the calculator on a browser other than the latest version of Chrome
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Nice to Have
-1. Supported operating systems
-   1. Statement: The user can use the calculator on an operating system other than Windows 7
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Nice to Have
-1. Advanced mathematical operations
-   1. Statement: The user can perform operations beyond arithmetic
-   1. Use Case Identifier and/or Rationale
-   1. Priority (Must Have, Nice to Have)
-1. Store values in memory
-   1. Statement: The user can store a value in memory for later use
-   1. Use Case Identifier and/or Rationale
-   1. Priority (Must Have, Nice to Have)
+##### Non-Requirements #####
+1. The user can use the calculator on a browser other than the latest version of Chrome
+1. The user can use the calculator on an operating system other than Windows 7
+1. The user can perform operations beyond arithmetic
+1. The user can store a value in memory for later use
 
 ## Functional Design ##
 
