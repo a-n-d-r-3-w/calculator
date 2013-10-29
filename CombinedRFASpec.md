@@ -262,6 +262,8 @@ You may also want to consider whether or not any of these ideas are [http://shar
 #### Overview ####
 [Give a brief overview of the design]
 
+The architectural design cosiderations include testability and extensibility.
+
 #### Distribution ####
 
 #### Component/Module Design ####
