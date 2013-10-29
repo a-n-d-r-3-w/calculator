@@ -10,7 +10,8 @@ The goal of this project is to demonstrates my ability to create a product using
 
 ####Description of User:####
 
-This user is figuring out the family budget and wants to do some simple calculations. However, they left their smartphone, tablet, and physical calculator at home. All they have is Chrome on their Windows 7 machine. They don't know about Windows' built-in calculator or MATLAB, either.
+This user manages the family budget. However, they left their smartphone, tablet, and physical calculator at home.
+All they have is Chrome on their Windows 7 machine. They don't know about Windows' built-in calculator or MATLAB, either.
 
 #### User Goal or Purpose of Their Activity: ####
 
