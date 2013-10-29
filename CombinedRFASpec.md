@@ -137,20 +137,12 @@ Delete the unused section if appropriate.]
 ![Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png "Mockup")
 
 ##### Design considerations #####
-Buttons will be divided into 4 sections. The intent is for users to interact with the calculator primarily from 
+Buttons are divided into 4 sections. The intent is for users to interact with the calculator primarily from 
 left to right.
-1. Clear
-1. Related to operands
-  - Digits
-  - Plus-minus sign
-  - Decimal point
-1. Arithmetic operators
-1. Equals sign
 
 The top row of digits buttons consists of 1-2-3 instead of 7-8-9 because
 [this article](http://abcnews.go.com/Technology/story?id=119296&page=1) says that a Bell Labs study
 concluded that a layout "with 1-2-3 in the top row was the easiest for people to master."
-
 
 ##### Other design considerations #####
 - Distinct elements for operands and operators
@@ -159,13 +151,7 @@ concluded that a layout "with 1-2-3 in the top row was the easiest for people to
 - Buttons should be highlighted upon mouseover
 
 ##### Programmatic Information #####
-[Describe the API design that will be exposed to users.
-
-This could include:
-* Function, with the draft of reference help
-* Classes, with a UML class/package diagram or a list of corresponding properties and methods
-
-Be sure to follow the MATLAB programming interface standards ([http://sharepoint/dev/ltc/standards/prism/default.aspx PRISM]); also consider [http://sharepoint/dev/ltc/standards/prism/Published%20Standards/Matching%20MATLAB%20Programming%20Interfaces%20to%20User%20Types%20and%20Skill%20Levels.pdf Matching the MATLAB programming interfaces to user types and skill levels].]
+A user-facing API is not a requirement.
 
 ##### Design Cases #####
 [Describe the proposed workflow(s) through your design solution.  The description should exercise your design, much like a demo.  The proposed workflow should address the requirements and remove pain points.
