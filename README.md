@@ -1,3 +1,3 @@
 calculator
 ==========
-An arithmetic calculator.
+An arithmetic calculator implemented using Dojo and QUnit.
