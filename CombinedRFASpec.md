@@ -17,8 +17,10 @@ This user is figuring out the family budget and wants to do some simple calculat
 This user wants to add, subtract, multiply, and divide some big numbers with decimal points.
 
 ### Assumptions ###
-- The user doesn't care if the calculator doesn't work on browsers other than the latest version of Chrome.
+- The user is working with US dollar amounts only
+- The user does not know about scientific notation
 - The user will never work with numbers with an absolute value greater than 999,999,999,999.
+- The user doesn't care if the calculator doesn't work on browsers other than the latest version of Chrome.
 
 ### Requirements Description ###
 
