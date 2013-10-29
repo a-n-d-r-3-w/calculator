@@ -85,9 +85,6 @@ concluded that a layout "with 1-2-3 in the top row was the easiest for people to
 - Robust to window resizing
 - Buttons should be highlighted upon mouseover
 
-##### Programmatic Information #####
-A user-facing API is not a requirement.
-
 ##### Design Cases #####
 [Describe the proposed workflow(s) through your design solution.  The description should exercise your design, much like a demo.  The proposed workflow should address the requirements and remove pain points.
 
@@ -102,21 +99,6 @@ Goals of the proposed workflow.
 '''Note:''' The task contained in the use cases should be illustrated in the proposed workflows.  The workflows would have the same goals as the use cases, but demonstrate the steps the user would take to accomplish those tasks.]
 
 [http://sharepoint/dev/ltc/standards/prism/Published%20Standards/MATLAB%20User%20Programming%20Competency%20Model.pdf PRISM User Types]:  [''Select one: Newcomer, Casual User, Power User, Developer'']
-
-##### Default Parameter Values and Behaviors #####
-[Describe default parameters and behaviors and when the user would change them.
-
-Questions to consider:
-* What are the default parameters' values and behaviors?
-* Why would a user choose to change the default values?]
-
-#### Interoperability ####
-[Describe how the functional design fits in with existing interfaces in our key products and features seamlessly.  For example, a feature might use HG's coordinate system, work with model reference, etc.
-
-Consider the following:
-* [http://sharepoint/dev/ltc/standards/prism/default.aspx PRISM]
-* Third-party products
-* Other hardware systems]
 
 #### Functional Design Flags -- Caveats/Limitations ####
 ##### Out of Model Elements #####
