@@ -42,25 +42,16 @@ Bob wants to figure out what his monthly income and expenses are.
 
 ##### Non-Functional Requirements #####
 
+1. The UI should be visually pleasing
+
 ##### Non-Requirements #####
+
 1. The user can use the calculator on a browser other than the latest version of Chrome
 1. The user can use the calculator on an operating system other than Windows 7
 1. The user can perform operations beyond arithmetic
 1. The user can store a value in memory for later use
 
 ## Functional Design ##
-
-### Introduction ###
-[Geck Numbers(s):
-
-Link to the R document
-
-* '''Motivation and Background'''
-** This should reflect the information in the motivation section of the R document.
-
-* '''Big picture view of the problem'''
-** Describe how this design fits into the big picture.
-** Does it address the entire R document or what portion and why.]
 
 ### Functional Design Description ###
 #### Overview ####
@@ -71,16 +62,13 @@ Link to the R document
 Consider the [http://inside.mathworks.com/wiki/I18n_Guideline#Functional_Design I18N Guidelines] for Function Design.
 
 #### Main Functional Design Description ####
-[Describe the functional design.  Document either your GUI or your API design, or both.  If it makes sense to discuss both at the same time, you can combine the GUI and API sections.  Just be sure to capture all the relevant information from both sections. Be sure to also include the why behind the design decisions you make.
-
-Delete the unused section if appropriate.]
 
 ##### GUI Design Description #####
 
-##### Mockup #####
+###### Mockup ######
 ![Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png "Mockup")
 
-##### Design considerations #####
+###### Design considerations ######
 The intent is for users to interact with the calculator primarily from 
 left to right.
 
