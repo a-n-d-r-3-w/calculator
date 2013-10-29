@@ -138,11 +138,12 @@ This section could include:
 * Screenshots -- descriptions of the fields
 * Icons -- description
 * Blocks -- icons, dialogs]
-* 
+
 - Distinct elements for operands and operators
 - Color themes
 - Robust to window resizing
 - Buttons should be highlighted upon mouseover
+- [Button layout 1-2-3 on top](http://abcnews.go.com/Technology/story?id=119296&page=1)
 
 ##### Programmatic Information #####
 [Describe the API design that will be exposed to users.
