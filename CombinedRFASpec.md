@@ -14,7 +14,7 @@ This user is figuring out the family budget and wants to do some simple calculat
 
 #### User Goal or Purpose of Their Activity: ####
 
-This user wants to add, subtract, multiply, and divide some big numbers and decimal points.
+This user wants to add, subtract, multiply, and divide some big numbers with decimal points.
 
 ### Assumptions ###
 The user doesn't care if the calculator doesn't work on browsers other than the latest version of Chrome.
