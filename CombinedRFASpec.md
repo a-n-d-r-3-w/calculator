@@ -24,7 +24,7 @@ Bob wants to figure out what his monthly income and expenses are.
 - The user does not know about scientific notation
 - The user will never work with numbers with an absolute value greater than 999,999,999,999
 - The user doesn't care if the calculator doesn't work on browsers other than the latest version of Chrome.
-- The user has a monitor resolution of at least 1280x1024
+- The user's monitor's resolution is at least 1280x1024
 
 ### Requirements Description ###
 
