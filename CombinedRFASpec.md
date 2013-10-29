@@ -138,6 +138,10 @@ This section could include:
 * Screenshots -- descriptions of the fields
 * Icons -- description
 * Blocks -- icons, dialogs]
+* 
+- Distinct elements for operands and operators
+- Color themes
+- Robust to window resizing
 
 ##### Programmatic Information #####
 [Describe the API design that will be exposed to users.
