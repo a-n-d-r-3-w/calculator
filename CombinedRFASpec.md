@@ -126,6 +126,7 @@ To help ensure the product is high-quality, I will do the following:
 1. Use the W3C Markup Validation Service to validate HTML code
 1. Strive to abide by the test-driven development process
 1. Strive for at least 90% line coverage from unit tests
+1. Use [Blanket.js](http://blanketjs.org/) to collect code coverage information
 1. Write model tests
 1. Write view tests
 
