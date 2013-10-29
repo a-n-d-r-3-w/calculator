@@ -3,52 +3,21 @@
 ## Requirements Analysis ##
 
 ### Motivation ###
-* Users want a calculator that is accessible from a web browser
-* The calculator must support arithmetic (addition, subtraction, multiplication, division)
-* The calculator must support decimal points and positive and negative numbers
-* The calculator must be implemented using the Dojo Toolkit
 
-### Use Cases ###
+This project demonstrates my ability to produce a piece of software using web technologies.
 
-''For more information, see [[RFAIN: Requirements Analysis: Create Use Cases|Create Use Cases]]''
+### Use Case ###
 
-[''Optional: Add a link to the User Roles and Goals worksheet for this project.'']
-
-#### Use Case 1: Casual User ####
-
-#####Description of User:#####
+####Description of User:####
 
 This user is figuring out the family budget and wants to do some simple calculations. However, they left their smartphone, tablet, and physical calculator at home. All they have is Chrome on their Windows 7 machine. They don't know about Windows' built-in calculator or MATLAB, either.
 
-##### User Goal or Purpose of Their Activity: #####
+#### User Goal or Purpose of Their Activity: ####
 
-This user wants to add, subtract, multiply, and divide some big numbers.
-
-##### Current workflow: #####
-
-1. [''Describe the first step of the workflow including any user pain. Indicate pain points in parentheses.'' '''(PP1) (PP2)''']
-1. [''Describe the next step of the workflow including any user pain. Indicate pain points in parentheses.''  '''(PP3)''']
-1. [''Describe the next step of the workflow including any user pain. Indicate pain points in parentheses.''  '''(PP4)''']
-
-#####Source Material:#####
-
-* '''Links to source material or explanation of sources:'''
-* '''Links to related gecks:'''
-* '''Relative importance of this use case or motivation for use case:'''
-* '''Products and versions included in this use case:'''
-
-#### Pain Points ####
-
-PP1: [''Summary of first pain point'']
-
-PP2: [''Summary of second pain point'']
-
-PP3: [''Summary of third pain point'']
-
-PP4: [''Summary of fourth pain point'']
+This user wants to add, subtract, multiply, and divide some big numbers and decimal points.
 
 ### Assumptions ###
-[''List assumptions about the problem, use cases, or requirements here.'']
+The user doesn't care if the calculator doesn't work on browsers other than the latest version of Chrome.
 
 ### Requirements Description ###
 
