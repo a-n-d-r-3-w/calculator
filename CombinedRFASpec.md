@@ -133,10 +133,10 @@ Delete the unused section if appropriate.]
 
 ##### GUI Design Description #####
 
-[Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png)
-
+##### Mockup #####
 ![Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png "Mockup")
 
+##### Design considerations #####
 Buttons will be divided into 4 sections. The intent is for users to interact with the calculator primarily from 
 left to right.
 1. Clear
@@ -152,7 +152,7 @@ The top row of digits buttons consists of 1-2-3 instead of 7-8-9 because
 concluded that a layout "with 1-2-3 in the top row was the easiest for people to master."
 
 
-Other considerations:
+##### Other design considerations #####
 - Distinct elements for operands and operators
 - Color themes
 - Robust to window resizing
