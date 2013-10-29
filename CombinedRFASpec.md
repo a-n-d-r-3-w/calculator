@@ -212,6 +212,13 @@ How will this be handled by tools and documentation (e.g., save as previous rele
 
 Initiate the discussion “How are we going to test this software?” and provide necessary input to the software test procedure document. Ensure that the all the use-cases/workflows described in the R-Spec can be tested.
 
+- model tests
+- view tests
+- code quality
+  - JSLint
+  - valid HTML
+  - code coverage
+
 ##### GUI Testability #####
 
 If the final artifact involves creating a GUI, ensure that it is designed to be accessible and 'useable' by the automated test infrastructure. Review the GUI [http://inside-files/dev/tools/tia/teststandards/GuiTesting.shtml testing guidelines].
