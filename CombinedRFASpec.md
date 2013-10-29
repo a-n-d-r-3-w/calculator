@@ -31,38 +31,14 @@ Bob wants to figure out what his monthly income and expenses are.
 
 ##### Required Capabilities #####
 
-1. Addition
-   1. Statement: The user can add two numbers
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
-1. Subtraction
-   1. Statement: The user can subtract two numbers
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
-1. Multiplication
-   1. Statement: The user can multiply two numbers
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
-1. Division
-   1. Statement: The user can divide two numbers
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
-1. Chrome on Windows
-   1. Statement: The user can use the calculator on the latest version of Chrome on Windows 7
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
-1. New calculation
-   1. Statement: The user can start a new calculation
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
-1. Chained operations
-   1. Statement: The user can chain operations
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
-1. Very large number
-   1. Statement: When the user produces a result with an absolute value greater than 999,999,999,999, then an error is displayed
-   1. Use Case Identifier and/or Rationale
-   1. Priority: Must Have
+1. The user can add two numbers
+1. The user can subtract two numbers
+1. The user can multiply two numbers
+1. The user can divide two numbers
+1. The user can use the calculator on the latest version of Chrome on Windows 7
+1. The user can start a new calculation
+1. The user can chain operations
+1. When the user produces a result with an absolute value greater than 999,999,999,999, then an error is displayed
 
 ##### Non-Functional Requirements (Performance, Reliability, I18N, L10N, others) #####
 
