@@ -1,6 +1,7 @@
-(function () {
+require(["../src/operators.js"], function (operators) {
     "use strict";
-    test("addTwoNumbers", function () {
-        ok(true, "Passed!");
+
+    test("Add two numbers", function () {
+        ok(operators.add(1, 1) === 2, "Passed!");
     });
-}());
+});
