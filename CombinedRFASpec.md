@@ -14,7 +14,9 @@ This user is figuring out the family budget and wants to do some simple calculat
 
 #### User Goal or Purpose of Their Activity: ####
 
-This user wants to add, subtract, multiply, and divide some big numbers with decimal points.
+This user wants to add, subtract, multiply, and divide some big numbers with decimal points to calculate:
+- their monthly income and expenses
+- what their monthly payment will be if they borrow $500,000 at a 4.15% annual interest rate and pay the loan back over 30 years.
 
 ### Assumptions ###
 - The user is working with US dollar amounts only
