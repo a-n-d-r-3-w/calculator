@@ -17,8 +17,7 @@ or MATLAB.
 
 #### User Goal or Purpose of Their Activity: ####
 
-Bob wants to figure out what the monthly payment will be if they borrow $500,000 at a 4.15% fixed
-interest rate and pay the loan back over 30 years.
+Bob wants to figure out what his monthly income and expenses are.
 
 ### Assumptions ###
 - The user works with US dollar amounts only
