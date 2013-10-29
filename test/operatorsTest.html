@@ -7,7 +7,11 @@
 <body>
     <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"
         data-dojo-config="async: true"></script>
-    <script src="../src/operators.js"></script>
+
+    <script src="../lib/blanket.min.js" data-cover-flags="debug"></script>
+
+    <script src="../src/operators.js" data-cover></script>
+
     <div id="qunit"></div>
     <div id="qunit-fixture"></div>
     <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
