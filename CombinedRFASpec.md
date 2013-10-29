@@ -4,23 +4,24 @@
 
 ### Motivation ###
 
-The goal of this project is to demonstrates my ability to create a product using web technologies in a limited time frame.
+The goal of this project is to demonstrates my ability to create a product using web technologies in a 
+limited time frame.
 
 ### Use Case ###
 
 ####Description of User:####
 
-This user manages the family budget. However, they left their smartphone, tablet, and physical calculator at home.
-All they have is Chrome on their Windows 7 machine. They don't know about Windows' built-in calculator or MATLAB, either.
+Bob manages the family budget. However, he left his smartphone, tablet, and physical calculator at home.
+He has only Chrome on a Windows 7 machine. He don't know about Windows' built-in calculator 
+or MATLAB.
 
 #### User Goal or Purpose of Their Activity: ####
 
-This user wants to add, subtract, multiply, and divide some big numbers with decimal points to calculate:
-- their monthly income and expenses
-- what their monthly payment will be if they borrow $500,000 at a 4.15% annual interest rate and pay the loan back over 30 years.
+Bob wants to figure out what the monthly payment will be if they borrow $500,000 at a 4.15% fixed
+interest rate and pay the loan back over 30 years.
 
 ### Assumptions ###
-- The user is working with US dollar amounts only
+- The user works with US dollar amounts only
 - The user does not know about scientific notation
 - The user will never work with numbers with an absolute value greater than 999,999,999,999
 - The user doesn't care if the calculator doesn't work on browsers other than the latest version of Chrome.
