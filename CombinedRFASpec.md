@@ -132,19 +132,26 @@ Consider the [http://inside.mathworks.com/wiki/I18n_Guideline#Functional_Design 
 Delete the unused section if appropriate.]
 
 ##### GUI Design Description #####
-[One way to approach organizing the description is to structure the description around a primary workflow.
+[Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png)
 
-This section could include:
-* Screenshots -- descriptions of the fields
-* Icons -- description
-* Blocks -- icons, dialogs]
+Buttons:
+- Clear
+- Related to operands
+  - Digits
+  - Plus-minus sign
+  - Decimal point
+- Arithmetic operators
+- Equals sign
+
+The digits buttons will start with 1-2-3 on the top row instead of 7-8-9 on the top row, because
+[this article](http://abcnews.go.com/Technology/story?id=119296&page=1) says that
+"The real answer seems to lie in a study conducted at Bell Labs titled 'Human Factor Engineering Studies of the Design and Use of Pushbutton Telephone Sets.' Published in the July 1960 issue of the Bell System Technical Journal, the report says that researchers tested a number different layouts including the three-by-three matrix with the zero at the bottom; versions with two rows of five numbers, arrayed either horizontally or vertically; and circular configurations with numbers laid out in clockwise and counterclockwise fashion. The study concluded that the three-by-three version with 1-2-3 in the top row was the easiest for people to master."
+
 
 - Distinct elements for operands and operators
 - Color themes
 - Robust to window resizing
 - Buttons should be highlighted upon mouseover
-- [Button layout 1-2-3 on top](http://abcnews.go.com/Technology/story?id=119296&page=1)
-- [Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png)
 
 ##### Programmatic Information #####
 [Describe the API design that will be exposed to users.
