@@ -1,0 +1,3 @@
+calculator
+==========
+An arithmetic calculator.
