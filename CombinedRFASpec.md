@@ -58,11 +58,8 @@ Bob wants to figure out what his monthly income and expenses are.
 
 ### Functional Design Description ###
 #### Overview ####
-[Describe the high level implementation of the solution.  Is it a block, API, GUI, tool, IDE, etc.?]
 
-[http://sharepoint/dev/ltc/standards/prism/Published%20Standards/MATLAB%20User%20Programming%20Competency%20Model.pdf PRISM User Types]:  [''Select all applicable user types: Newcomer, Casual User, Power User, Developer'']
-
-Consider the [http://inside.mathworks.com/wiki/I18n_Guideline#Functional_Design I18N Guidelines] for Function Design.
+The product is a GUI shown in a web browser. No user-facing API is included.
 
 #### Main Functional Design Description ####
 
