@@ -142,6 +142,7 @@ This section could include:
 - Distinct elements for operands and operators
 - Color themes
 - Robust to window resizing
+- Buttons should be highlighted upon mouseover
 
 ##### Programmatic Information #####
 [Describe the API design that will be exposed to users.
