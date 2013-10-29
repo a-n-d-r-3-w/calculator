@@ -13,7 +13,7 @@ limited time frame.
 
 Bob manages the family budget. However, he left his smartphone, tablet, and physical calculator at home.
 He has only Chrome on a Windows 7 machine. He don't know about Windows' built-in calculator 
-or MATLAB.
+or MATLAB. (This is a niche market.)
 
 #### User Goal or Purpose of Their Activity: ####
 
@@ -57,6 +57,7 @@ Bob wants to figure out what his monthly income and expenses are.
 ## Functional Design ##
 
 ### Functional Design Description ###
+
 #### Overview ####
 
 The product is a GUI shown in a web browser. No user-facing API is included.
@@ -116,30 +117,18 @@ Goals of the proposed workflow.
 ### Special Considerations ###
 [This section calls out particular aspects of the functional design that we are asking teams to document at a more detailed level of description.  These areas are being highlighted because they represent areas that many teams across development need to improve their skill at documenting.]
 
-#### Compatibility ####
-##### Backward Compatibility #####
-[Describe the approach for a reasonable, straightforward, and low-cost upgrade using the [http://sharepoint/dev/releases/Pages/ReleaseCompatibility.aspx Release Compatibility process]: (link to your release document, if appropriate)
-
-* What incompatibilities have been introduced?
-* What tools and documentation facilitate the customer migration?
-* What is the risk and mitigation strategy to prevent future incompatibilities?]
-
-##### Forward Compatibility #####
-[What is the expectation for the new capability to work in a previous release?  How will the feature behave if used in a release prior to the one in which it was created/saved?
-
-How will this be handled by tools and documentation (e.g., save as previous release)?]
-
 #### Testability ####
 [Testability is the degree to which software or a component can be tested efficiently and completely. Testability is a way of ensuring quality. Just like quality cannot be added in a product as a separate ingredient, testability follows the same trend. It has to be gradually built into the product over time
 
 Initiate the discussion “How are we going to test this software?” and provide necessary input to the software test procedure document. Ensure that the all the use-cases/workflows described in the R-Spec can be tested.
 
-- model tests
-- view tests
-- code quality
-  - JSLint
-  - valid HTML
-  - code coverage
+Product quality will be addressed by the following:
+1. Strive to abide by the test-driven development process
+1. Strive for at least 90% line coverage from unit tests
+1. Use JSLint to validate JavaScript code
+1. Use HTML validation to validate HTML code
+1. Write model tests
+1. Write view tests
 
 ##### GUI Testability #####
 
