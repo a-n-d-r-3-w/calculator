@@ -42,7 +42,9 @@ Bob wants to figure out what his monthly income and expenses are.
 
 ##### Non-Functional Requirements #####
 
-1. The UI should be visually pleasing
+1. The implementation is based on Dojo Toolkit
+1. The tests are written using QUnit
+1. The UI is visually pleasing
 
 ##### Non-Requirements #####
 
