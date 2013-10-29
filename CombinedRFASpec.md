@@ -4,7 +4,7 @@
 
 ### Motivation ###
 
-The goal is to demonstrates my ability to create a simple product using web technologies.
+The goal is to demonstrates my ability to create a product using web technologies.
 
 ### Use Case ###
 
