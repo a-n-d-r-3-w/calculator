@@ -20,7 +20,6 @@ or MATLAB.
 Bob wants to figure out what his monthly income and expenses are.
 
 ### Assumptions ###
-- The user works with US dollar amounts only
 - The user wants to perform only arithmetic
 - The user does not know about scientific notation
 - The user will never work with numbers with an absolute value greater than 999,999,999,999
