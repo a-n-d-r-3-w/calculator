@@ -144,6 +144,7 @@ This section could include:
 - Robust to window resizing
 - Buttons should be highlighted upon mouseover
 - [Button layout 1-2-3 on top](http://abcnews.go.com/Technology/story?id=119296&page=1)
+- [Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png)
 
 ##### Programmatic Information #####
 [Describe the API design that will be exposed to users.
