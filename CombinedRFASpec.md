@@ -137,8 +137,11 @@ Delete the unused section if appropriate.]
 ![Mockup](https://dl.dropboxusercontent.com/u/1085829/calculator/calculatorMockUp.png "Mockup")
 
 ##### Design considerations #####
-Buttons are divided into 4 sections. The intent is for users to interact with the calculator primarily from 
+The intent is for users to interact with the calculator primarily from 
 left to right.
+
+Each set of buttons serves a different purpose. For example, the set of buttons related to entering operands is 
+separated from the set of buttons related to entering an operator.
 
 The top row of digits buttons consists of 1-2-3 instead of 7-8-9 because
 [this article](http://abcnews.go.com/Technology/story?id=119296&page=1) says that a Bell Labs study
