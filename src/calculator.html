@@ -3,13 +3,36 @@
 <head>
     <meta charset="utf-8">
     <title>calculator</title>
-    <link rel="stylesheet" href="calculator.css" />
+    <link href="http://fonts.googleapis.com/css?family=Convergence" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="calculator.css" type="text/css">
 </head>
 <body>
 
 <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"
         data-dojo-config="async: true"></script>
-<div id="calculator"></div>
+<div id="calculator">
+    <div id="accumulator">0</div>
+
+    <div id="clear">C</div>
+
+    <div id="numberPad">
+        <div class="button" id="one">1</div>
+        <div class="button" id="two">2</div>
+        <div class="button" id="three">3</div>
+
+        <div class="button" id="four">4</div>
+        <div class="button" id="five">5</div>
+        <div class="button" id="six">6</div>
+
+        <div class="button" id="seven">7</div>
+        <div class="button" id="eight">8</div>
+        <div class="button" id="nine">9</div>
+
+        <div class="button" id="plusMinus">±</div>
+        <div class="button" id="zero">0</div>
+        <div class="button" id="decimalPoint">.</div>
+    </div>
+</div>
 
 </body>
 </html>
