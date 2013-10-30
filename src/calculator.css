@@ -59,3 +59,7 @@
     height: 80px;
     margin: 8px;
 }
+
+.button:hover {
+    background-color: palegreen;
+}
