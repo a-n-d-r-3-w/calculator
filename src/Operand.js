@@ -1,4 +1,4 @@
-define(["dojo/_base/declare"], function (declare) {
+define(["dojo", "dojo/_base/declare"], function (dojo, declare) {
     "use strict";
     return declare(null, {
         value: undefined,
@@ -6,8 +6,8 @@ define(["dojo/_base/declare"], function (declare) {
             // TODO: Assert that value is defined
             return this.value + secondOperand;
         },
-        constructor: function (value) {
-            this.value = value;
+        constructor: function (args) {
+            dojo.mixin(this, args);
         }
     });
 });
