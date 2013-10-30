@@ -1,33 +1,28 @@
 require(["../src/Operand.js"], function (Operand) {
     "use strict";
 
-    module("Addition");
+    var two;
 
-    test("Create Operand", function () {
-        var operand = new Operand();
-        ok(operand, "Passed!");
+    module("Operand", {
+        setup: function () {
+            two = new Operand({value: 2});
+        }
     });
 
     test("Add two numbers", function () {
-        var operand = new Operand({value: 1});
-        strictEqual(operand.plus(3), 4, "Passed!");
+        strictEqual(two.plus(3), 5, "Passed!");
     });
-
-    test("Add: First operand is undefined", function () {
-        var operand = new Operand({value: undefined});
-        deepEqual(operand.plus(3), NaN, "Passed!");
-    });
-
-    test("Add: Second operand is undefined", function () {
-        var operand = new Operand({value: 2});
-        deepEqual(operand.plus(undefined), NaN, "Passed!");
-    });
-
-    module("Subtraction");
 
     test("Subtract two numbers", function () {
-        var operand = new Operand({value : 1});
-        strictEqual(operand.minus(2), -1, "Passed!");
+        strictEqual(two.minus(3), -1, "Passed!");
+    });
+
+    test("Multiply two numbers", function () {
+        strictEqual(two.multiplyBy(4.2), 8.4, "Passed!");
+    });
+
+    test("Divide two numbers", function () {
+        strictEqual(two.divideBy(4), 0.5, "Passed!");
     });
 
 });
