@@ -6,4 +6,10 @@ require(["../src/Operand.js"], function (Operand) {
         ok(operand, "Passed!");
     });
 
+    test("Add", function () {
+        var operand = new Operand();
+        operand.value = 1;
+        strictEqual(operand.add(3), 4, "Passed!");
+    });
+
 });
