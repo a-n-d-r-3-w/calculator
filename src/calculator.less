@@ -4,6 +4,15 @@
 @Terra: #CDB380;
 @TerraTerra: #E8DDCB;
 
+.lightTextOnDarkBackground {
+  background-color: @Abisso;
+  color: @TerraTerra;
+}
+
+.darkTextOnLightBackground {
+  background-color: @TerraTerra;
+  color: @Abisso;
+}
 
 * {
   font-family: "Convergence", sans-serif;
@@ -15,8 +24,7 @@
 }
 
 #calculator {
-  background-color: @Abisso;
-  color: @TerraTerra;
+  .lightTextOnDarkBackground;
   width: 800px;
   height: 600px;
   margin: 0 auto;
@@ -24,8 +32,7 @@
 }
 
 #accumulator {
-  background-color: @TerraTerra;
-  color: @Abisso;
+  .darkTextOnLightBackground;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: 0;
@@ -38,6 +45,7 @@
 
 
 #clear {
+  .darkTextOnLightBackground;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: 100px;
@@ -60,8 +68,7 @@
 }
 
 .button {
-  background-color: @TerraTerra;
-  color: @Abisso;
+  .darkTextOnLightBackground;
   text-align: center;
   display: inline-block;
   width: 80px;
