@@ -21,6 +21,8 @@
 
 @darkColor: @Abisso;
 @lightColor: @TerraTerra;
+@hoverColor: @Terra;
+@activeColor: @Acqua;
 @gridSize: 80px;
 
 .lightTextOnDarkBackground {
@@ -31,6 +33,31 @@
 .darkTextOnLightBackground {
   background-color: @lightColor;
   color: @darkColor;
+}
+
+.button {
+  .darkTextOnLightBackground;
+  text-align: center;
+  display: inline-block;
+  width: @gridSize;
+}
+
+.smallButton {
+  .button;
+  height: @gridSize;
+}
+
+.smallButton:hover {
+  background-color: @hoverColor;
+}
+
+.smallButton:active {
+  background-color: @activeColor;
+}
+
+.bigButton {
+  .button;
+  height: (4 * @gridSize);
 }
 
 * {
@@ -60,12 +87,19 @@
   text-align: right;
 }
 
-
 #clear {
   .bigButton;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: @gridSize;
+}
+
+#clear:hover {
+  background-color: @Terra;
+}
+
+#clear:active {
+  background-color: @Acqua;
 }
 
 #numberPad {
@@ -77,26 +111,6 @@
   height: (4 * @gridSize);
 }
 
-.button {
-  .darkTextOnLightBackground;
-  text-align: center;
-  display: inline-block;
-  width: @gridSize;
-}
-
-.button:hover {
-  background-color: @Terra;
-}
-
-.smallButton {
-  .button;
-  height: @gridSize;
-}
-
-.bigButton {
-  .button;
-  height: (4 * @gridSize);
-}
 
 #operators {
   background-color: @Acqua;
@@ -112,4 +126,12 @@
   position: absolute; /* relative to nearest positioned ancestor */
   left: (5 * @gridSize);
   top: @gridSize;
+}
+
+#equals:hover {
+  background-color: @Terra;
+}
+
+#equals:active {
+  background-color: @Acqua;
 }
