@@ -3,19 +3,20 @@
 <head>
     <meta charset="utf-8">
     <title>calculator</title>
-    <link href="http://fonts.googleapis.com/css?family=Convergence" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="calculator.css" type="text/css">
+    <!--<link href="http://fonts.googleapis.com/css?family=Convergence" rel="stylesheet" type="text/css">-->
+    <link rel="stylesheet" href="../lib/blueprint-css-master/blueprint/screen.css" type="text/css" />
+    <!--<link rel="stylesheet" href="calculator.css" type="text/css">-->
 </head>
 <body>
 
 <script src="//ajax.googleapis.com/ajax/libs/dojo/1.9.1/dojo/dojo.js"
         data-dojo-config="async: true"></script>
 <div id="calculator">
-    <div id="accumulator">0</div>
+    <!--<div id="accumulator">0</div>-->
 
-    <div id="clear">C</div>
+    <div class="section" id="clear">C</div>
 
-    <div id="numberPad">
+    <div class="section" id="numberPad">
         <div class="button" id="one">1</div>
         <div class="button" id="two">2</div>
         <div class="button" id="three">3</div>
@@ -32,6 +33,8 @@
         <div class="button" id="zero">0</div>
         <div class="button" id="decimalPoint">.</div>
     </div>
+
+    <div class="section" id="equals">=</div>
 </div>
 
 </body>

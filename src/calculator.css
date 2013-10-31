@@ -1,6 +1,7 @@
 * {
     font-family: "Convergence", sans-serif;
     font-size: 1.2em;
+    color: #031634;
     /* Make element widths constant, independent of padding or border */
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
@@ -8,7 +9,7 @@
 }
 
 #calculator {
-    background-color: black;
+    background-color: #031634;
     width: 800px;
     height: 600px;
     margin: 0 auto;
@@ -23,43 +24,53 @@
     height: 80px;
     margin: 10px;
     padding: 20px;
-    background-color: white;
+    background-color: #E8DDCB;
     text-align: right;
+}
+
+.section {
+    vertical-align: top;
+    display: inline-block;
 }
 
 
 #clear {
-    position: absolute; /* relative to nearest positioned ancestor */
-    left: 0;
-    top: 100px;
     width: 80px;
     height: 480px;
-    margin: 10px;
-    padding: 10px;
-    background-color: white;
+    background-color: #E8DDCB;
     text-align: center;
 }
 
 #numberPad {
-    position: absolute; /* relative to nearest positioned ancestor */
-    left: 100px;
-    top: 100px;
     width: 380px;
     height: 480px;
-    margin: 10px;
-    padding: 10px;
-    background-color: gray;
+    background-color: #CDB380;
+    display: grid;
+    grid-template-rows: 4;
+    grid-template-columns: 3;
+}
+
+#equals {
+    width: 80px;
+    height: 480px;
+    background-color: #E8DDCB;
+    text-align: center;
 }
 
 .button {
     text-align: center;
-    background-color: white;
-    display: inline-block;
+    background-color: #E8DDCB;
+    /*display: inline-block;*/
     width: 80px;
     height: 80px;
-    margin: 8px;
 }
 
 .button:hover {
-    background-color: palegreen;
+    background-color: #036564;
+    color: #E8DDCB;
+}
+
+.button:active {
+    background-color: #033649;
+    color: #E8DDCB;
 }
