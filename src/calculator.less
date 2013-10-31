@@ -21,6 +21,7 @@
 
 @darkColor: @Abisso;
 @lightColor: @TerraTerra;
+@gridSize: 80px;
 
 .lightTextOnDarkBackground {
   background-color: @darkColor;
@@ -43,8 +44,8 @@
 
 #calculator {
   .lightTextOnDarkBackground;
-  width: 800px;
-  height: 600px;
+  width: (6 * @gridSize);
+  height: (5 * @gridSize);
   margin: 0 auto;
   position: relative; /* just to make this element a "positioned" element versus a static element */
 }
@@ -54,46 +55,61 @@
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: 0;
-  width: 780px;
-  height: 80px;
-  margin: 10px;
-  padding: 20px;
+  width: (6 * @gridSize);
+  height: @gridSize;
   text-align: right;
 }
 
 
 #clear {
-  .darkTextOnLightBackground;
+  .bigButton;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
-  top: 100px;
-  width: 80px;
-  height: 480px;
-  margin: 10px;
-  padding: 10px;
-  text-align: center;
+  top: @gridSize;
 }
 
 #numberPad {
   background-color: @Acqua;
   position: absolute; /* relative to nearest positioned ancestor */
-  left: 100px;
-  top: 100px;
-  width: 380px;
-  height: 480px;
-  margin: 10px;
-  padding: 10px;
+  left: @gridSize;
+  top: @gridSize;
+  width: (3 * @gridSize);
+  height: (4 * @gridSize);
 }
 
 .button {
   .darkTextOnLightBackground;
   text-align: center;
   display: inline-block;
-  width: 80px;
-  height: 80px;
-  margin: 8px;
+  width: @gridSize;
 }
 
 .button:hover {
-  background-color: palegreen;
+  background-color: @Terra;
+}
+
+.smallButton {
+  .button;
+  height: @gridSize;
+}
+
+.bigButton {
+  .button;
+  height: (4 * @gridSize);
+}
+
+#operators {
+  background-color: @Acqua;
+  position: absolute; /* relative to nearest positioned ancestor */
+  left: (4 * @gridSize);
+  top: @gridSize;
+  width: @gridSize;
+  height: (4 * @gridSize);
+}
+
+#equals {
+  .bigButton;
+  position: absolute; /* relative to nearest positioned ancestor */
+  left: (5 * @gridSize);
+  top: @gridSize;
 }
