@@ -80,6 +80,8 @@ The top row of digits buttons consists of 1-2-3 instead of 7-8-9 because
 [this article](http://abcnews.go.com/Technology/story?id=119296&page=1) says that a Bell Labs study
 concluded that a layout "with 1-2-3 in the top row was the easiest for people to master."
 
+Colors will be chosen from a top-rated palette on [COLOURlovers.com](http://www.colourlovers.com/palettes/most-loved/all-time/meta).
+
 ##### Other design considerations #####
 - Distinct elements for operands and operators
 - Color themes
