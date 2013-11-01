@@ -1,3 +1,12 @@
+* {
+  font-family: "Convergence", sans-serif;
+  font-size: 1.2em;
+  /* Make element widths constant, independent of padding or border */
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
 /* The "Thought Provoking" color palette */
 @ThoughtBySome: #ECD078;
 @ThoughtfulBrick: #D95B43;
@@ -24,6 +33,7 @@
 @hoverColor: @Terra;
 @activeColor: @Acqua;
 @gridSize: 80px;
+@borderWidth: 1px;
 
 .lightTextOnDarkBackground {
   background-color: @darkColor;
@@ -37,6 +47,7 @@
 
 .button {
   .darkTextOnLightBackground;
+  .hasBorder;
   text-align: center;
   display: inline-block;
   width: @gridSize;
@@ -60,13 +71,8 @@
   height: (4 * @gridSize);
 }
 
-* {
-  font-family: "Convergence", sans-serif;
-  font-size: 1.2em;
-  /* Make element widths constant, independent of padding or border */
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+.hasBorder {
+  border: @borderWidth solid @darkColor;
 }
 
 #calculator {
@@ -79,6 +85,7 @@
 
 #accumulator {
   .darkTextOnLightBackground;
+  .hasBorder;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: 0;
