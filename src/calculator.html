@@ -36,17 +36,19 @@
 
 <h1 id="greeting">Hello</h1>
 
-<script src="../lib/dojo.js.uncompressed.js"></script>
+<script src="../lib/dojo-release-1.9.1/dojo/dojo.js"></script>
 <script>
-    // Require the module we just created
-    require(["demo/myModule"], function(myModule){
-        // Use our module to change the text in the greeting
-        myModule.setText("greeting", "Hello Dojo!");
+    require(["dojo/dom", "dojo/fx", "dojo/domReady!"], function(dom, fx){
+        // The piece we had before...
+        var greeting = dom.byId("greeting");
+        greeting.innerHTML += " from Dojo!";
 
-        // After a few seconds, restore the text to its original state
-        setTimeout(function(){
-            myModule.restoreText("greeting");
-        }, 3000);
+        // ...but now, with an animation!
+        fx.slideTo({
+            top: 100,
+            left: 200,
+            node: greeting
+        }).play();
     });
 </script>
 
