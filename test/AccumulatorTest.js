@@ -9,8 +9,21 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         }
     });
 
-    test("asdf", function () {
-        ok(false);
+    test("clear", function () {
+        testModule.clear();
+        ok(true);
     });
+
+    // getContents
+
+    // addDigit
+
+    // addDecimalPoint
+
+    // clear
+
+    // showNegativeSign
+
+    // hideNegativeSign
 
 });
