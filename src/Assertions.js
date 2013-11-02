@@ -6,8 +6,11 @@ define(["dojo/_base/declare"], function (declare) {
                 throw "Assertion failed.";
             }
         },
-        assertIsDigit: function (digit) {
-
+        assertIsSingleCharacter: function (text) {
+            var isSingleCharacter = (text.length === 1);
+            if (!isSingleCharacter) {
+                throw "Not single character.";
+            }
         }
     });
 });

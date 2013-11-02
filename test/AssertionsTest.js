@@ -20,4 +20,20 @@ require(["../src/Assertions.js"], function (Assertions) {
         });
     });
 
+    test("Assert is single character", function () {
+        assertions.assertIsSingleCharacter("0");
+        ok(true);
+    });
+
+    test("Assert non-single character throws error", function () {
+        throws(function () {
+            assertions.assertIsSingleCharacter("");
+        });
+    });
+
+    test("Assert non-single character throws error", function () {
+        throws(function () {
+            assertions.assertIsSingleCharacter("12");
+        });
+    });
 });
