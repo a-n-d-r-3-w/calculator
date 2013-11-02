@@ -38,13 +38,19 @@ require(["../src/Assertions.js"], function (Assertions) {
     });
 
     test("Assert digit", function () {
-        assertions.assertIsDigit("9");
+        assertions.assertIsDigitOrDecimalPoint("9");
+        ok(true);
+    });
+
+
+    test("Assert decimal point", function () {
+        assertions.assertIsDigitOrDecimalPoint(".");
         ok(true);
     });
 
     test("Assert non-digit throws error", function () {
         throws(function () {
-            assertions.assertIsDigit(".");
+            assertions.assertIsDigitOrDecimalPoint("a");
         })
     })
 });

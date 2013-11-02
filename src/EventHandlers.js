@@ -11,7 +11,7 @@ require(["dojo/dom", "dojo/on", "../src/Assertions", "dojo/domReady!"],
         };
 
         var addDigitToAccumulatorText = function (digit) {
-            assertions.assertIsDigit(digit);
+            assertions.assertIsDigitOrDecimalPoint(digit);
 
             var accumulator = dom.byId("accumulator");
             var text = accumulator.innerHTML;

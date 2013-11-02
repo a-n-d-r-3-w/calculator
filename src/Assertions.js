@@ -10,9 +10,9 @@ define(["dojo/_base/declare"], function (declare) {
             var isSingleCharacter = (text.length === 1);
             this.assertIsTruthy(isSingleCharacter);
         },
-        assertIsDigit: function (text) {
+        assertIsDigitOrDecimalPoint: function (text) {
             this.assertIsSingleCharacter(text);
-            var isDigit = ("0123456789".indexOf(text) !== -1);
+            var isDigit = ("0123456789.".indexOf(text) !== -1);
             this.assertIsTruthy(isDigit);
         }
     });

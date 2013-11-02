@@ -27,6 +27,12 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         strictEqual(testModule.getContents(), "43");
     });
 
+    test("add zero as first digit", function () {
+        testModule.clear();
+        testModule.addDigit("0");
+        strictEqual(testModule.getContents(), "0");
+    });
+
     // addDecimalPoint
 
     // clear
