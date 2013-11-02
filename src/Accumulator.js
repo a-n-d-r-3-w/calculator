@@ -13,6 +13,9 @@ define(["dojo/_base/declare"], function (declare) {
                 this.value = "";
             }
             this.value += digit;
+        },
+        addDecimalPoint: function () {
+            this.value += ".";
         }
     });
 });
