@@ -75,7 +75,7 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         strictEqual(accumulator.getContents(), "0");
     });
 
-    test("enter more than 8 characters", function () {
+    test("user should not be able to enter more than 8 characters", function () {
         accumulator.clear();
         accumulator.addDigit("1");
         accumulator.addDigit("1");
