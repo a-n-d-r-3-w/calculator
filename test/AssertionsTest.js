@@ -36,4 +36,15 @@ require(["../src/Assertions.js"], function (Assertions) {
             assertions.assertIsSingleCharacter("12");
         });
     });
+
+    test("Assert digit", function () {
+        assertions.assertIsDigit("9");
+        ok(true);
+    });
+
+    test("Assert non-digit throws error", function () {
+        throws(function () {
+            assertions.assertIsDigit(".");
+        })
+    })
 });

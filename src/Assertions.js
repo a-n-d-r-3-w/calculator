@@ -8,9 +8,12 @@ define(["dojo/_base/declare"], function (declare) {
         },
         assertIsSingleCharacter: function (text) {
             var isSingleCharacter = (text.length === 1);
-            if (!isSingleCharacter) {
-                throw "Not single character.";
-            }
+            this.assertIsTruthy(isSingleCharacter);
+        },
+        assertIsDigit: function (text) {
+            this.assertIsSingleCharacter(text);
+            var isDigit = ("0123456789".indexOf(text) !== -1);
+            this.assertIsTruthy(isDigit);
         }
     });
 });
