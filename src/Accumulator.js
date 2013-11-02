@@ -12,7 +12,9 @@ define(["dojo/_base/declare"], function (declare) {
             if (this.value === "0") {
                 this.value = "";
             }
-            this.value += digit;
+            if (this.value.length < 8) {
+                this.value += digit;
+            }
         },
         addDecimalPoint: function () {
             var alreadyContainsDecimalPoint = this.value.indexOf(".") !== -1;

@@ -33,14 +33,12 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         strictEqual(testModule.getContents(), "0");
     });
 
-    // addDecimalPoint
     test("add decimal point", function () {
         testModule.clear();
         testModule.addDecimalPoint();
         strictEqual(testModule.getContents(), "0.");
     });
 
-    // try to add two decimal points
     test("try to add two decimal points", function () {
         testModule.clear();
         testModule.addDecimalPoint();
@@ -48,7 +46,6 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         strictEqual(testModule.getContents(), "0.");
     });
 
-    // showNegativeSign
     test("show negative sign", function () {
         testModule.clear();
         testModule.addDigit("2");
@@ -76,6 +73,20 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         testModule.clear();
         testModule.showNegativeSign();
         strictEqual(testModule.getContents(), "0");
+    });
+
+    test("enter more than 8 characters", function () {
+        testModule.clear();
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        testModule.addDigit("1");
+        strictEqual(testModule.getContents(), "11111111");
     });
 
 });
