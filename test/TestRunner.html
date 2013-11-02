@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test Runner</title>
+    <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+</head>
+<body>
+<script src="../lib/dojo-release-1.9.1/dojo/dojo.js"></script>
+
+
+<div id="qunit"></div>
+<div id="qunit-fixture"></div>
+<script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
+
+<!-- Blanket.js must be loaded after QUnit -->
+<script src="../lib/blanket.min.js"></script>
+<script src="../src/Operand.js" data-cover></script>
+<script src="../src/Assertions.js" data-cover></script>
+
+
+<script src="OperandTest.js"></script>
+<script src="AssertionsTest.js"></script>
+</body>
+</html>

@@ -1,43 +1,67 @@
 require(["dojo/dom", "dojo/on", "dojo/domReady!"], function (dom, on) {
     "use strict";
+
+    var getNumberOfDigits = function (numberAsAString) {
+        var digits = numberAsAString.match(/[0-9]/g);
+        console.log(digits.toString());
+        return digits.length;
+    };
+
+    var addDigitToAccumulatorText = function (digit) {
+        assertIsDigit(digit);
+
+        var accumulator = dom.byId("accumulator");
+        var text = accumulator.innerHTML;
+
+        console.log("text length" + text);
+
+        assert(text, "Accumulator text is undefined or empty.");
+        var MAX_NUM_DIGITS = 8;
+        if (text[0] === "0") {
+            accumulator.innerHTML = digit;
+        } else if (text.length < MAX_NUM_DIGITS) {
+            accumulator.innerHTML += digit;
+        }
+    };
+
     on(dom.byId("clear"), "click", function () {
-        alert("clear");
+        dom.byId("accumulator").innerHTML = "0";
     });
     on(dom.byId("one"), "click", function () {
-        alert("1");
+        addDigitToAccumulatorText("1");
     });
     on(dom.byId("two"), "click", function () {
-        alert("2");
+        addDigitToAccumulatorText("2");
     });
     on(dom.byId("three"), "click", function () {
-        alert("3");
+        addDigitToAccumulatorText("3");
     });
     on(dom.byId("four"), "click", function () {
-        alert("4");
+        addDigitToAccumulatorText("4");
     });
     on(dom.byId("five"), "click", function () {
-        alert("5");
+        addDigitToAccumulatorText("5");
     });
     on(dom.byId("six"), "click", function () {
-        alert("6");
+        addDigitToAccumulatorText("6");
     });
     on(dom.byId("seven"), "click", function () {
-        alert("7");
+        addDigitToAccumulatorText("7");
     });
     on(dom.byId("eight"), "click", function () {
-        alert("8");
+        addDigitToAccumulatorText("8");
     });
     on(dom.byId("nine"), "click", function () {
-        alert("9");
+        addDigitToAccumulatorText("9");
     });
     on(dom.byId("zero"), "click", function () {
-        alert("0");
+        addDigitToAccumulatorText("0");
     });
     on(dom.byId("plusMinus"), "click", function () {
         alert("plusMinus");
     });
     on(dom.byId("decimalPoint"), "click", function () {
-        alert("decimalPoint");
+        addDigitToAccumulatorText(".");
     });
     on(dom.byId("plus"), "click", function () {
         alert("+");
