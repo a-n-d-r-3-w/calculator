@@ -24,17 +24,14 @@ define(["dojo/_base/declare"], function (declare) {
             }
         },
         showNegativeSign: function () {
-            var isZero = this.value === "0";
-            var alreadyShowing = this.value.indexOf("-") !== -1;
-            if (!isZero && !alreadyShowing) {
+            var valueIsZero = this.value === "0";
+            var negativeSignIsAlreadyShowing = this.value.indexOf("-") !== -1;
+            if (!valueIsZero && !negativeSignIsAlreadyShowing) {
                 this.value = "-" + this.value;
             }
         },
         hideNegativeSign: function () {
-            var negativeSignIsShowing = this.value.indexOf("-") !== -1;
-            if (negativeSignIsShowing) {
-                this.value = this.value.substring(1);
-            }
+            this.value = this.value.replace("-", "");
         }
     });
 });
