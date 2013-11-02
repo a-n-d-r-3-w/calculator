@@ -49,7 +49,33 @@ require(["../src/Accumulator.js"], function (Accumulator) {
     });
 
     // showNegativeSign
+    test("show negative sign", function () {
+        testModule.clear();
+        testModule.addDigit("2");
+        testModule.showNegativeSign();
+        strictEqual(testModule.getContents(), "-2");
+    });
 
-    // hideNegativeSign
+    test("show negative sign twice", function () {
+        testModule.clear();
+        testModule.addDigit("2");
+        testModule.showNegativeSign();
+        testModule.showNegativeSign();
+        strictEqual(testModule.getContents(), "-2");
+    });
+
+    test("hide negative sign", function () {
+        testModule.clear();
+        testModule.addDigit("2");
+        testModule.showNegativeSign();
+        testModule.hideNegativeSign();
+        strictEqual(testModule.getContents(), "2");
+    });
+
+    test("show negative sign for zero", function () {
+        testModule.clear();
+        testModule.showNegativeSign();
+        strictEqual(testModule.getContents(), "0");
+    });
 
 });

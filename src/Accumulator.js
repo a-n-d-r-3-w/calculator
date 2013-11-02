@@ -19,6 +19,19 @@ define(["dojo/_base/declare"], function (declare) {
             if (!alreadyContainsDecimalPoint) {
                 this.value += ".";
             }
+        },
+        showNegativeSign: function () {
+            var isZero = this.value === "0";
+            var alreadyShowing = this.value.indexOf("-") !== -1;
+            if (!isZero && !alreadyShowing) {
+                this.value = "-" + this.value;
+            }
+        },
+        hideNegativeSign: function () {
+            var negativeSignIsShowing = this.value.indexOf("-") !== -1;
+            if (negativeSignIsShowing) {
+                this.value = this.value.substring(1);
+            }
         }
     });
 });
