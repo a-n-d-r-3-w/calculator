@@ -12,7 +12,8 @@ define(["dojo/_base/declare"], function (declare) {
             if (this.value === "0") {
                 this.value = "";
             }
-            if (this.value.length < 8) {
+            var reachedMaximumCapacity = this.value.length === 8;
+            if (!reachedMaximumCapacity) {
                 this.value += digit;
             }
         },
