@@ -9,14 +9,23 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         }
     });
 
-    test("clear", function () {
+    test("clear and getContents", function () {
         testModule.clear();
-        ok(true);
+        strictEqual(testModule.getContents(), "0");
     });
 
-    // getContents
+    test("add first non-zero digit", function () {
+        testModule.clear();
+        testModule.addDigit("4");
+        strictEqual(testModule.getContents(), "4");
+    });
 
-    // addDigit
+    test("add two non-zero digits", function () {
+        testModule.clear();
+        testModule.addDigit("4");
+        testModule.addDigit("3");
+        strictEqual(testModule.getContents(), "43");
+    });
 
     // addDecimalPoint
 
