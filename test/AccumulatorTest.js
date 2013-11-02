@@ -46,6 +46,14 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         strictEqual(accumulator.getContentsAsString(), "0.");
     });
 
+    test("number with decimal point", function () {
+        accumulator.clear();
+        accumulator.addDigit("4");
+        accumulator.addDecimalPoint();
+        accumulator.addDigit("5");
+        strictEqual(accumulator.getContentsAsFloat(), 4.5);
+    });
+
     test("show negative sign", function () {
         accumulator.clear();
         accumulator.addDigit("2");
