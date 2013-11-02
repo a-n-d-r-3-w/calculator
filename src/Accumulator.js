@@ -15,7 +15,10 @@ define(["dojo/_base/declare"], function (declare) {
             this.value += digit;
         },
         addDecimalPoint: function () {
-            this.value += ".";
+            var alreadyContainsDecimalPoint = this.value.indexOf(".") !== -1;
+            if (!alreadyContainsDecimalPoint) {
+                this.value += ".";
+            }
         }
     });
 });

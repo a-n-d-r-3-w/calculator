@@ -41,6 +41,12 @@ require(["../src/Accumulator.js"], function (Accumulator) {
     });
 
     // try to add two decimal points
+    test("try to add two decimal points", function () {
+        testModule.clear();
+        testModule.addDecimalPoint();
+        testModule.addDecimalPoint();
+        strictEqual(testModule.getContents(), "0.");
+    });
 
     // clear
 
