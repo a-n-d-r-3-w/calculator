@@ -1,92 +1,92 @@
 require(["../src/Accumulator.js"], function (Accumulator) {
     "use strict";
 
-    var testModule;
+    var accumulator;
 
     module("Accumulator", {
         setup: function () {
-            testModule = new Accumulator();
+            accumulator = new Accumulator();
         }
     });
 
     test("clear and getContents", function () {
-        testModule.clear();
-        strictEqual(testModule.getContents(), "0");
+        accumulator.clear();
+        strictEqual(accumulator.getContents(), "0");
     });
 
     test("add first non-zero digit", function () {
-        testModule.clear();
-        testModule.addDigit("4");
-        strictEqual(testModule.getContents(), "4");
+        accumulator.clear();
+        accumulator.addDigit("4");
+        strictEqual(accumulator.getContents(), "4");
     });
 
     test("add two non-zero digits", function () {
-        testModule.clear();
-        testModule.addDigit("4");
-        testModule.addDigit("3");
-        strictEqual(testModule.getContents(), "43");
+        accumulator.clear();
+        accumulator.addDigit("4");
+        accumulator.addDigit("3");
+        strictEqual(accumulator.getContents(), "43");
     });
 
     test("add zero as first digit", function () {
-        testModule.clear();
-        testModule.addDigit("0");
-        strictEqual(testModule.getContents(), "0");
+        accumulator.clear();
+        accumulator.addDigit("0");
+        strictEqual(accumulator.getContents(), "0");
     });
 
     test("add decimal point", function () {
-        testModule.clear();
-        testModule.addDecimalPoint();
-        strictEqual(testModule.getContents(), "0.");
+        accumulator.clear();
+        accumulator.addDecimalPoint();
+        strictEqual(accumulator.getContents(), "0.");
     });
 
     test("try to add two decimal points", function () {
-        testModule.clear();
-        testModule.addDecimalPoint();
-        testModule.addDecimalPoint();
-        strictEqual(testModule.getContents(), "0.");
+        accumulator.clear();
+        accumulator.addDecimalPoint();
+        accumulator.addDecimalPoint();
+        strictEqual(accumulator.getContents(), "0.");
     });
 
     test("show negative sign", function () {
-        testModule.clear();
-        testModule.addDigit("2");
-        testModule.showNegativeSign();
-        strictEqual(testModule.getContents(), "-2");
+        accumulator.clear();
+        accumulator.addDigit("2");
+        accumulator.showNegativeSign();
+        strictEqual(accumulator.getContents(), "-2");
     });
 
     test("show negative sign twice", function () {
-        testModule.clear();
-        testModule.addDigit("2");
-        testModule.showNegativeSign();
-        testModule.showNegativeSign();
-        strictEqual(testModule.getContents(), "-2");
+        accumulator.clear();
+        accumulator.addDigit("2");
+        accumulator.showNegativeSign();
+        accumulator.showNegativeSign();
+        strictEqual(accumulator.getContents(), "-2");
     });
 
     test("hide negative sign", function () {
-        testModule.clear();
-        testModule.addDigit("2");
-        testModule.showNegativeSign();
-        testModule.hideNegativeSign();
-        strictEqual(testModule.getContents(), "2");
+        accumulator.clear();
+        accumulator.addDigit("2");
+        accumulator.showNegativeSign();
+        accumulator.hideNegativeSign();
+        strictEqual(accumulator.getContents(), "2");
     });
 
     test("show negative sign for zero", function () {
-        testModule.clear();
-        testModule.showNegativeSign();
-        strictEqual(testModule.getContents(), "0");
+        accumulator.clear();
+        accumulator.showNegativeSign();
+        strictEqual(accumulator.getContents(), "0");
     });
 
     test("enter more than 8 characters", function () {
-        testModule.clear();
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        testModule.addDigit("1");
-        strictEqual(testModule.getContents(), "11111111");
+        accumulator.clear();
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        accumulator.addDigit("1");
+        strictEqual(accumulator.getContents(), "11111111");
     });
 
 });
