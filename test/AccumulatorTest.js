@@ -48,8 +48,6 @@ require(["../src/Accumulator.js"], function (Accumulator) {
         strictEqual(testModule.getContents(), "0.");
     });
 
-    // clear
-
     // showNegativeSign
 
     // hideNegativeSign
