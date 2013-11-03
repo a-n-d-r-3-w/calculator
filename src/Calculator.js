@@ -22,6 +22,24 @@ require(["dojo/dom", "dojo/on", "../src/Operator.js", "dojo/domReady!"],
                 if (decimalPointNotFound) {
                     accumulator.innerHTML += ".";
                 }
+            },
+
+            togglePlusMinus = function () {
+                var accumulatorText = accumulator.innerHTML,
+                    startsWithMinus = accumulatorText.indexOf("-") === 0;
+                if (startsWithMinus) {
+                    accumulator.innerHTML = accumulatorText.substring(1);
+                } else {
+                    accumulator.innerHTML = "-" + accumulator.innerHTML;
+                }
+            },
+
+            getValueAsFloat = function () {
+                return parseFloat(accumulator.innerHTML);
+            },
+
+            setInnerHtml = function (text) {
+                accumulator.innerHTML = text;
             };
 
         on(dom.byId("clear"), "click", function () {
@@ -60,51 +78,46 @@ require(["dojo/dom", "dojo/on", "../src/Operator.js", "dojo/domReady!"],
         on(dom.byId("zero"), "click", function () {
             enterDigit("0");
         });
+
         on(dom.byId("plusMinus"), "click", function () {
-            var accumulatorText = accumulator.innerHTML,
-                startsWithMinus = accumulatorText.indexOf("-") === 0;
-            if (startsWithMinus) {
-                accumulator.innerHTML = accumulatorText.substring(1);
-            } else {
-                accumulator.innerHTML = "-" + accumulator.innerHTML;
-            }
+            togglePlusMinus();
         });
+
         on(dom.byId("decimalPoint"), "click", function () {
             enterDecimalPoint();
         });
 
         on(dom.byId("plus"), "click", function () {
             operator = Operator.ADD;
-            operand1 = parseFloat(accumulator.innerHTML);
+            operand1 = getValueAsFloat();
             needToClearAccumulator = true;
         });
         on(dom.byId("minus"), "click", function () {
             operator = Operator.SUBTRACT;
-            operand1 = parseFloat(accumulator.innerHTML);
+            operand1 = getValueAsFloat();
             needToClearAccumulator = true;
         });
         on(dom.byId("multiply"), "click", function () {
             operator = Operator.MULTIPLY;
-            operand1 = parseFloat(accumulator.innerHTML);
+            operand1 = getValueAsFloat();
             needToClearAccumulator = true;
         });
         on(dom.byId("divide"), "click", function () {
             operator = Operator.DIVIDE;
-            operand1 = parseFloat(accumulator.innerHTML);
+            operand1 = getValueAsFloat();
             needToClearAccumulator = true;
         });
 
         on(dom.byId("equals"), "click", function () {
-            operand2 = parseFloat(accumulator.innerHTML);
-            console.log(operator);
+            operand2 = getValueAsFloat();
             if (operator === Operator.ADD) {
-                accumulator.innerHTML = (operand1 + operand2).toString();
+                setInnerHtml((operand1 + operand2).toString());
             } else if (operator === Operator.SUBTRACT) {
-                accumulator.innerHTML = (operand1 - operand2).toString();
+                setInnerHtml((operand1 - operand2).toString());
             } else if (operator === Operator.MULTIPLY) {
-                accumulator.innerHTML = (operand1 * operand2).toString();
+                setInnerHtml((operand1 * operand2).toString());
             } else if (operator === Operator.DIVIDE) {
-                accumulator.innerHTML = (operand1 / operand2).toString();
+                setInnerHtml((operand1 / operand2).toString());
             }
         });
     });
