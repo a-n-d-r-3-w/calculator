@@ -1,40 +1,34 @@
-define(["dojo/_base/declare"], function (declare) {
-    "use strict";
-    return declare(null, {
-        value: undefined,
-        clear: function () {
-            this.value = "0";
-        },
-        getContentsAsString: function () {
-            return this.value;
-        },
-        getContentsAsFloat: function () {
-            return parseFloat(this.value);
-        },
-        addDigit: function (digit) {
-            if (this.value === "0") {
-                this.value = "";
-            }
-            var reachedMaximumCapacity = this.value.length === 8;
-            if (!reachedMaximumCapacity) {
-                this.value += digit;
-            }
-        },
-        addDecimalPoint: function () {
-            var alreadyContainsDecimalPoint = this.value.indexOf(".") !== -1;
-            if (!alreadyContainsDecimalPoint) {
-                this.value += ".";
-            }
-        },
-        showNegativeSign: function () {
-            var valueIsZero = this.value === "0";
-            var negativeSignIsAlreadyShowing = this.value.indexOf("-") !== -1;
-            if (!valueIsZero && !negativeSignIsAlreadyShowing) {
-                this.value = "-" + this.value;
-            }
-        },
-        hideNegativeSign: function () {
-            this.value = this.value.replace("-", "");
+define({
+    enterDigit: function (digit) {
+        if (accumulator.innerHTML === "0" || operator !== null) {
+            accumulator.innerHTML = digit;
+        } else {
+            accumulator.innerHTML += digit;
         }
-    });
+    },
+
+    enterDecimalPoint: function () {
+        var decimalPointNotFound = accumulator.innerHTML.indexOf(".") === -1;
+        if (decimalPointNotFound) {
+            accumulator.innerHTML += ".";
+        }
+    },
+
+    togglePlusMinus: function () {
+        var accumulatorText = accumulator.innerHTML,
+            startsWithMinus = accumulatorText.indexOf("-") === 0;
+        if (startsWithMinus) {
+            accumulator.innerHTML = accumulatorText.substring(1);
+        } else {
+            accumulator.innerHTML = "-" + accumulator.innerHTML;
+        }
+    },
+
+    getValueAsFloat: function () {
+        return parseFloat(accumulator.innerHTML);
+    },
+
+    setInnerHtml: function (text) {
+        accumulator.innerHTML = text;
+    }
 });

@@ -6,12 +6,10 @@ require(["dojo/dom", "dojo/on", "../src/Operator.js", "dojo/domReady!"],
             operand2 = null,
             operator = null,
             accumulator = dom.byId("accumulator"),
-            needToClearAccumulator = false,
 
             enterDigit = function (digit) {
-                if (accumulator.innerHTML === "0" || needToClearAccumulator) {
+                if (accumulator.innerHTML === "0" || operator !== null) {
                     accumulator.innerHTML = digit;
-                    needToClearAccumulator = false;
                 } else {
                     accumulator.innerHTML += digit;
                 }
@@ -90,22 +88,18 @@ require(["dojo/dom", "dojo/on", "../src/Operator.js", "dojo/domReady!"],
         on(dom.byId("plus"), "click", function () {
             operator = Operator.ADD;
             operand1 = getValueAsFloat();
-            needToClearAccumulator = true;
         });
         on(dom.byId("minus"), "click", function () {
             operator = Operator.SUBTRACT;
             operand1 = getValueAsFloat();
-            needToClearAccumulator = true;
         });
         on(dom.byId("multiply"), "click", function () {
             operator = Operator.MULTIPLY;
             operand1 = getValueAsFloat();
-            needToClearAccumulator = true;
         });
         on(dom.byId("divide"), "click", function () {
             operator = Operator.DIVIDE;
             operand1 = getValueAsFloat();
-            needToClearAccumulator = true;
         });
 
         on(dom.byId("equals"), "click", function () {
