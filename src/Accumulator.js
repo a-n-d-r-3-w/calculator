@@ -2,8 +2,12 @@ define(["dojo/dom"], function (dom) {
     "use strict";
     var accumulator = dom.byId("accumulator");
     return {
-        enterDigit: function (digit, operator) {
-            if (accumulator.innerHTML === "0" || operator !== null) {
+        setToZero: function () {
+            accumulator.innerHTML = "0";
+        },
+
+        enterDigit: function (digit, operatorIsSet) {
+            if (accumulator.innerHTML === "0" || operatorIsSet) {
                 accumulator.innerHTML = digit;
             } else {
                 accumulator.innerHTML += digit;
