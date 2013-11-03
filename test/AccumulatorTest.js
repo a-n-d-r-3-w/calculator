@@ -5,7 +5,7 @@ require(["../src/Accumulator.js"], function (Accumulator) {
 
     module("Accumulator", {
         setup: function () {
-            accumulator = new Accumulator();
+            accumulator = new TestModule();
         }
     });
 

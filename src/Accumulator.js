@@ -1,8 +1,8 @@
-define(["dojo/_base/declare", "dojo/dom"], function (declare, dom) {
+define(["dojo/dom"], function (dom) {
     "use strict";
     var accumulator = dom.byId("accumulator");
-    return declare(null, {
-        enterDigit: function (digit) {
+    return {
+        enterDigit: function (digit, operator) {
             if (accumulator.innerHTML === "0" || operator !== null) {
                 accumulator.innerHTML = digit;
             } else {
@@ -34,5 +34,5 @@ define(["dojo/_base/declare", "dojo/dom"], function (declare, dom) {
         setInnerHtml: function (text) {
             accumulator.innerHTML = text;
         }
-    });
+    };
 });
