@@ -37,6 +37,10 @@ define(["dojo/dom"], function (dom) {
 
         setInnerHtml: function (text) {
             accumulator.innerHTML = text;
+        },
+
+        getInnerHtml: function () {
+            return accumulator.innerHTML;
         }
     };
 });
