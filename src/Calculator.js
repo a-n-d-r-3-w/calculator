@@ -1,44 +1,11 @@
-require(["dojo/dom", "dojo/on", "../src/Operator.js", "dojo/domReady!"],
-    function (dom, on, Operator) {
+require(["dojo/dom", "dojo/on", "../src/Operator.js", "../src/Accumulator.js", "dojo/domReady!"],
+    function (dom, on, Operator, Accumulator) {
         "use strict";
 
         var operand1 = null,
             operand2 = null,
             operator = null,
-            accumulator = dom.byId("accumulator"),
-
-            enterDigit = function (digit) {
-                if (accumulator.innerHTML === "0" || operator !== null) {
-                    accumulator.innerHTML = digit;
-                } else {
-                    accumulator.innerHTML += digit;
-                }
-            },
-
-            enterDecimalPoint = function () {
-                var decimalPointNotFound = accumulator.innerHTML.indexOf(".") === -1;
-                if (decimalPointNotFound) {
-                    accumulator.innerHTML += ".";
-                }
-            },
-
-            togglePlusMinus = function () {
-                var accumulatorText = accumulator.innerHTML,
-                    startsWithMinus = accumulatorText.indexOf("-") === 0;
-                if (startsWithMinus) {
-                    accumulator.innerHTML = accumulatorText.substring(1);
-                } else {
-                    accumulator.innerHTML = "-" + accumulator.innerHTML;
-                }
-            },
-
-            getValueAsFloat = function () {
-                return parseFloat(accumulator.innerHTML);
-            },
-
-            setInnerHtml = function (text) {
-                accumulator.innerHTML = text;
-            };
+            accumulator = dom.byId("accumulator");
 
         on(dom.byId("clear"), "click", function () {
             operand1 = null;
