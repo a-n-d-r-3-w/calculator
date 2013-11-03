@@ -1,5 +1,6 @@
 * {
-  font-family: 'Ubuntu Mono', sans-serif;
+  background-color: #1f1f1f;
+  font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
   /* Make element widths constant, independent of padding or border */
   -webkit-box-sizing: border-box;
@@ -29,9 +30,9 @@
 @TerraTerra: #E8DDCB;
 
 @darkColor: @Abisso;
-@lightColor: @TerraTerra;
-@hoverColor: @Terra;
-@activeColor: @Acqua;
+@lightColor: #cccccc;
+@hoverColor: #fbfbfb;
+@activeColor: @MightySlate;
 @gridSize: 80px;
 @borderWidth: 1px;
 
@@ -46,7 +47,9 @@
 }
 
 .button {
-  .darkTextOnLightBackground;
+//  .darkTextOnLightBackground;
+  background-color: #dddddd;
+  color: #000000;
   .hasBorder;
   text-align: center;
   display: inline-block;
@@ -55,6 +58,9 @@
 
 .smallButton {
   .button;
+//  border-radius: 999px;
+//  -webkit-border-radius: 999px;
+//  -moz-border-radius: 999px;
   height: @gridSize;
   line-height: 2em; /* to vertically-center the text */
 }
@@ -86,7 +92,10 @@
 }
 
 #accumulator {
-  .darkTextOnLightBackground;
+  background-color: #000000;
+  color: white;
+  font-size: 2em;
+  font-weight: bold;
   .hasBorder;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
@@ -94,22 +103,24 @@
   width: (6 * @gridSize);
   height: @gridSize;
   text-align: right;
-  padding: 0.5em;
+  padding: 0 0.4em;
 }
 
 #clear {
   .bigButton;
+  background-color: #ff5555;
+  color: white;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: @gridSize;
 }
 
 #clear:hover {
-  background-color: @Terra;
+  background-color: #ff8888;
 }
 
 #clear:active {
-  background-color: @Acqua;
+  background-color: @MightySlate;
 }
 
 #numberPad {
@@ -133,15 +144,17 @@
 
 #equals {
   .bigButton;
+  background-color: #559955;
+  color: white;
   position: absolute; /* relative to nearest positioned ancestor */
   left: (5 * @gridSize);
   top: @gridSize;
 }
 
 #equals:hover {
-  background-color: @Terra;
+  background-color: #88cc88;
 }
 
 #equals:active {
-  background-color: @Acqua;
+  background-color: @MightySlate;
 }
