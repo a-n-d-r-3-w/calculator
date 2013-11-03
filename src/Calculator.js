@@ -10,7 +10,7 @@ require(["dojo/dom", "dojo/on", "../src/Operator.js", "Accumulator.js", "dojo/do
             operand1 = null;
             operand2 = null;
             operator = null;
-            Accumulator.setToZero();
+            Accumulator.clear();
         });
         on(dom.byId("one"), "click", function () {
             Accumulator.enterDigit("1", nextInputIsForOperand2);

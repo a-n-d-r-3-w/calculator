@@ -2,7 +2,7 @@ define(["dojo/dom"], function (dom) {
     "use strict";
     var accumulator = dom.byId("accumulator");
     return {
-        setToZero: function () {
+        clear: function () {
             accumulator.innerHTML = "0";
         },
 
