@@ -1,5 +1,5 @@
-require(["dojo/dom", "dojo/on", "dojo/domReady!"],
-    function (dom, on) {
+require(["dojo/dom", "dojo/on", "../src/Operator.js", "dojo/domReady!"],
+    function (dom, on, Operator) {
         "use strict";
 
         var operand1 = null,
@@ -17,11 +17,11 @@ require(["dojo/dom", "dojo/on", "dojo/domReady!"],
                 }
             },
 
-            Operator = {
-                ADD: 0,
-                SUBTRACT: 1,
-                MULTIPLY: 2,
-                DIVIDE: 3
+            enterDecimalPoint = function () {
+                var decimalPointNotFound = accumulator.innerHTML.indexOf(".") === -1;
+                if (decimalPointNotFound) {
+                    accumulator.innerHTML += ".";
+                }
             };
 
         on(dom.byId("clear"), "click", function () {
@@ -70,8 +70,9 @@ require(["dojo/dom", "dojo/on", "dojo/domReady!"],
             }
         });
         on(dom.byId("decimalPoint"), "click", function () {
-            enterDigit(".");
+            enterDecimalPoint();
         });
+
         on(dom.byId("plus"), "click", function () {
             operator = Operator.ADD;
             operand1 = parseFloat(accumulator.innerHTML);
@@ -92,16 +93,18 @@ require(["dojo/dom", "dojo/on", "dojo/domReady!"],
             operand1 = parseFloat(accumulator.innerHTML);
             needToClearAccumulator = true;
         });
+
         on(dom.byId("equals"), "click", function () {
             operand2 = parseFloat(accumulator.innerHTML);
+            console.log(operator);
             if (operator === Operator.ADD) {
-                accumulator.innerHTML = operand1 + operand2;
+                accumulator.innerHTML = (operand1 + operand2).toString();
             } else if (operator === Operator.SUBTRACT) {
-                accumulator.innerHTML = operand1 - operand2;
+                accumulator.innerHTML = (operand1 - operand2).toString();
             } else if (operator === Operator.MULTIPLY) {
-                accumulator.innerHTML = operand1 * operand2;
+                accumulator.innerHTML = (operand1 * operand2).toString();
             } else if (operator === Operator.DIVIDE) {
-                accumulator.innerHTML = operand1 / operand2;
+                accumulator.innerHTML = (operand1 / operand2).toString();
             }
         });
     });
