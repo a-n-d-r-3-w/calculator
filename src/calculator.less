@@ -108,15 +108,13 @@
 
 #clear {
   .bigButton;
-  background-color: #ff5555;
-  color: white;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: @gridSize;
 }
 
 #clear:hover {
-  background-color: #ff8888;
+  background-color: @hoverColor;
 }
 
 #clear:active {
@@ -142,9 +140,15 @@
   height: (4 * @gridSize);
 }
 
+.operationButton {
+  .smallButton;
+  background-color: #F38630;
+  color: white;
+}
+
 #equals {
   .bigButton;
-  background-color: #559955;
+  background-color: #F38630;
   color: white;
   position: absolute; /* relative to nearest positioned ancestor */
   left: (5 * @gridSize);
