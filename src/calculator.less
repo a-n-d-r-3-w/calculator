@@ -12,21 +12,16 @@
 @borderWidth: 1px;
 
 .button {
-  background-color: #dddddd;
-  color: #000000;
   .hasBorder;
   text-align: center;
   display: inline-block;
   width: @gridSize;
 }
 
-.smallButton {
+.grayButton {
   .button;
-//  border-radius: 999px;
-//  -webkit-border-radius: 999px;
-//  -moz-border-radius: 999px;
-  height: @gridSize;
-  line-height: 2em; /* to vertically-center the text */
+  background-color: #dddddd;
+  color: black;
   &:hover {
     background-color: #fbfbfb;
   }
@@ -35,8 +30,18 @@
   }
 }
 
-.bigButton {
-  .button;
+
+.smallGrayButton {
+  .grayButton;
+//  border-radius: 999px;
+//  -webkit-border-radius: 999px;
+//  -moz-border-radius: 999px;
+  height: @gridSize;
+  line-height: 2em; /* to vertically-center the text */
+}
+
+.bigGrayButton {
+  .grayButton;
   height: (4 * @gridSize);
   line-height: 9em; /* to vertically-center the text */
 }
@@ -68,7 +73,7 @@
 }
 
 #clear {
-  .bigButton;
+  .bigGrayButton;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: @gridSize;
@@ -98,7 +103,7 @@
 }
 
 .operationButton {
-  .smallButton;
+  .smallGrayButton;
   background-color: #F38630;
   color: white;
   &:hover {
@@ -110,7 +115,7 @@
 }
 
 #equals {
-  .bigButton;
+  .bigGrayButton;
   background-color: #F38630;
   color: white;
   position: absolute; /* relative to nearest positioned ancestor */
