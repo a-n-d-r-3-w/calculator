@@ -27,13 +27,12 @@
 //  -moz-border-radius: 999px;
   height: @gridSize;
   line-height: 2em; /* to vertically-center the text */
-}
-
-.smallButton:hover {
-  background-color: #fbfbfb;
-}
-.smallButton:active {
-  background-color: gray;
+  &:hover {
+    background-color: #fbfbfb;
+  }
+  &:active {
+    background-color: gray;
+  }
 }
 
 .bigButton {
@@ -73,14 +72,12 @@
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
   top: @gridSize;
-}
-
-#clear:hover {
-  background-color: #fbfbfb;
-}
-
-#clear:active {
-  background-color: gray;
+  &:hover {
+    background-color: #fbfbfb;
+  }
+  &:active {
+    background-color: gray;
+  }
 }
 
 #numberPad {
@@ -104,12 +101,12 @@
   .smallButton;
   background-color: #F38630;
   color: white;
-}
-.operationButton:hover {
-  background-color: #FF9842;
-}
-.operationButton:active {
-  background-color: gray;
+  &:hover {
+    background-color: #ff9842;
+  }
+  &:active {
+    background-color: gray;
+  }
 }
 
 #equals {
@@ -119,11 +116,10 @@
   position: absolute; /* relative to nearest positioned ancestor */
   left: (5 * @gridSize);
   top: @gridSize;
-}
-
-#equals:hover {
-  background-color: #FF9842;
-}
-#equals:active {
-  background-color: gray;
+  &:hover {
+    background-color: #ff9842;
+  }
+  &:active {
+    background-color: gray;
+  }
 }
