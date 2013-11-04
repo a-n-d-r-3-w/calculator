@@ -8,46 +8,10 @@
   box-sizing: border-box;
 }
 
-/* The "Thought Provoking" color palette */
-@ThoughtBySome: #ECD078;
-@ThoughtfulBrick: #D95B43;
-@ThoughtlessRed: #C02942;
-@ThoughtYouWere: #542437;
-@ThoughtlessBlue: #53777A;
-
-/* The "cheer up emo kid" color palette */
-@MightySlate: #556270;
-@Pacifica: #4ECDC4;
-@AppleChic: #C7F464;
-@CheeryPink: #FF6B6B;
-@GrandmasPillow: #C44D58;
-
-/* The "Terra?" color palette */
-@Abisso: #031634;
-@AcquaProfonda: #033649;
-@Acqua: #036564;
-@Terra: #CDB380;
-@TerraTerra: #E8DDCB;
-
-@darkColor: @Abisso;
-@lightColor: #cccccc;
-@hoverColor: #fbfbfb;
-@activeColor: @MightySlate;
 @gridSize: 80px;
 @borderWidth: 1px;
 
-.lightTextOnDarkBackground {
-  background-color: @darkColor;
-  color: @lightColor;
-}
-
-.darkTextOnLightBackground {
-  background-color: @lightColor;
-  color: @darkColor;
-}
-
 .button {
-//  .darkTextOnLightBackground;
   background-color: #dddddd;
   color: #000000;
   .hasBorder;
@@ -66,11 +30,7 @@
 }
 
 .smallButton:hover {
-  background-color: @hoverColor;
-}
-
-.smallButton:active {
-  background-color: @activeColor;
+  background-color: #fbfbfb;
 }
 
 .bigButton {
@@ -80,11 +40,10 @@
 }
 
 .hasBorder {
-  border: @borderWidth solid @darkColor;
+  border: @borderWidth solid black;
 }
 
 #calculator {
-  .lightTextOnDarkBackground;
   width: (6 * @gridSize);
   height: (5 * @gridSize);
   margin: 0 auto;
@@ -114,15 +73,14 @@
 }
 
 #clear:hover {
-  background-color: @hoverColor;
+  background-color: #fbfbfb;
 }
 
 #clear:active {
-  background-color: @MightySlate;
+  background-color: black;
 }
 
 #numberPad {
-  background-color: @Acqua;
   position: absolute; /* relative to nearest positioned ancestor */
   left: @gridSize;
   top: @gridSize;
@@ -132,7 +90,6 @@
 
 
 #operators {
-  background-color: @Acqua;
   position: absolute; /* relative to nearest positioned ancestor */
   left: (4 * @gridSize);
   top: @gridSize;
@@ -145,6 +102,9 @@
   background-color: #F38630;
   color: white;
 }
+.operationButton:hover {
+  background-color: #FF9842;
+}
 
 #equals {
   .bigButton;
@@ -156,9 +116,5 @@
 }
 
 #equals:hover {
-  background-color: #88cc88;
-}
-
-#equals:active {
-  background-color: @MightySlate;
+  background-color: #FF9842;
 }
