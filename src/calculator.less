@@ -6,6 +6,13 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  /* Disable text selection */
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 @gridSize: 80px;
@@ -59,8 +66,6 @@
 #accumulator {
   background-color: #000000;
   color: white;
-  font-size: 2em;
-  font-weight: bold;
   .hasBorder;
   position: absolute; /* relative to nearest positioned ancestor */
   left: 0;
@@ -68,7 +73,7 @@
   width: (6 * @gridSize);
   height: @gridSize;
   text-align: right;
-  padding: 0 0.4em;
+  padding: 0.5em 0.4em;
 }
 
 #clear {
@@ -126,4 +131,11 @@
   &:active {
     background-color: gray;
   }
+}
+
+#Test {
+  position: absolute;
+  visibility: hidden;
+  height: auto;
+  width: auto;
 }

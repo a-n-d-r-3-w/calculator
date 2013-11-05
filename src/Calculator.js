@@ -1,10 +1,9 @@
-require(["dojo/dom", "dojo/on", "../src/Operator.js", "Accumulator.js", "dojo/domReady!"],
-    function (dom, on, Operator, Accumulator) {
+require(["dojo/dom", "dojo/on", "Operator.js", "Accumulator.js", "AccumulatorMode.js", "dojo/domReady!"],
+    function (dom, on, Operator, Accumulator, AccumulatorMode) {
         "use strict";
         var operand1 = null,
             operand2 = null,
-            operator = null,
-            nextInputIsForOperand2 = false;
+            operator = null;
 
         on(dom.byId("clear"), "click", function () {
             operand1 = null;
@@ -13,34 +12,34 @@ require(["dojo/dom", "dojo/on", "../src/Operator.js", "Accumulator.js", "dojo/do
             Accumulator.clear();
         });
         on(dom.byId("one"), "click", function () {
-            Accumulator.enterDigit("1", nextInputIsForOperand2);
+            Accumulator.enterDigit("1");
         });
         on(dom.byId("two"), "click", function () {
-            Accumulator.enterDigit("2", nextInputIsForOperand2);
+            Accumulator.enterDigit("2");
         });
         on(dom.byId("three"), "click", function () {
-            Accumulator.enterDigit("3", nextInputIsForOperand2);
+            Accumulator.enterDigit("3");
         });
         on(dom.byId("four"), "click", function () {
-            Accumulator.enterDigit("4", nextInputIsForOperand2);
+            Accumulator.enterDigit("4");
         });
         on(dom.byId("five"), "click", function () {
-            Accumulator.enterDigit("5", nextInputIsForOperand2);
+            Accumulator.enterDigit("5");
         });
         on(dom.byId("six"), "click", function () {
-            Accumulator.enterDigit("6", nextInputIsForOperand2);
+            Accumulator.enterDigit("6");
         });
         on(dom.byId("seven"), "click", function () {
-            Accumulator.enterDigit("7", nextInputIsForOperand2);
+            Accumulator.enterDigit("7");
         });
         on(dom.byId("eight"), "click", function () {
-            Accumulator.enterDigit("8", nextInputIsForOperand2);
+            Accumulator.enterDigit("8");
         });
         on(dom.byId("nine"), "click", function () {
-            Accumulator.enterDigit("9", nextInputIsForOperand2);
+            Accumulator.enterDigit("9");
         });
         on(dom.byId("zero"), "click", function () {
-            Accumulator.enterDigit("0", nextInputIsForOperand2);
+            Accumulator.enterDigit("0");
         });
 
         on(dom.byId("plusMinus"), "click", function () {
@@ -54,34 +53,38 @@ require(["dojo/dom", "dojo/on", "../src/Operator.js", "Accumulator.js", "dojo/do
         on(dom.byId("plus"), "click", function () {
             operator = Operator.ADD;
             operand1 = Accumulator.getValueAsFloat();
-            nextInputIsForOperand2 = true;
+            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("minus"), "click", function () {
             operator = Operator.SUBTRACT;
             operand1 = Accumulator.getValueAsFloat();
-            nextInputIsForOperand2 = true;
+            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("multiply"), "click", function () {
             operator = Operator.MULTIPLY;
             operand1 = Accumulator.getValueAsFloat();
-            nextInputIsForOperand2 = true;
+            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("divide"), "click", function () {
             operator = Operator.DIVIDE;
             operand1 = Accumulator.getValueAsFloat();
-            nextInputIsForOperand2 = true;
+            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
 
         on(dom.byId("equals"), "click", function () {
             operand2 = Accumulator.getValueAsFloat();
+            var answer = null;
             if (operator === Operator.ADD) {
-                Accumulator.setInnerHtml((operand1 + operand2).toString());
+                answer = operand1 + operand2;
             } else if (operator === Operator.SUBTRACT) {
-                Accumulator.setInnerHtml((operand1 - operand2).toString());
+                answer = operand1 - operand2;
             } else if (operator === Operator.MULTIPLY) {
-                Accumulator.setInnerHtml((operand1 * operand2).toString());
+                answer = operand1 * operand2;
             } else if (operator === Operator.DIVIDE) {
-                Accumulator.setInnerHtml((operand1 / operand2).toString());
+                answer = operand1 / operand2;
             }
+            var answerAsString = answer.toString();
+            Accumulator.setInnerHtml(answerAsString);
+            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_1);
         });
     });
