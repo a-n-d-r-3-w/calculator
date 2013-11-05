@@ -63,6 +63,7 @@ require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMo
             if (operation === null) {
                 operand1 = Accumulator.getInnerHtmlAsFloat();
             } else {
+                // perform previous operation and store result in operand1
                 operand2 = Accumulator.getInnerHtmlAsFloat();
                 operand1 = operation(operand1, operand2);
             }
