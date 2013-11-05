@@ -4,13 +4,11 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
         var operand1 = null,
             operand2 = null,
             operator = null,
+
             placeValueForNextDigit = 0,
+
             enteringFractionalPart = false,
-            printLog = function () {
-                console.log("operand1 = " + operand1);
-                console.log("operand2 = " + operand2);
-                console.log("operator = " + operator);
-            },
+
             addDigit = function (digit) {
                 AccumulatorModel.addDigitAtPlaceValue(digit, placeValueForNextDigit);
                 if (enteringFractionalPart) {
