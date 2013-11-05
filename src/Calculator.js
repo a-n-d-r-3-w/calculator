@@ -61,12 +61,12 @@ require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMo
 
         on(dom.byId("plus"), "click", function () {
             if (operation === null) {
-                operation = Operation.add;
                 operand1 = Accumulator.getInnerHtmlAsFloat();
             } else {
                 operand2 = Accumulator.getInnerHtmlAsFloat();
                 operand1 = operation(operand1, operand2);
             }
+            operation = Operation.add;
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND);
         });
         on(dom.byId("minus"), "click", function () {

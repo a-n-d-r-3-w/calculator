@@ -1,24 +1,19 @@
 define(["dojo/dom", "AccumulatorMode.js"], function (dom, AccumulatorMode) {
     "use strict";
     var accumulator = dom.byId("accumulator"),
-        mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_1;
+        mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND;
 
     return {
         clear: function () {
             accumulator.innerHTML = "0";
-            mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_1;
+            mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND;
         },
 
         enterDigit: function (digit) {
-            if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_1) {
+            if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND) {
                 accumulator.innerHTML = digit;
-                mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_OPERAND_1;
-            } else if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_OPERAND_1) {
-                accumulator.innerHTML += digit;
-            } else if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2) {
-                accumulator.innerHTML = digit;
-                mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_OPERAND_2;
-            } else if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_OPERAND_2) {
+                mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_AN_OPERAND;
+            } else if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_AN_OPERAND) {
                 accumulator.innerHTML += digit;
             }
         },
