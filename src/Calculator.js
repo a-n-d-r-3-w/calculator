@@ -1,4 +1,4 @@
-require(["dojo/dom", "dojo/on", "Operator.js", "Accumulator.js", "AccumulatorMode.js", "dojo/domReady!"],
+require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMode.js", "dojo/domReady!"],
     function (dom, on, Operator, Accumulator, AccumulatorMode) {
         "use strict";
         var operand1 = null,
@@ -51,22 +51,22 @@ require(["dojo/dom", "dojo/on", "Operator.js", "Accumulator.js", "AccumulatorMod
         });
 
         on(dom.byId("plus"), "click", function () {
-            operator = Operator.ADD;
+            operator = Operation.add;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("minus"), "click", function () {
-            operator = Operator.SUBTRACT;
+            operator = Operation.subtract;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("multiply"), "click", function () {
-            operator = Operator.MULTIPLY;
+            operator = Operation.multiply;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("divide"), "click", function () {
-            operator = Operator.DIVIDE;
+            operator = Operation.divide;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
@@ -74,13 +74,13 @@ require(["dojo/dom", "dojo/on", "Operator.js", "Accumulator.js", "AccumulatorMod
         on(dom.byId("equals"), "click", function () {
             operand2 = Accumulator.getValueAsFloat();
             var answer = null;
-            if (operator === Operator.ADD) {
+            if (operator === Operation.add) {
                 answer = operand1 + operand2;
-            } else if (operator === Operator.SUBTRACT) {
+            } else if (operator === Operation.subtract) {
                 answer = operand1 - operand2;
-            } else if (operator === Operator.MULTIPLY) {
+            } else if (operator === Operation.multiply) {
                 answer = operand1 * operand2;
-            } else if (operator === Operator.DIVIDE) {
+            } else if (operator === Operation.divide) {
                 answer = operand1 / operand2;
             }
             var answerAsString = answer.toString();
