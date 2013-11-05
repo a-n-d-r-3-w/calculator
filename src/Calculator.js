@@ -18,17 +18,20 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 }
                 AccumulatorView.update();
             },
+
             setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
                 operand1 = AccumulatorModel.getValue();
                 placeValueForNextDigit = 0;
                 AccumulatorModel.clear();
             },
+
             computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
                 operand2 = AccumulatorModel.getValue();
                 operand1 = operator(operand1, operand2);
                 placeValueForNextDigit = 0;
                 AccumulatorModel.clear();
             },
+
             setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary = function (newOperator) {
                 var theCurrentExpressionContainsAnOperator = (operator !== null);
                 if (theCurrentExpressionContainsAnOperator) {
@@ -38,16 +41,19 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 }
                 operator = newOperator;
             },
+
             clearOperandsAndOperatorAndPlaceValue = function () {
                 operand1 = null;
                 operand2 = null;
                 operator = null;
                 placeValueForNextDigit = 0;
             },
+
             toggleSign = function toggleSign() {
                 AccumulatorModel.toggleSign();
                 AccumulatorView.update();
             },
+
             computeResultAndClearState = function () {
                 if (operator !== null) {
                     operand2 = AccumulatorModel.getValue();
@@ -57,13 +63,16 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                     clearOperandsAndOperatorAndPlaceValue();
                 }
             },
-            attachEventHandlers = function () {
+
+            attachEventHandlerForClearButton = function () {
                 on(dom.byId("clear"), "click", function () {
                     clearOperandsAndOperatorAndPlaceValue();
                     AccumulatorModel.clear();
                     AccumulatorView.update();
                 });
+            },
 
+            attachEventHandlersForNumberPadButtons = function () {
                 on(dom.byId("number1"), "click", function () {
                     addDigit(1);
                 });
@@ -104,7 +113,9 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                     placeValueForNextDigit -= 1;
                     AccumulatorView.addDecimalPoint();
                 });
+            },
 
+            attachEventHandlersForOperatorButtons = function () {
                 on(dom.byId("plus"), "click", function () {
                     setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.add);
                 });
@@ -120,10 +131,20 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 on(dom.byId("divide"), "click", function () {
                     setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.divide);
                 });
+            },
 
+            attachEventHandlersForEqualsButton = function () {
                 on(dom.byId("equals"), "click", function () {
                     computeResultAndClearState();
                 });
+
+            },
+
+            attachEventHandlers = function () {
+                attachEventHandlerForClearButton();
+                attachEventHandlersForNumberPadButtons();
+                attachEventHandlersForOperatorButtons();
+                attachEventHandlersForEqualsButton();
             };
 
         attachEventHandlers();
