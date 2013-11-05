@@ -16,9 +16,6 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 if (enteringFractionalPart) {
                     placeValueForNextDigit -= 1;
                 }
-            },
-            addDigitAndUpdateView = function (digit) {
-                addDigit(digit);
                 AccumulatorView.update();
             },
             setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
@@ -47,7 +44,7 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 operator = null;
                 placeValueForNextDigit = 0;
             },
-            toggleSignAndUpdateView = function toggleSignAndUpdateView() {
+            toggleSign = function toggleSign() {
                 AccumulatorModel.toggleSign();
                 AccumulatorView.update();
             },
@@ -68,38 +65,38 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 });
 
                 on(dom.byId("number1"), "click", function () {
-                    addDigitAndUpdateView(1);
+                    addDigit(1);
                 });
                 on(dom.byId("number2"), "click", function () {
-                    addDigitAndUpdateView(2);
+                    addDigit(2);
                 });
                 on(dom.byId("number3"), "click", function () {
-                    addDigitAndUpdateView(3);
+                    addDigit(3);
                 });
                 on(dom.byId("number4"), "click", function () {
-                    addDigitAndUpdateView(4);
+                    addDigit(4);
                 });
                 on(dom.byId("number5"), "click", function () {
-                    addDigitAndUpdateView(5);
+                    addDigit(5);
                 });
                 on(dom.byId("number6"), "click", function () {
-                    addDigitAndUpdateView(6);
+                    addDigit(6);
                 });
                 on(dom.byId("number7"), "click", function () {
-                    addDigitAndUpdateView(7);
+                    addDigit(7);
                 });
                 on(dom.byId("number8"), "click", function () {
-                    addDigitAndUpdateView(8);
+                    addDigit(8);
                 });
                 on(dom.byId("number9"), "click", function () {
-                    addDigitAndUpdateView(9);
+                    addDigit(9);
                 });
                 on(dom.byId("number0"), "click", function () {
-                    addDigitAndUpdateView(0);
+                    addDigit(0);
                 });
 
                 on(dom.byId("plusMinus"), "click", function () {
-                    toggleSignAndUpdateView();
+                    toggleSign();
                 });
 
                 on(dom.byId("decimalPoint"), "click", function () {
