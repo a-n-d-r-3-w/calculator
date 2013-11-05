@@ -5,6 +5,7 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
             operand2 = null,
             operator = null,
             placeValue = 0,
+            enteringFractionalPart = false,
             printLog = function () {
                 console.log("operand1 = " + operand1);
                 console.log("operand2 = " + operand2);
@@ -12,14 +13,19 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
             },
             addDigitAtPlaceValue = function (digit) {
                 AccumulatorModel.addDigitAtPlaceValue(digit, placeValue);
+                if (enteringFractionalPart) {
+                    placeValue -= 1;
+                }
             },
             setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
                 operand1 = AccumulatorModel.getValue();
+                placeValue = 0;
                 AccumulatorModel.clear();
             },
             computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
                 operand2 = AccumulatorModel.getValue();
                 operand1 = operator(operand1, operand2);
+                placeValue = 0;
                 AccumulatorModel.clear();
             },
             setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary = function (newOperator) {
@@ -86,6 +92,7 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
         });
 
         on(dom.byId("decimalPoint"), "click", function () {
+            enteringFractionalPart = true;
             placeValue -= 1;
             AccumulatorView.addDecimalPoint();
         });
@@ -115,6 +122,7 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 operand1 = null;
                 operand2 = null;
                 operator = null;
+                placeValue = 0;
             }
         });
     });
