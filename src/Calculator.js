@@ -1,15 +1,15 @@
-require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMode.js", "dojo/domReady!"],
-    function (dom, on, Operation, Accumulator, AccumulatorMode) {
+require(["dojo/dom", "dojo/on", "Operator.js", "Accumulator.js", "dojo/domReady!"],
+    function (dom, on, Operator, Accumulator) {
         "use strict";
         var operand1 = null,
             operand2 = null,
-            operation = null,
+            operator = null,
             clearOperands = function () {
                 operand1 = null;
                 operand2 = null;
             },
-            clearOperation = function () {
-                operation = null;
+            clearOperator = function () {
+                operator = null;
             },
             clearAccumulator = function () {
                 Accumulator.clear();
@@ -17,7 +17,7 @@ require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMo
 
         on(dom.byId("clear"), "click", function () {
             clearOperands();
-            clearOperation();
+            clearOperator();
             clearAccumulator();
         });
         on(dom.byId("one"), "click", function () {
@@ -60,41 +60,40 @@ require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMo
         });
 
         on(dom.byId("plus"), "click", function () {
-            if (operation === null) {
-                operand1 = Accumulator.getInnerHtmlAsFloat();
+            if (operator === null) {
+                operand1 = Accumulator.getValue();
             } else {
-                // perform previous operation and store result in operand1
-                operand2 = Accumulator.getInnerHtmlAsFloat();
-                operand1 = operation(operand1, operand2);
+                operand2 = Accumulator.getValue();
+                operand1 = operator(operand1, operand2);
             }
-            operation = Operation.add;
-            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND);
+            operator = Operator.add;
+            Accumulator.getReadyForNextOperand();
         });
         on(dom.byId("minus"), "click", function () {
-            operation = Operation.subtract;
-            operand1 = Accumulator.getInnerHtmlAsFloat();
-            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND);
+            operator = Operator.subtract;
+            operand1 = Accumulator.getValue();
+            Accumulator.getReadyForNextOperand();
         });
         on(dom.byId("multiply"), "click", function () {
-            operation = Operation.multiply;
-            operand1 = Accumulator.getInnerHtmlAsFloat();
-            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND);
+            operator = Operator.multiply;
+            operand1 = Accumulator.getValue();
+            Accumulator.getReadyForNextOperand();
         });
         on(dom.byId("divide"), "click", function () {
-            operation = Operation.divide;
-            operand1 = Accumulator.getInnerHtmlAsFloat();
-            Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND);
+            operator = Operator.divide;
+            operand1 = Accumulator.getValue();
+            Accumulator.getReadyForNextOperand();
         });
 
         on(dom.byId("equals"), "click", function () {
-            if (operation !== null) {
-                operand2 = Accumulator.getInnerHtmlAsFloat();
-                var answer = operation(operand1, operand2);
+            if (operator !== null) {
+                operand2 = Accumulator.getValue();
+                var answer = operator(operand1, operand2);
                 var answerAsString = answer.toString();
                 Accumulator.setInnerHtml(answerAsString);
-                Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND);
+                Accumulator.getReadyForNextOperand();
                 clearOperands();
-                clearOperation();
+                clearOperator();
             }
         });
     });

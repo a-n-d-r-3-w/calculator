@@ -1,7 +1,16 @@
 define(["dojo/dom", "AccumulatorMode.js"], function (dom, AccumulatorMode) {
     "use strict";
     var accumulator = dom.byId("accumulator"),
-        mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND;
+        mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND,
+        prependWithMinusSign = function () {
+            accumulator.innerHTML = "-" + accumulator.innerHTML;
+        },
+        removeMinusSign = function () {
+            accumulator.innerHTML = accumulatorText.substring(1);
+        },
+        startsWithMinusSign = function () {
+            return accumulatorText.indexOf("-") === 0;
+        };
 
     return {
         clear: function () {
@@ -26,12 +35,10 @@ define(["dojo/dom", "AccumulatorMode.js"], function (dom, AccumulatorMode) {
         },
 
         togglePlusMinus: function () {
-            var accumulatorText = accumulator.innerHTML,
-                startsWithMinus = accumulatorText.indexOf("-") === 0;
-            if (startsWithMinus) {
-                accumulator.innerHTML = accumulatorText.substring(1);
+            if (startsWithMinusSign()) {
+                removeMinusSign();
             } else {
-                accumulator.innerHTML = "-" + accumulator.innerHTML;
+                prependWithMinusSign();
             }
         },
 
@@ -43,12 +50,12 @@ define(["dojo/dom", "AccumulatorMode.js"], function (dom, AccumulatorMode) {
             return accumulator.innerHTML;
         },
 
-        getInnerHtmlAsFloat: function () {
+        getValue: function () {
             return parseFloat(accumulator.innerHTML);
         },
 
-        setMode: function (newMode) {
-            mode = newMode;
+        getReadyForNextOperand: function () {
+            mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND;
         }
     };
 });
