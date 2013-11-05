@@ -94,6 +94,8 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
             },
 
             attachEventHandlersForOperatorButtons = function () {
+                // TODO: Refactor this so the DOM id and the operator name are the same, and
+                // can be passed as an argument to a method called attachEventHandlerForOperatorButton.
                 on(dom.byId("plus"), "click", function () {
                     setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.add);
                 });
