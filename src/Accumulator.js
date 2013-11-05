@@ -1,36 +1,48 @@
 define(["dojo/dom", "AccumulatorMode.js"], function (dom, AccumulatorMode) {
     "use strict";
-    var accumulator = dom.byId("accumulator"),
+    var accumulatorView = dom.byId("accumulator"),
+        accumulatorModel = 0,
         mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND,
+        currentPowerOfTen = 0,
         prependWithMinusSign = function () {
-            accumulator.innerHTML = "-" + accumulator.innerHTML;
+            accumulatorView.innerHTML = "-" + accumulatorView.innerHTML;
         },
         removeMinusSign = function () {
-            accumulator.innerHTML = accumulator.innerHTML.substring(1);
+            accumulatorView.innerHTML = accumulatorView.innerHTML.substring(1);
         },
         startsWithMinusSign = function () {
-            return accumulator.innerHTML.indexOf("-") === 0;
+            return accumulatorView.innerHTML.indexOf("-") === 0;
+        },
+        updateView = function () {
+            accumulatorView.innerHTML = accumulatorModel.toString();
         };
 
     return {
         clear: function () {
-            accumulator.innerHTML = "0";
-            mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND;
+            accumulatorView.innerHTML = "0";
+            updateView();
+//            mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND;
         },
 
         enterDigit: function (digit) {
-            if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND) {
-                accumulator.innerHTML = digit;
-                mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_AN_OPERAND;
-            } else if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_AN_OPERAND) {
-                accumulator.innerHTML += digit;
+            if (currentPowerOfTen < 0) {
+                currentPowerOfTen -= currentPowerOfTen;
             }
+            accumulatorModel = Math.pow(10, currentPowerOfTen) * accumulatorModel + parseInt(digit);
+            updateView();
+//            if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_AN_OPERAND) {
+//                accumulatorView.innerHTML = digit;
+//                mode = AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_AN_OPERAND;
+//            } else if (mode === AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_A_NON_FIRST_DIGIT_OF_AN_OPERAND) {
+//                accumulatorView.innerHTML += digit;
+//            }
         },
 
         enterDecimalPoint: function () {
-            var decimalPointNotFound = accumulator.innerHTML.indexOf(".") === -1;
+            currentPowerOfTen = -1;
+            var decimalPointNotFound = accumulatorView.innerHTML.indexOf(".") === -1;
             if (decimalPointNotFound) {
-                accumulator.innerHTML += ".";
+                accumulatorView.innerHTML += ".";
             }
         },
 
@@ -43,15 +55,15 @@ define(["dojo/dom", "AccumulatorMode.js"], function (dom, AccumulatorMode) {
         },
 
         setInnerHtml: function (text) {
-            accumulator.innerHTML = text;
+            accumulatorView.innerHTML = text;
         },
 
         getInnerHtml: function () {
-            return accumulator.innerHTML;
+            return accumulatorView.innerHTML;
         },
 
         getValue: function () {
-            return parseFloat(accumulator.innerHTML);
+            return parseFloat(accumulatorView.innerHTML);
         },
 
         getReadyForNextOperand: function () {
