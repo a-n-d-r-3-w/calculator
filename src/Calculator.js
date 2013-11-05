@@ -7,6 +7,11 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
             placeValue = 0,
             addDigitAtPlaceValue = function (digit) {
                 AccumulatorModel.addDigitAtPlaceValue(digit, placeValue);
+            },
+            printLog = function () {
+                console.log("operand1 = " + operand1);
+                console.log("operand2 = " + operand2);
+                console.log("operator = " + operator);
             };
 
         on(dom.byId("clear"), "click", function () {
@@ -14,52 +19,52 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
             operand2 = null;
             operator = null;
             AccumulatorModel.clear();
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("one"), "click", function () {
             addDigitAtPlaceValue(1);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("two"), "click", function () {
             addDigitAtPlaceValue(2);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("three"), "click", function () {
             addDigitAtPlaceValue(3);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("four"), "click", function () {
             addDigitAtPlaceValue(4);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("five"), "click", function () {
             addDigitAtPlaceValue(5);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("six"), "click", function () {
             addDigitAtPlaceValue(6);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("seven"), "click", function () {
             addDigitAtPlaceValue(7);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("eight"), "click", function () {
             addDigitAtPlaceValue(8);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("nine"), "click", function () {
             addDigitAtPlaceValue(9);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
         on(dom.byId("zero"), "click", function () {
             addDigitAtPlaceValue(0);
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
 
         on(dom.byId("plusMinus"), "click", function () {
             AccumulatorModel.toggleSign();
-            AccumulatorView.updateView();
+            AccumulatorView.update();
         });
 
         on(dom.byId("decimalPoint"), "click", function () {
@@ -69,39 +74,37 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
 
         on(dom.byId("plus"), "click", function () {
             if (operator === null) {
-                operand1 = Accumulator.getValue();
+                operand1 = AccumulatorModel.getValue();
+                AccumulatorModel.clear();
             } else {
-                operand2 = Accumulator.getValue();
+                operand2 = AccumulatorModel.getValue();
                 operand1 = operator(operand1, operand2);
+                AccumulatorModel.clear();
             }
             operator = Operator.add;
-            Accumulator.getReadyForNextOperand();
         });
+
         on(dom.byId("minus"), "click", function () {
-            operator = Operator.subtract;
-            operand1 = Accumulator.getValue();
-            Accumulator.getReadyForNextOperand();
+
         });
+
         on(dom.byId("multiply"), "click", function () {
-            operator = Operator.multiply;
-            operand1 = Accumulator.getValue();
-            Accumulator.getReadyForNextOperand();
+
         });
+
         on(dom.byId("divide"), "click", function () {
-            operator = Operator.divide;
-            operand1 = Accumulator.getValue();
-            Accumulator.getReadyForNextOperand();
+
         });
 
         on(dom.byId("equals"), "click", function () {
             if (operator !== null) {
-                operand2 = Accumulator.getValue();
+                operand2 = AccumulatorModel.getValue();
                 var answer = operator(operand1, operand2);
-                var answerAsString = answer.toString();
-                Accumulator.setInnerHtml(answerAsString);
-                Accumulator.getReadyForNextOperand();
-                clearOperands();
-                clearOperator();
+                AccumulatorModel.setValue(answer);
+                AccumulatorView.update();
+                operand1 = null;
+                operand2 = null;
+                operator = null;
             }
         });
     });

@@ -1,4 +1,4 @@
-define(["dojo/dom"], function (dom) {
+define([], function () {
     "use strict";
     var value = 0;
 
@@ -9,7 +9,7 @@ define(["dojo/dom"], function (dom) {
 
         addDigitAtPlaceValue: function (digit, placeValue) {
             if (placeValue === 0) {
-                value = Math.pow(10, placeValue) * value + parseInt(digit);
+                value = Math.pow(10, placeValue + 1) * value + parseInt(digit);
             } else if (placeValue < 0) {
                 value = value + Math.pow(10, placeValue) * parseInt(digit);
             } else if (placeValue > 0) {
@@ -23,6 +23,10 @@ define(["dojo/dom"], function (dom) {
 
         getValue: function () {
             return value;
+        },
+
+        setValue: function (newValue) {
+            value = newValue;
         }
     };
 });

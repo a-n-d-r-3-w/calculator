@@ -1,17 +1,17 @@
 define(["dojo/dom", "AccumulatorModel.js"], function (dom, AccumulatorModel) {
     "use strict";
-    var innerHTML = dom.byId("accumulator").innerHTML;
+    var view = dom.byId("accumulator");
 
     return {
 
-        updateView : function () {
-            innerHTML = AccumulatorModel.getValue().toString();
+        update : function () {
+            view.innerHTML = AccumulatorModel.getValue();
         },
 
         addDecimalPoint: function () {
-            var decimalPointNotFound = accumulatorView.innerHTML.indexOf(".") === -1;
+            var decimalPointNotFound = view.innerHTML.indexOf(".") === -1;
             if (decimalPointNotFound) {
-                accumulatorView.innerHTML += ".";
+                view.innerHTML += ".";
             }
         }
 
