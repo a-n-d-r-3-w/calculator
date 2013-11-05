@@ -6,10 +6,10 @@ define(["dojo/dom", "AccumulatorMode.js"], function (dom, AccumulatorMode) {
             accumulator.innerHTML = "-" + accumulator.innerHTML;
         },
         removeMinusSign = function () {
-            accumulator.innerHTML = accumulatorText.substring(1);
+            accumulator.innerHTML = accumulator.innerHTML.substring(1);
         },
         startsWithMinusSign = function () {
-            return accumulatorText.indexOf("-") === 0;
+            return accumulator.innerHTML.indexOf("-") === 0;
         };
 
     return {
