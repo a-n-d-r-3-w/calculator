@@ -5,13 +5,31 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
             operand2 = null,
             operator = null,
             placeValue = 0,
-            addDigitAtPlaceValue = function (digit) {
-                AccumulatorModel.addDigitAtPlaceValue(digit, placeValue);
-            },
             printLog = function () {
                 console.log("operand1 = " + operand1);
                 console.log("operand2 = " + operand2);
                 console.log("operator = " + operator);
+            },
+            addDigitAtPlaceValue = function (digit) {
+                AccumulatorModel.addDigitAtPlaceValue(digit, placeValue);
+            },
+            setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
+                operand1 = AccumulatorModel.getValue();
+                AccumulatorModel.clear();
+            },
+            computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
+                operand2 = AccumulatorModel.getValue();
+                operand1 = operator(operand1, operand2);
+                AccumulatorModel.clear();
+            },
+            setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary = function (newOperator) {
+                var theCurrentExpressionContainsAnOperator = (operator !== null);
+                if (theCurrentExpressionContainsAnOperator) {
+                    computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand();
+                } else {
+                    setOperand1AndGetReadyForTheUserToInputOperand2();
+                }
+                operator = newOperator;
             };
 
         on(dom.byId("clear"), "click", function () {
@@ -73,27 +91,19 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
         });
 
         on(dom.byId("plus"), "click", function () {
-            if (operator === null) {
-                operand1 = AccumulatorModel.getValue();
-                AccumulatorModel.clear();
-            } else {
-                operand2 = AccumulatorModel.getValue();
-                operand1 = operator(operand1, operand2);
-                AccumulatorModel.clear();
-            }
-            operator = Operator.add;
+            setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.add);
         });
 
         on(dom.byId("minus"), "click", function () {
-
+            setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.subtract);
         });
 
         on(dom.byId("multiply"), "click", function () {
-
+            setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.multiply);
         });
 
         on(dom.byId("divide"), "click", function () {
-
+            setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.divide);
         });
 
         on(dom.byId("equals"), "click", function () {
