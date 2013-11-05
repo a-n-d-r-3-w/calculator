@@ -1,14 +1,14 @@
 require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMode.js", "dojo/domReady!"],
-    function (dom, on, Operator, Accumulator, AccumulatorMode) {
+    function (dom, on, Operation, Accumulator, AccumulatorMode) {
         "use strict";
         var operand1 = null,
             operand2 = null,
-            operator = null;
+            operation = null;
 
         on(dom.byId("clear"), "click", function () {
             operand1 = null;
             operand2 = null;
-            operator = null;
+            operation = null;
             Accumulator.clear();
         });
         on(dom.byId("one"), "click", function () {
@@ -51,38 +51,29 @@ require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMo
         });
 
         on(dom.byId("plus"), "click", function () {
-            operator = Operation.add;
+            operation = Operation.add;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("minus"), "click", function () {
-            operator = Operation.subtract;
+            operation = Operation.subtract;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("multiply"), "click", function () {
-            operator = Operation.multiply;
+            operation = Operation.multiply;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("divide"), "click", function () {
-            operator = Operation.divide;
+            operation = Operation.divide;
             operand1 = Accumulator.getValueAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
 
         on(dom.byId("equals"), "click", function () {
             operand2 = Accumulator.getValueAsFloat();
-            var answer = null;
-            if (operator === Operation.add) {
-                answer = operand1 + operand2;
-            } else if (operator === Operation.subtract) {
-                answer = operand1 - operand2;
-            } else if (operator === Operation.multiply) {
-                answer = operand1 * operand2;
-            } else if (operator === Operation.divide) {
-                answer = operand1 / operand2;
-            }
+            var answer = operation(operand1, operand2);
             var answerAsString = answer.toString();
             Accumulator.setInnerHtml(answerAsString);
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_1);
