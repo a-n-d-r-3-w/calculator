@@ -1,62 +1,70 @@
-require(["dojo/dom", "dojo/on", "Operator.js", "Accumulator.js", "dojo/domReady!"],
-    function (dom, on, Operator, Accumulator) {
+require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "AccumulatorView.js", "dojo/domReady!"],
+    function (dom, on, Operator, AccumulatorModel, AccumulatorView) {
         "use strict";
         var operand1 = null,
             operand2 = null,
             operator = null,
-            clearOperands = function () {
-                operand1 = null;
-                operand2 = null;
-            },
-            clearOperator = function () {
-                operator = null;
-            },
-            clearAccumulator = function () {
-                Accumulator.clear();
+            placeValue = 0,
+            addDigitAtPlaceValue = function (digit) {
+                AccumulatorModel.addDigitAtPlaceValue(digit, placeValue);
             };
 
         on(dom.byId("clear"), "click", function () {
-            clearOperands();
-            clearOperator();
-            clearAccumulator();
+            operand1 = null;
+            operand2 = null;
+            operator = null;
+            AccumulatorModel.clear();
+            AccumulatorView.updateView();
         });
         on(dom.byId("one"), "click", function () {
-            Accumulator.enterDigit("1");
+            addDigitAtPlaceValue(1);
+            AccumulatorView.updateView();
         });
         on(dom.byId("two"), "click", function () {
-            Accumulator.enterDigit("2");
+            addDigitAtPlaceValue(2);
+            AccumulatorView.updateView();
         });
         on(dom.byId("three"), "click", function () {
-            Accumulator.enterDigit("3");
+            addDigitAtPlaceValue(3);
+            AccumulatorView.updateView();
         });
         on(dom.byId("four"), "click", function () {
-            Accumulator.enterDigit("4");
+            addDigitAtPlaceValue(4);
+            AccumulatorView.updateView();
         });
         on(dom.byId("five"), "click", function () {
-            Accumulator.enterDigit("5");
+            addDigitAtPlaceValue(5);
+            AccumulatorView.updateView();
         });
         on(dom.byId("six"), "click", function () {
-            Accumulator.enterDigit("6");
+            addDigitAtPlaceValue(6);
+            AccumulatorView.updateView();
         });
         on(dom.byId("seven"), "click", function () {
-            Accumulator.enterDigit("7");
+            addDigitAtPlaceValue(7);
+            AccumulatorView.updateView();
         });
         on(dom.byId("eight"), "click", function () {
-            Accumulator.enterDigit("8");
+            addDigitAtPlaceValue(8);
+            AccumulatorView.updateView();
         });
         on(dom.byId("nine"), "click", function () {
-            Accumulator.enterDigit("9");
+            addDigitAtPlaceValue(9);
+            AccumulatorView.updateView();
         });
         on(dom.byId("zero"), "click", function () {
-            Accumulator.enterDigit("0");
+            addDigitAtPlaceValue(0);
+            AccumulatorView.updateView();
         });
 
         on(dom.byId("plusMinus"), "click", function () {
-            Accumulator.togglePlusMinus();
+            AccumulatorModel.toggleSign();
+            AccumulatorView.updateView();
         });
 
         on(dom.byId("decimalPoint"), "click", function () {
-            Accumulator.enterDecimalPoint();
+            placeValue -= 1;
+            AccumulatorView.addDecimalPoint();
         });
 
         on(dom.byId("plus"), "click", function () {
