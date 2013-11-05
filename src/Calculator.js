@@ -74,6 +74,7 @@ require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMo
         on(dom.byId("equals"), "click", function () {
             operand2 = Accumulator.getInnerHtmlAsFloat();
             var answer = operation(operand1, operand2);
+            operand1 = answer;
             var answerAsString = answer.toString();
             Accumulator.setInnerHtml(answerAsString);
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_1);
