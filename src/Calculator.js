@@ -72,37 +72,18 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                 });
             },
 
+            attachEventHandlerForNumberButton = function (digit) {
+                on(dom.byId("number" + digit), "click", function () {
+                    addDigit(digit);
+                });
+            },
+
             attachEventHandlersForNumberPadButtons = function () {
-                on(dom.byId("number1"), "click", function () {
-                    addDigit(1);
-                });
-                on(dom.byId("number2"), "click", function () {
-                    addDigit(2);
-                });
-                on(dom.byId("number3"), "click", function () {
-                    addDigit(3);
-                });
-                on(dom.byId("number4"), "click", function () {
-                    addDigit(4);
-                });
-                on(dom.byId("number5"), "click", function () {
-                    addDigit(5);
-                });
-                on(dom.byId("number6"), "click", function () {
-                    addDigit(6);
-                });
-                on(dom.byId("number7"), "click", function () {
-                    addDigit(7);
-                });
-                on(dom.byId("number8"), "click", function () {
-                    addDigit(8);
-                });
-                on(dom.byId("number9"), "click", function () {
-                    addDigit(9);
-                });
-                on(dom.byId("number0"), "click", function () {
-                    addDigit(0);
-                });
+
+                var i;
+                for (i = 0; i < 10; i += 1) {
+                    attachEventHandlerForNumberButton(i);
+                }
 
                 on(dom.byId("plusMinus"), "click", function () {
                     toggleSign();
