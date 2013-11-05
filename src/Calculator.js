@@ -52,27 +52,27 @@ require(["dojo/dom", "dojo/on", "Operation.js", "Accumulator.js", "AccumulatorMo
 
         on(dom.byId("plus"), "click", function () {
             operation = Operation.add;
-            operand1 = Accumulator.getValueAsFloat();
+            operand1 = Accumulator.getInnerHtmlAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("minus"), "click", function () {
             operation = Operation.subtract;
-            operand1 = Accumulator.getValueAsFloat();
+            operand1 = Accumulator.getInnerHtmlAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("multiply"), "click", function () {
             operation = Operation.multiply;
-            operand1 = Accumulator.getValueAsFloat();
+            operand1 = Accumulator.getInnerHtmlAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
         on(dom.byId("divide"), "click", function () {
             operation = Operation.divide;
-            operand1 = Accumulator.getValueAsFloat();
+            operand1 = Accumulator.getInnerHtmlAsFloat();
             Accumulator.setMode(AccumulatorMode.THE_NEXT_DIGIT_THE_USER_ENTERS_IS_THE_FIRST_DIGIT_OF_OPERAND_2);
         });
 
         on(dom.byId("equals"), "click", function () {
-            operand2 = Accumulator.getValueAsFloat();
+            operand2 = Accumulator.getInnerHtmlAsFloat();
             var answer = operation(operand1, operand2);
             var answerAsString = answer.toString();
             Accumulator.setInnerHtml(answerAsString);
