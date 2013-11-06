@@ -1,7 +1,7 @@
 require(["../src/AccumulatorModel.js"], function (AccumulatorModel) {
     "use strict";
 
-    module( "AccumulatorModel", {
+    module("AccumulatorModel", {
         teardown: function () {
             AccumulatorModel.clear();
         }
