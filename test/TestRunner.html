@@ -3,6 +3,8 @@
 <head>
     <title>Test Runner</title>
     <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
+    <link rel="stylesheet/less" type="text/css" href="TestRunner.less" />
+    <script src="../lib/less-1.5.0.min.js" type="text/javascript"></script>
 </head>
 <body>
 <script src="../lib/dojo-release-1.9.1/dojo/dojo.js"></script>
@@ -12,12 +14,24 @@
 <div id="qunit-fixture"></div>
 <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
 
-<!-- Blanket.js must be loaded after QUnit -->
-<script src="../lib/blanket.min.js"></script>
-<script src="../src/Accumulator.js" data-cover></script>
+<script src="../src/Operator.js"></script>
+<script src="OperatorTest.js"></script>
 
+<script src="../src/DisplayModel.js"></script>
+<script src="DisplayModelTest.js"></script>
+
+<!--
+DisplayViewTest.js throws an xhrFailed error. The reason seems to be that,
+when the test loads DisplayView.js, DisplayView.js tries to first load
+dojo/dom and DisplayMode.js. I'm not sure if the problem is loading
+dojo/dom, DisplayMode.js, or loading anything at all.
+
+<script src="../src/DisplayView.js"></script>
+<script src="DisplayViewTest.js"></script>
+-->
+
+<!-- DOM element for tests -->
 <div id="accumulator"></div>
-<script src="AccumulatorTest.js"></script>
 
 </body>
 </html>

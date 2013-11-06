@@ -1,5 +1,5 @@
-require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "AccumulatorView.js", "dojo/domReady!"],
-    function (dom, on, Operator, AccumulatorModel, AccumulatorView) {
+require(["dojo/dom", "dojo/on", "Operator.js", "DisplayModel.js", "DisplayView.js", "dojo/domReady!"],
+    function (dom, on, Operator, DisplayModel, DisplayView) {
         "use strict";
         var operand1 = null,
             operand2 = null,
@@ -10,24 +10,24 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
             enteringFractionalPart = false,
 
             addDigit = function (digit) {
-                AccumulatorModel.addDigitAtPlaceValue(digit, placeValueForNextDigit);
                 if (enteringFractionalPart) {
                     placeValueForNextDigit -= 1;
                 }
-                AccumulatorView.update();
+                DisplayModel.addDigitAtPlaceValue(digit, placeValueForNextDigit);
+                DisplayView.update();
             },
 
             setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
-                operand1 = AccumulatorModel.getValue();
+                operand1 = DisplayModel.getValue();
                 placeValueForNextDigit = 0;
-                AccumulatorModel.clear();
+                DisplayModel.clear();
             },
 
             computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
-                operand2 = AccumulatorModel.getValue();
+                operand2 = DisplayModel.getValue();
                 operand1 = operator(operand1, operand2);
                 placeValueForNextDigit = 0;
-                AccumulatorModel.clear();
+                DisplayModel.clear();
             },
 
             setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary = function (newOperator) {
@@ -38,35 +38,37 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
                     setOperand1AndGetReadyForTheUserToInputOperand2();
                 }
                 operator = newOperator;
+                enteringFractionalPart = false;
             },
 
-            clearOperandsAndOperatorAndPlaceValue = function () {
+            clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart = function () {
                 operand1 = null;
                 operand2 = null;
                 operator = null;
                 placeValueForNextDigit = 0;
+                enteringFractionalPart = false;
             },
 
             toggleSign = function toggleSign() {
-                AccumulatorModel.toggleSign();
-                AccumulatorView.update();
+                DisplayModel.toggleSign();
+                DisplayView.update();
             },
 
             computeResultAndClearState = function () {
                 if (operator !== null) {
-                    operand2 = AccumulatorModel.getValue();
+                    operand2 = DisplayModel.getValue();
                     var answer = operator(operand1, operand2);
-                    AccumulatorModel.setValue(answer);
-                    AccumulatorView.update();
-                    clearOperandsAndOperatorAndPlaceValue();
+                    DisplayModel.setValue(answer);
+                    DisplayView.update();
+                    clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart();
                 }
             },
 
             attachEventHandlerForClearButton = function () {
                 on(dom.byId("clear"), "click", function () {
-                    clearOperandsAndOperatorAndPlaceValue();
-                    AccumulatorModel.clear();
-                    AccumulatorView.update();
+                    clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart();
+                    DisplayModel.clear();
+                    DisplayView.update();
                 });
             },
 
@@ -88,8 +90,6 @@ require(["dojo/dom", "dojo/on", "Operator.js", "AccumulatorModel.js", "Accumulat
 
                 on(dom.byId("decimalPoint"), "click", function () {
                     enteringFractionalPart = true;
-                    placeValueForNextDigit -= 1;
-                    AccumulatorView.addDecimalPoint();
                 });
             },
 
