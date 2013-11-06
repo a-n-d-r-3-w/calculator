@@ -38,13 +38,15 @@ require(["dojo/dom", "dojo/on", "Operator.js", "DisplayModel.js", "DisplayView.j
                     setOperand1AndGetReadyForTheUserToInputOperand2();
                 }
                 operator = newOperator;
+                enteringFractionalPart = false;
             },
 
-            clearOperandsAndOperatorAndPlaceValue = function () {
+            clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart = function () {
                 operand1 = null;
                 operand2 = null;
                 operator = null;
                 placeValueForNextDigit = 0;
+                enteringFractionalPart = false;
             },
 
             toggleSign = function toggleSign() {
@@ -58,13 +60,13 @@ require(["dojo/dom", "dojo/on", "Operator.js", "DisplayModel.js", "DisplayView.j
                     var answer = operator(operand1, operand2);
                     DisplayModel.setValue(answer);
                     DisplayView.update();
-                    clearOperandsAndOperatorAndPlaceValue();
+                    clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart();
                 }
             },
 
             attachEventHandlerForClearButton = function () {
                 on(dom.byId("clear"), "click", function () {
-                    clearOperandsAndOperatorAndPlaceValue();
+                    clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart();
                     DisplayModel.clear();
                     DisplayView.update();
                 });
@@ -88,7 +90,6 @@ require(["dojo/dom", "dojo/on", "Operator.js", "DisplayModel.js", "DisplayView.j
 
                 on(dom.byId("decimalPoint"), "click", function () {
                     enteringFractionalPart = true;
-                    placeValueForNextDigit = -1;
                 });
             },
 
