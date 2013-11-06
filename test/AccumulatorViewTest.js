@@ -1,8 +1,11 @@
-require(["../src/AccumulatorModel.js"], function (AccumulatorModel) {
+require(["../src/AccumulatorView.js", "../src/AccumulatorModel.js"], function (AccumulatorView, AccumulatorModel) {
     "use strict";
 
     module( "AccumulatorModel", {
-        teardown: function() {
+        setup: function () {
+            AccumulatorModel.clear();
+        },
+        teardown: function () {
             AccumulatorModel.clear();
         }
     });
