@@ -10,10 +10,10 @@ require(["dojo/dom", "dojo/on", "Operator.js", "DisplayModel.js", "DisplayView.j
             enteringFractionalPart = false,
 
             addDigit = function (digit) {
-                DisplayModel.addDigitAtPlaceValue(digit, placeValueForNextDigit);
                 if (enteringFractionalPart) {
                     placeValueForNextDigit -= 1;
                 }
+                DisplayModel.addDigitAtPlaceValue(digit, placeValueForNextDigit);
                 DisplayView.update();
             },
 
@@ -88,8 +88,7 @@ require(["dojo/dom", "dojo/on", "Operator.js", "DisplayModel.js", "DisplayView.j
 
                 on(dom.byId("decimalPoint"), "click", function () {
                     enteringFractionalPart = true;
-                    placeValueForNextDigit -= 1;
-                    DisplayView.addDecimalPoint();
+                    placeValueForNextDigit = -1;
                 });
             },
 
