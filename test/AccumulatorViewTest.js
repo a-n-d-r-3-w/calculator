@@ -1,18 +1,11 @@
-require(["../src/AccumulatorView.js", "../src/AccumulatorModel.js"], function (AccumulatorView, AccumulatorModel) {
+require(["../src/AccumulatorView.js"], function (AccumulatorView) {
     "use strict";
 
-    module("AccumulatorView", {
-        setup: function () {
-            AccumulatorModel.clear();
-        },
-        teardown: function () {
-            AccumulatorModel.clear();
-            AccumulatorView.update();
-        }
-    });
+    module("AccumulatorView");
 
     test("update", function () {
-        ok(true);
+        AccumulatorView.update();
+        ok(true); // dummy assertion
     });
 
 });
