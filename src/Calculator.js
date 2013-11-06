@@ -1,5 +1,5 @@
 require(["dojo/dom", "dojo/on", "Operator.js", "DisplayModel.js", "DisplayView.js", "dojo/domReady!"],
-    function (dom, on, Operator, AccumulatorModel, AccumulatorView) {
+    function (dom, on, Operator, DisplayModel, DisplayView) {
         "use strict";
         var operand1 = null,
             operand2 = null,
