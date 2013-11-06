@@ -1,11 +1,11 @@
-define(["dojo/dom", "AccumulatorModel.js"], function (dom, AccumulatorModel) {
+define(["dojo/dom", "DisplayModel.js"], function (dom, DisplayModel) {
     "use strict";
     var view = dom.byId("accumulator");
 
     return {
 
         update : function () {
-            view.innerHTML = AccumulatorModel.getValue();
+            view.innerHTML = DisplayModel.getValue();
         },
 
         addDecimalPoint: function () {
