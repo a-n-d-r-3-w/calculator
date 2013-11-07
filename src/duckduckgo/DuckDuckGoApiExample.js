@@ -1,4 +1,4 @@
-require(["dojo/request"], function(request){
+require(["../../lib/dojo-release-1.9.1/dojo/request"], function(request){
     request("http://api.duckduckgo.com/?q=1%2B2&format=json&pretty=1&t=calculator&no_html=1&callback=?").then(function(data){
         alert(data);
     }, function(err){
