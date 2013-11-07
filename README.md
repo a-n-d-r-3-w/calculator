@@ -1,6 +1,6 @@
 calculator
 ==========
-Welcome! *calculator* is an arithmetic calculator implemented using Dojo and QUnit.
+Welcome! **calculator** is an arithmetic calculator implemented using Dojo and QUnit.
 
 - [Requirements Analysis](https://github.com/andrewaliu/calculator/wiki/Requirements-Analysis)
 - [Function Design](https://github.com/andrewaliu/calculator/wiki/Functional-Design)
