@@ -8,3 +8,4 @@ For more information, please see the documents listed below.
 - [Architectural Design](https://github.com/andrewaliu/calculator/wiki/Architectural-Design)
 - [Test Strategy](https://github.com/andrewaliu/calculator/wiki/Test-Strategy)
 - [Retrospective](https://github.com/andrewaliu/calculator/wiki/Retrospective)
+- [Open Issues](https://github.com/andrewaliu/calculator/issues)
