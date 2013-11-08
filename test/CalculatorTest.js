@@ -96,4 +96,29 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "41.5");
         });
 
+        test("toggle sign", function () {
+            dom.byId("number1").click();
+            strictEqual(display.innerHTML, "1");
+
+            dom.byId("plusMinus").click();
+            strictEqual(display.innerHTML, "-1");
+
+            dom.byId("plusMinus").click();
+            strictEqual(display.innerHTML, "1");
+        });
+
+        test("decimal point", function () {
+            dom.byId("number3").click();
+            strictEqual(display.innerHTML, "3");
+
+            dom.byId("decimalPoint").click();
+            strictEqual(display.innerHTML, "3");
+
+            dom.byId("number0").click();
+            strictEqual(display.innerHTML, "3");
+
+            dom.byId("number9").click();
+            strictEqual(display.innerHTML, "3.09");
+        });
+
     });

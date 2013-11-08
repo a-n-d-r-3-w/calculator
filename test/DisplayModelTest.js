@@ -56,7 +56,7 @@ require(["../src/DisplayModel.js"], function (DisplayModel) {
 //        strictEqual(AccumulatorModel.getValue(), 0.3);
 //    });
 
-    test("addDigitAtPlaceValue - unexpected place value", function () {
+    test("addDigitAtPlaceValue with unexpected place value", function () {
         throws(
             function() {
                 DisplayModel.addDigitAtPlaceValue(2, 3);
