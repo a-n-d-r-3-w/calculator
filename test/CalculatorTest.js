@@ -8,8 +8,8 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         module("Calculator", {
             setup: function () {
                 if (!fixtureIsSetUp) {
-                    var iframe = dom.byId("webPageUnderTest").contentWindow;
-                    window.setContext(iframe.window, iframe.window.document);
+                    var webPageUnderTest = dom.byId("webPageUnderTest").contentWindow;
+                    window.setContext(webPageUnderTest.window, webPageUnderTest.window.document);
                     display = dom.byId("accumulator");
                     fixtureIsSetUp = true;
                 }
