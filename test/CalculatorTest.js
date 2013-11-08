@@ -2,8 +2,8 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
     function (dom, window) {
         "use strict";
 
-        var display;
-        var fixtureIsSetUp = false;
+        var display,
+            fixtureIsSetUp = false;
 
         module("Calculator", {
             setup: function () {
