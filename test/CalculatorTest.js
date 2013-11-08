@@ -121,4 +121,22 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "3.09");
         });
 
+        test("chain operations", function () {
+            dom.byId("number3").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("divide").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("number2").click();
+            strictEqual(display.innerHTML, "2");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "1.5");
+
+            dom.byId("multiply").click();
+            strictEqual(display.innerHTML, "1.5");
+            dom.byId("number3").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "4.5");
+        });
+
     });
