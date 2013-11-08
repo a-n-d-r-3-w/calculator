@@ -27,4 +27,15 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "5");
         });
 
+        test("5 - 9 = -4", function () {
+            dom.byId("number5").click();
+            strictEqual(display.innerHTML, "5");
+            dom.byId("minus").click();
+            strictEqual(display.innerHTML, "5");
+            dom.byId("number9").click();
+            strictEqual(display.innerHTML, "9");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "-4");
+        });
+
     });
