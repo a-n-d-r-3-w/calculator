@@ -1,4 +1,4 @@
-require(["../src/DisplayModel.js"], function (DisplayModel) {
+require(["../src/DisplayModel.js", "../lib/qunit-assert-close.js"], function (DisplayModel, assert) {
     "use strict";
 
     module("DisplayModel", {
@@ -48,13 +48,11 @@ require(["../src/DisplayModel.js"], function (DisplayModel) {
         strictEqual(DisplayModel.getValue(), 23.605);
     });
 
-    // TODO: This test case fails because the accumulator model
-    // stores 0.30000000000000004 instead of 0.3, presumably due to
-    // floating point limitations.
-//    test("addDigitAtPlaceValue", function () {
-//        AccumulatorModel.addDigitAtPlaceValue(3, -1);
-//        strictEqual(AccumulatorModel.getValue(), 0.3);
-//    });
+    test("addDigitAtPlaceValue that encounters floating point arithmetic limitation", function (assert) {
+        DisplayModel.addDigitAtPlaceValue(3, -1);
+        var tolerance = 1e-12;
+        assert.close(DisplayModel.getValue(), 0.3, tolerance);
+    });
 
     test("addDigitAtPlaceValue with unexpected place value", function () {
         throws(
