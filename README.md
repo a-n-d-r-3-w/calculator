@@ -1,6 +1,9 @@
 calculator
 ==========
 **calculator** is an arithmetic calculator implemented using JavaScript, HTML, LESS, and Dojo Toolkit and tested using QUnit and JUnit + Selenium WebDriver.
+
+You can try it [here](https://dl.dropboxusercontent.com/u/1085829/calculator-master/src/calculator.html).
+
 For more information, please see the documents listed below.
 
 - [Requirements Analysis](https://github.com/andrewaliu/calculator/wiki/Requirements-Analysis)
