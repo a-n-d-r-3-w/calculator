@@ -13,9 +13,3 @@ For more information, please see the documents listed below.
 - [Development Tools](https://github.com/andrewaliu/calculator/wiki/Development-Tools-and-Processes)
 - [Retrospective](https://github.com/andrewaliu/calculator/wiki/Retrospective)
 - [Open issues (bugs and enhancements)](https://github.com/andrewaliu/calculator/issues?labels=&page=1&state=open)
-
-### Results After Applying Quality Strategy
-
-- [Open bugs](https://github.com/andrewaliu/calculator/issues?labels=bug&page=1&state=open)
-- 21 out of 21 unit tests pass: ![Unit test results](https://dl.dropboxusercontent.com/u/1085829/calculator/unitTestResults.png)
-- HTML and CSS pass W3C validation
