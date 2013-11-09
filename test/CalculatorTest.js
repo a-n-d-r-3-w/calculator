@@ -23,7 +23,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("1 + 4 = 5", function () {
             dom.byId("number1").click();
             strictEqual(display.innerHTML, "1");
-            dom.byId("plus").click();
+            dom.byId("add").click();
             strictEqual(display.innerHTML, "1");
             dom.byId("number4").click();
             strictEqual(display.innerHTML, "4");
@@ -34,7 +34,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("5 - 9 = -4", function () {
             dom.byId("number5").click();
             strictEqual(display.innerHTML, "5");
-            dom.byId("minus").click();
+            dom.byId("subtract").click();
             strictEqual(display.innerHTML, "5");
             dom.byId("number9").click();
             strictEqual(display.innerHTML, "9");
@@ -74,7 +74,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
 
-            dom.byId("plus").click();
+            dom.byId("add").click();
             strictEqual(display.innerHTML, "2");
 
             dom.byId("number8").click();
@@ -86,7 +86,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             dom.byId("number5").click();
             strictEqual(display.innerHTML, "5");
 
-            dom.byId("minus").click();
+            dom.byId("subtract").click();
             strictEqual(display.innerHTML, "5");
 
             dom.byId("number6").click();
@@ -100,10 +100,10 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             dom.byId("number1").click();
             strictEqual(display.innerHTML, "1");
 
-            dom.byId("plusMinus").click();
+            dom.byId("toggleSign").click();
             strictEqual(display.innerHTML, "-1");
 
-            dom.byId("plusMinus").click();
+            dom.byId("toggleSign").click();
             strictEqual(display.innerHTML, "1");
         });
 
@@ -142,7 +142,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("Issue #7: Change sign then add fractional part point", function () {
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
-            dom.byId("plusMinus").click();
+            dom.byId("toggleSign").click();
             strictEqual(display.innerHTML, "-2");
             dom.byId("decimalPoint").click();
             strictEqual(display.innerHTML, "-2");
@@ -153,7 +153,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("Issue #7: Change sign then add digit", function () {
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
-            dom.byId("plusMinus").click();
+            dom.byId("toggleSign").click();
             strictEqual(display.innerHTML, "-2");
             dom.byId("number8").click();
             strictEqual(display.innerHTML, "-28");

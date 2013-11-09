@@ -10,7 +10,9 @@ require([
               Operator,
               DisplayModel,
               DisplayView) {
+
         "use strict";
+
         var operand1 = null,
             operand2 = null,
             operator = null,
@@ -94,7 +96,7 @@ require([
                     attachEventHandlerForNumberButton(i);
                 }
 
-                on(dom.byId("plusMinus"), "click", function () {
+                on(dom.byId("toggleSign"), "click", function () {
                     toggleSign();
                 });
 
@@ -106,11 +108,11 @@ require([
             attachEventHandlersForOperatorButtons = function () {
                 // TODO: Refactor this so the DOM id and the operator name are the same, and
                 // can be passed as an argument to a method called attachEventHandlerForOperatorButton.
-                on(dom.byId("plus"), "click", function () {
+                on(dom.byId("add"), "click", function () {
                     setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.add);
                 });
 
-                on(dom.byId("minus"), "click", function () {
+                on(dom.byId("subtract"), "click", function () {
                     setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.subtract);
                 });
 
