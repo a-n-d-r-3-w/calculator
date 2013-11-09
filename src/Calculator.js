@@ -105,24 +105,17 @@ require([
                 });
             },
 
+            attachEventHandlerForOperatorButton = function (operatorName) {
+                on(dom.byId(operatorName), "click", function () {
+                    setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator[operatorName]);
+                });
+            },
+
             attachEventHandlersForOperatorButtons = function () {
-                // TODO: Refactor this so the DOM id and the operator name are the same, and
-                // can be passed as an argument to a method called attachEventHandlerForOperatorButton.
-                on(dom.byId("add"), "click", function () {
-                    setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.add);
-                });
-
-                on(dom.byId("subtract"), "click", function () {
-                    setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.subtract);
-                });
-
-                on(dom.byId("multiply"), "click", function () {
-                    setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.multiply);
-                });
-
-                on(dom.byId("divide"), "click", function () {
-                    setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator.divide);
-                });
+                attachEventHandlerForOperatorButton("add");
+                attachEventHandlerForOperatorButton("subtract");
+                attachEventHandlerForOperatorButton("multiply");
+                attachEventHandlerForOperatorButton("divide");
             },
 
             attachEventHandlersForEqualsButton = function () {
