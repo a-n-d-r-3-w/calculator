@@ -11,7 +11,7 @@ For more information, please see the documents listed below.
 - [Architectural Design](https://github.com/andrewaliu/calculator/wiki/Architectural-Design)
 - [Quality Strategy](https://github.com/andrewaliu/calculator/wiki/Quality-Strategy)
 
-- Development Tools and Processes (WebStorm, git, github, DropBox)
+- [Development Tools and Processes](https://github.com/andrewaliu/calculator/wiki/Development-Tools-and-Processes)
 
 - [Retrospective](https://github.com/andrewaliu/calculator/wiki/Retrospective)
 
