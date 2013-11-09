@@ -77,6 +77,7 @@ require([
                 if (operator !== null) {
                     operand2 = DisplayModel.getValue();
                     var answer = operator(operand1, operand2);
+                    console.log(answer);
                     DisplayModel.setValue(answer);
                     DisplayView.update();
                     displayShowsResult = true;

@@ -194,6 +194,16 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "0.3");
         });
 
+        test("Issue #1: 0.1 + 0.2", function () {
+            dom.byId("decimalPoint").click();
+            dom.byId("number1").click();
+            dom.byId("add").click();
+            dom.byId("decimalPoint").click();
+            dom.byId("number2").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "0.3");
+        });
+
         test("Enter 003", function () {
             dom.byId("number0").click();
             strictEqual(display.innerHTML, "0");
