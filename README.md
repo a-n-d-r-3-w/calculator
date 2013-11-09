@@ -13,4 +13,4 @@ For more information, please see the documents listed below.
 - [Retrospective](https://github.com/andrewaliu/calculator/wiki/Retrospective)
 - [Open Issues](https://github.com/andrewaliu/calculator/issues)
 
-## Evaluation of Quality
+### Results After Applying Quality Strategy
