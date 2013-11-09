@@ -1,8 +1,10 @@
 * {
   background-color: #1f1f1f;
+
   font-family: 'Open Sans', sans-serif;
   font-size: 1.2em;
-  /* Make element widths constant, independent of padding or border */
+
+  // Make element widths constant, independent of padding or border
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
@@ -28,7 +30,6 @@
 }
 
 .grayButton {
-  .button;
   background-color: #dddddd;
   color: black;
   &:hover {
@@ -39,20 +40,25 @@
   }
 }
 
-
-.smallGrayButton {
-  .grayButton;
-//  border-radius: 999px;
-//  -webkit-border-radius: 999px;
-//  -moz-border-radius: 999px;
-  height: @gridSize;
-  line-height: 2em; /* to vertically-center the text */
+.orangeButton {
+  background-color: #F38630;
+  color: white;
+  &:hover {
+    background-color: #ff9842;
+  }
+  &:active {
+    background-color: gray;
+  }
 }
 
-.bigGrayButton {
-  .grayButton;
+.smallButton {
+  height: @gridSize;
+  line-height: 2em; // to vertically-center the text
+}
+
+.bigButton {
   height: (4 * @gridSize);
-  line-height: 9em; /* to vertically-center the text */
+  line-height: 9em; // to vertically-center the text
 }
 
 .hasBorder {
@@ -62,15 +68,15 @@
 #calculator {
   width: (6 * @gridSize);
   height: (5 * @gridSize);
-  margin: 0 auto;
-  position: relative; /* just to make this element a "positioned" element versus a static element */
+  margin: 0 auto; // to horizontally-center this element inside its parent
+  position: relative; // just to make this element a "positioned" element versus a static element
 }
 
 #display {
-  background-color: #000000;
-  color: white;
   .hasBorder;
-  position: absolute; /* relative to nearest positioned ancestor */
+  background-color: black;
+  color: white;
+  position: absolute; // relative to nearest positioned ancestor
   left: 0;
   top: 0;
   width: (6 * @gridSize);
@@ -80,20 +86,13 @@
 }
 
 #clear {
-  .bigGrayButton;
-  position: absolute; /* relative to nearest positioned ancestor */
+  position: absolute; // relative to nearest positioned ancestor
   left: 0;
   top: @gridSize;
-  &:hover {
-    background-color: #fbfbfb;
-  }
-  &:active {
-    background-color: gray;
-  }
 }
 
 #numberPad {
-  position: absolute; /* relative to nearest positioned ancestor */
+  position: absolute; // relative to nearest positioned ancestor
   left: @gridSize;
   top: @gridSize;
   width: (3 * @gridSize);
@@ -102,43 +101,15 @@
 
 
 #operators {
-  position: absolute; /* relative to nearest positioned ancestor */
+  position: absolute; // relative to nearest positioned ancestor
   left: (4 * @gridSize);
   top: @gridSize;
   width: @gridSize;
   height: (4 * @gridSize);
 }
 
-.operationButton {
-  .smallGrayButton;
-  background-color: #F38630;
-  color: white;
-  &:hover {
-    background-color: #ff9842;
-  }
-  &:active {
-    background-color: gray;
-  }
-}
-
 #equals {
-  .bigGrayButton;
-  background-color: #F38630;
-  color: white;
-  position: absolute; /* relative to nearest positioned ancestor */
+  position: absolute; // relative to nearest positioned ancestor
   left: (5 * @gridSize);
   top: @gridSize;
-  &:hover {
-    background-color: #ff9842;
-  }
-  &:active {
-    background-color: gray;
-  }
-}
-
-#Test {
-  position: absolute;
-  visibility: hidden;
-  height: auto;
-  width: auto;
 }
