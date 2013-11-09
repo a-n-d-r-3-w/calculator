@@ -13,6 +13,30 @@
   box-sizing: border-box;
 }
 
+#calculator {
+  width: (6 * @gridSize);
+  height: (5 * @gridSize);
+  margin: 0 auto; // to horizontally-center this element inside its parent
+  position: relative; // just to make this element a "positioned" element versus a static element
+}
+
+.hasBorder {
+  border: 1px solid black;
+}
+
+#display {
+  .hasBorder;
+  background-color: black;
+  color: white;
+  position: absolute; // relative to nearest positioned ancestor
+  left: 0;
+  top: 0;
+  width: (6 * @gridSize);
+  height: @gridSize;
+  text-align: right;
+  padding: 0.5em 0.4em;
+}
+
 .disableTextSelection {
   -webkit-touch-callout: none;
   -webkit-user-select: none;
@@ -62,31 +86,11 @@
   line-height: 9em; // to vertically-center the text
 }
 
-.hasBorder {
-  border: 1px solid black;
-}
-
-#calculator {
-  width: (6 * @gridSize);
-  height: (5 * @gridSize);
-  margin: 0 auto; // to horizontally-center this element inside its parent
-  position: relative; // just to make this element a "positioned" element versus a static element
-}
-
-#display {
-  .hasBorder;
-  background-color: black;
-  color: white;
-  position: absolute; // relative to nearest positioned ancestor
-  left: 0;
-  top: 0;
-  width: (6 * @gridSize);
-  height: @gridSize;
-  text-align: right;
-  padding: 0.5em 0.4em;
-}
 
 #clear {
+  .button;
+  .bigButton;
+  .grayButton;
   position: absolute; // relative to nearest positioned ancestor
   left: 0;
   top: @gridSize;
@@ -110,6 +114,9 @@
 }
 
 #equals {
+  .button;
+  .bigButton;
+  .orangeButton;
   position: absolute; // relative to nearest positioned ancestor
   left: (5 * @gridSize);
   top: @gridSize;
