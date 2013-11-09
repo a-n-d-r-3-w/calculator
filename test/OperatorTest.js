@@ -1,5 +1,7 @@
 require(["../src/Operator.js"],
+
     function (Operator) {
+
         "use strict";
 
         module("Operator");

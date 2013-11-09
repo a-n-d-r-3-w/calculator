@@ -1,5 +1,7 @@
 require(["../src/DisplayModel.js", "../lib/qunit-assert-close.js"],
+
     function (DisplayModel, assert) {
+
         "use strict";
 
         module("DisplayModel", {

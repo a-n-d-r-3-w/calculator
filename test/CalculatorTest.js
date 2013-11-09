@@ -1,15 +1,20 @@
 require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
+
     function (dom, window) {
+
         "use strict";
 
         var display,
-            fixtureIsSetUp = false;
+            fixtureIsSetUp = false,
+            changeDojoContextToWebPageUnderTest = function () {
+                var webPageUnderTest = dom.byId("webPageUnderTest").contentWindow;
+                window.setContext(webPageUnderTest.window, webPageUnderTest.window.document);
+            };
 
         module("Calculator", {
             setup: function () {
                 if (!fixtureIsSetUp) {
-                    var webPageUnderTest = dom.byId("webPageUnderTest").contentWindow;
-                    window.setContext(webPageUnderTest.window, webPageUnderTest.window.document);
+                    changeDojoContextToWebPageUnderTest();
                     display = dom.byId("display");
                     fixtureIsSetUp = true;
                 }

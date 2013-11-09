@@ -1,22 +1,23 @@
 <!DOCTYPE html>
+
 <html>
+
 <head>
     <title>Test Runner</title>
     <link rel="stylesheet" href="http://code.jquery.com/qunit/qunit-1.12.0.css">
     <link rel="stylesheet/less" type="text/css" href="TestRunner.less" />
     <script src="../lib/less-1.5.0.min.js" type="text/javascript"></script>
 </head>
+
 <body>
+
 <script src="../lib/dojo-release-1.9.1/dojo/dojo.js"></script>
-
-
 <div id="qunit"></div>
 <div id="qunit-fixture"></div>
 <script src="http://code.jquery.com/qunit/qunit-1.12.0.js"></script>
 
 <script src="OperatorTest.js"></script>
 <script src="DisplayModelTest.js"></script>
-
 <!--
 <script src="DisplayViewTest.js"></script>
 
@@ -25,11 +26,10 @@ when the test loads DisplayView.js, DisplayView.js tries to first load
 dojo/dom and DisplayModel.js. I'm not sure if the problem is loading
 dojo/dom, DisplayModel.js, or loading anything at all.
 -->
-
 <script src="CalculatorTest.js"></script>
 
-<!-- DOM element for tests -->
 <iframe id="webPageUnderTest" src="../src/calculator.html"></iframe>
 
 </body>
+
 </html>
