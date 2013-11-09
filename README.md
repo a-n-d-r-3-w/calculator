@@ -21,3 +21,5 @@ For more information, please see the documents listed below.
 21 out of 21 unit tests passing:
 
 ![Unit test results](https://dl.dropboxusercontent.com/u/1085829/calculator/unitTestResults.png)
+
+CSS passes W3C validation. Results are [here](http://jigsaw.w3.org/css-validator/validator?uri=http%3A%2F%2Fdl.dropboxusercontent.com%2Fu%2F1085829%2Fcalculator-master%2Fsrc%2Fcalculator.html&profile=css3&usermedium=all&warning=1&vextwarning=&lang=en).
