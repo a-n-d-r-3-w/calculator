@@ -10,6 +10,9 @@ For more information, please see the documents listed below.
 - [Functional Design](https://github.com/andrewaliu/calculator/wiki/Functional-Design)
 - [Architectural Design](https://github.com/andrewaliu/calculator/wiki/Architectural-Design)
 - [Quality Strategy](https://github.com/andrewaliu/calculator/wiki/Quality-Strategy)
+
+- Development Process
+
 - [Retrospective](https://github.com/andrewaliu/calculator/wiki/Retrospective)
 - [Open Issues](https://github.com/andrewaliu/calculator/issues)
 
