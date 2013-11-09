@@ -17,3 +17,5 @@ For more information, please see the documents listed below.
 - [Open Issues](https://github.com/andrewaliu/calculator/issues)
 
 ### Results After Applying Quality Strategy
+
+https://dl.dropboxusercontent.com/u/1085829/calculator/unitTestResults.png
