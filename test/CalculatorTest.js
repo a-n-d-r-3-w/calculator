@@ -183,8 +183,9 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-6");
             dom.byId("add").click();
             dom.byId("number4").click();
+            dom.byId("toggleSign").click();
             dom.byId("equals").click();
-            strictEqual(display.innerHTML, "6");
+            strictEqual(display.innerHTML, "-10");
         });
 
     });
