@@ -1,6 +1,16 @@
 define([], function () {
     "use strict";
-    var value = 0;
+    var value = 0,
+        addDigitAtOnesPlaceValue = function (digit) {
+            value = (value >= 0) ?
+                10 * value + parseInt(digit) :
+                10 * value - parseInt(digit);
+        },
+        addDigitAtFractionalPlaceValue = function (digit, placeValue) {
+            value = (value >= 0) ?
+                value + Math.pow(10, placeValue) * parseInt(digit) :
+                value - Math.pow(10, placeValue) * parseInt(digit);
+        };
 
     return {
         clear: function () {
@@ -9,17 +19,9 @@ define([], function () {
 
         addDigitAtPlaceValue: function (digit, placeValue) {
             if (placeValue === 0) {
-                if (value < 0) {
-                    value = Math.pow(10, placeValue + 1) * value - parseInt(digit);
-                } else {
-                    value = Math.pow(10, placeValue + 1) * value + parseInt(digit);
-                }
+                addDigitAtOnesPlaceValue(digit);
             } else if (placeValue < 0) {
-                if (value < 0) {
-                    value = value - Math.pow(10, placeValue) * parseInt(digit);
-                } else {
-                    value = value + Math.pow(10, placeValue) * parseInt(digit);
-                }
+                addDigitAtFractionalPlaceValue(digit, placeValue);
             } else if (placeValue > 0) {
                 throw "Unexpected placeValue.";
             }
