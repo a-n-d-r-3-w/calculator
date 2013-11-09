@@ -66,7 +66,6 @@ require([
                 operator = null;
                 placeValueForNextDigit = 0;
                 enteringFractionalPart = false;
-                displayShowsResult = true;
             },
 
             toggleSign = function toggleSign() {
@@ -80,6 +79,7 @@ require([
                     var answer = operator(operand1, operand2);
                     DisplayModel.setValue(answer);
                     DisplayView.update();
+                    displayShowsResult = true;
                     clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart();
                 }
             },
