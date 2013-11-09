@@ -18,4 +18,6 @@ For more information, please see the documents listed below.
 
 ### Results After Applying Quality Strategy
 
+21 out of 21 unit tests passing:
+
 ![Unit test results](https://dl.dropboxusercontent.com/u/1085829/calculator/unitTestResults.png)
