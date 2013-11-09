@@ -5,6 +5,7 @@ require([
     "DisplayModel.js",
     "DisplayView.js",
     "dojo/domReady!"],
+
     function (dom,
               on,
               Operator,
@@ -134,5 +135,4 @@ require([
 
         attachEventHandlers();
 
-    }
-);
+    });
