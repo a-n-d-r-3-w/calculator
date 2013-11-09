@@ -1,9 +1,11 @@
-define([], function () {
+define([],    function () {
+
     "use strict";
+
     var value = 0,
 
         addDigitAtOnesPlaceValue = function (digit) {
-            // I explicitly do not use:
+            // I deliberately do not use:
             //
             //     value = 10 * value + Math.sign(value) * parseInt(digit);
             //
