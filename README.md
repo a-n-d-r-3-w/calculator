@@ -18,4 +18,4 @@ For more information, please see the documents listed below.
 
 ### Results After Applying Quality Strategy
 
-https://dl.dropboxusercontent.com/u/1085829/calculator/unitTestResults.png
+![Unit test results](https://dl.dropboxusercontent.com/u/1085829/calculator/unitTestResults.png)
