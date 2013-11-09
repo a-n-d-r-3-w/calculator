@@ -148,7 +148,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-2");
             dom.byId("number8").click();
             strictEqual(display.innerHTML, "-2.8");
-        })
+        });
 
         test("Issue #7: Change sign then add digit", function () {
             dom.byId("number2").click();
@@ -157,6 +157,6 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-2");
             dom.byId("number8").click();
             strictEqual(display.innerHTML, "-28");
-        })
+        });
 
     });
