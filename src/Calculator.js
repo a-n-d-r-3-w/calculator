@@ -21,8 +21,14 @@ require([
             placeValueForNextDigit = 0,
 
             enteringFractionalPart = false,
+            displayShowsResult = false,
 
             addDigit = function (digit) {
+                if (displayShowsResult) {
+                    DisplayModel.setValue(0);
+                    DisplayView.update();
+                    displayShowsResult = false;
+                }
                 if (enteringFractionalPart) {
                     placeValueForNextDigit -= 1;
                 }
@@ -60,6 +66,7 @@ require([
                 operator = null;
                 placeValueForNextDigit = 0;
                 enteringFractionalPart = false;
+                displayShowsResult = true;
             },
 
             toggleSign = function toggleSign() {

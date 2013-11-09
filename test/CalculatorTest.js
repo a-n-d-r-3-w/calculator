@@ -164,4 +164,27 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-28");
         });
 
+        test("Start new operation by pressing number key", function () {
+            dom.byId("number1").click();
+            dom.byId("add").click();
+            dom.byId("number4").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "5");
+
+            dom.byId("number2").click();
+            strictEqual(display.innerHTML, "2");
+            dom.byId("add").click();
+            dom.byId("number4").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "6");
+
+            dom.byId("number6").click();
+            dom.byId("toggleSign").click();
+            strictEqual(display.innerHTML, "-6");
+            dom.byId("add").click();
+            dom.byId("number4").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "6");
+        });
+
     });
