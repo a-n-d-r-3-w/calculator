@@ -118,7 +118,7 @@ require([
                 attachEventHandlerForOperatorButton("divide");
             },
 
-            attachEventHandlersForEqualsButton = function () {
+            attachEventHandlerForEqualsButton = function () {
                 on(dom.byId("equals"), "click", function () {
                     computeResultAndClearState();
                 });
@@ -129,7 +129,7 @@ require([
                 attachEventHandlerForClearButton();
                 attachEventHandlersForNumberPadButtons();
                 attachEventHandlersForOperatorButtons();
-                attachEventHandlersForEqualsButton();
+                attachEventHandlerForEqualsButton();
             };
 
         attachEventHandlers();
