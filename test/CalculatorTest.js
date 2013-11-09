@@ -10,7 +10,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
                 if (!fixtureIsSetUp) {
                     var webPageUnderTest = dom.byId("webPageUnderTest").contentWindow;
                     window.setContext(webPageUnderTest.window, webPageUnderTest.window.document);
-                    display = dom.byId("accumulator");
+                    display = dom.byId("display");
                     fixtureIsSetUp = true;
                 }
             },
