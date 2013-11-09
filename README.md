@@ -15,7 +15,7 @@ For more information, please see the documents listed below.
 
 - [Retrospective](https://github.com/andrewaliu/calculator/wiki/Retrospective)
 
-- [Open Issues](https://github.com/andrewaliu/calculator/issues)
+- [Open Issues](https://github.com/andrewaliu/calculator/issues?labels=&page=1&state=open)
 
 ### Results After Applying Quality Strategy
 
