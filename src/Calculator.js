@@ -25,7 +25,6 @@ require([
             display = dom.byId("display"),
 
             displayShowsResult = false,
-            displayShowsIntermediateResult = false,
 
             reset = function () {
                 operand1.setText("0");
@@ -39,21 +38,14 @@ require([
                     reset();
                     displayShowsResult = false;
                 }
-                if (displayShowsIntermediateResult) {
-                    display.innerHTML = "";
-                    displayShowsIntermediateResult = false;
-                }
                 activeOperand.appendNumber(digit);
                 display.innerHTML = activeOperand.getText();
             },
 
             computeResultAndClearState = function () {
-                if (operator !== null) {
-                    computeResult();
-                    display.innerHTML = result.getText();
-                    displayShowsResult = true;
-                    reset();
-                }
+                computeResult();
+                displayShowsResult = true;
+                reset();
             },
 
             attachEventHandlerForClearButton = function () {
@@ -97,6 +89,7 @@ require([
                 } else {
                     throw new Error("Unexpected operator:" + operator.toString());
                 }
+                display.innerHTML = result.getText();
             },
 
             computeIntermediateResultIfNecessary = function () {
@@ -104,10 +97,9 @@ require([
                 if (theCurrentExpressionContainsAnOperator) {
                     operand2.setText(display.innerHTML);
                     computeResult();
-                    display.innerHTML = result.getText();
-                    displayShowsIntermediateResult = true;
                     operand1 = result;
                     activeOperand = operand2;
+                    operand2.setText("");
                 } else {
                     operand1.setText(display.innerHTML);
                     activeOperand = operand2;
