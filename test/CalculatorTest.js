@@ -188,12 +188,29 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-10");
         });
 
-//        test("Issue #1: 0.3", function () {
-//            dom.byId("decimalPoint").click();
-//            strictEqual(display.innerHTML, "0.");
-//            dom.byId("number3").click();
-//            strictEqual(display.innerHTML, "0.3");
-//        });
+        test("Start new operation by pressing decimal point", function () {
+            dom.byId("number1").click();
+            dom.byId("add").click();
+            dom.byId("number4").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "5");
+
+            dom.byId("decimalPoint").click();
+            dom.byId("number6").click();
+            dom.byId("toggleSign").click();
+            strictEqual(display.innerHTML, "-0.6");
+            dom.byId("add").click();
+            dom.byId("number4").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "3.4");
+        });
+
+        test("Issue #1: 0.3", function () {
+            dom.byId("decimalPoint").click();
+            strictEqual(display.innerHTML, "0.");
+            dom.byId("number3").click();
+            strictEqual(display.innerHTML, "0.3");
+        });
 
         test("Issue #1: 0.1 + 0.2", function () {
             dom.byId("decimalPoint").click();

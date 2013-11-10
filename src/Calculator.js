@@ -22,7 +22,7 @@ require([
 
             addDigit = function (digit) {
                 if (displayShowsResult) {
-                    DisplayModel.setText("");
+                    DisplayModel.setText("0");
                     DisplayView.update();
                     displayShowsResult = false;
                 }
@@ -63,6 +63,11 @@ require([
             },
 
             addDecimalPoint = function () {
+                if (displayShowsResult) {
+                    DisplayModel.setText("0");
+                    DisplayView.update();
+                    displayShowsResult = false;
+                }
                 DisplayModel.addDecimalPoint();
                 DisplayView.update();
             },
@@ -104,9 +109,6 @@ require([
                         DisplayModel.setText(answer.toString());
                     }
 
-                    console.log(newPrecision);
-
-//                    DisplayModel.setText(answer.toFixed(newPrecision).toString());
                     DisplayView.update();
                     displayShowsResult = true;
                     reset();
