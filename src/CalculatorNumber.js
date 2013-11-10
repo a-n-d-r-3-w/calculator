@@ -77,6 +77,11 @@ define(["dojo/_base/declare"], function (declare) {
             var result = this.getFloat() * operand2.getFloat(),
                 newPrecision = this.getPrecision() + operand2.getPrecision();
             return new this.constructor(result.toFixed(newPrecision).toString());
+        },
+
+        divideBy: function (operand2) {
+            var result = this.getFloat() / operand2.getFloat();
+            return new this.constructor(result.toString());
         }
     });
 });

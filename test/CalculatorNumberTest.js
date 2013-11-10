@@ -123,4 +123,21 @@ require(["../src/CalculatorNumber.js"],
             strictEqual(result.getText(), "12.500");
         });
 
+        test("divideBy", function () {
+            var operand1 = new CalculatorNumber("2"),
+                operand2 = new CalculatorNumber("5"),
+                result = operand1.divideBy(operand2);
+            strictEqual(result.getText(), "0.4");
+
+            operand1.setText("2");
+            operand2.setText("5.0");
+            result = operand1.divideBy(operand2);
+            strictEqual(result.getText(), "0.4");
+
+            operand1.setText("2.50");
+            operand2.setText("5.0");
+            result = operand1.divideBy(operand2);
+            strictEqual(result.getText(), "0.5");
+        });
+
     });
