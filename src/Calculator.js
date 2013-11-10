@@ -1,6 +1,7 @@
 require([
     "dojo/dom",
     "dojo/on",
+    "CalculatorNumber.js",
     "Operator.js",
     "DisplayModel.js",
     "DisplayView.js",
@@ -8,14 +9,15 @@ require([
 
     function (dom,
               on,
+              Operand,
               Operator,
               DisplayModel,
               DisplayView) {
 
         "use strict";
 
-        var operand1 = "",
-            operand2 = "",
+        var operand1 = new CalculatorNumber(""),
+            operand2 = new CalculatorNumber(""),
             operator = null,
 
             displayShowsResult = false,
@@ -31,13 +33,13 @@ require([
             },
 
             setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
-                operand1 = DisplayModel.getText();
+                operand1.setText(DisplayModel.getText());
                 DisplayModel.clear();
             },
 
             computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
-                operand2 = DisplayModel.getText();
-                operand1 = operator(parseFloat(operand1), parseFloat(operand2)).toString();
+                operand2.setText(DisplayModel.getText());
+                operand1.setText(operator(operand1.getFloat(), operand2.getFloat()).toString());
                 DisplayModel.clear();
             },
 
@@ -52,8 +54,8 @@ require([
             },
 
             reset = function () {
-                operand1 = "";
-                operand2 = "";
+                operand1.setText("");
+                operand2.setText("");
                 operator = null;
             },
 
@@ -74,36 +76,19 @@ require([
 
             computeResultAndClearState = function () {
                 if (operator !== null) {
-                    operand2 = DisplayModel.getText();
-                    var answer = operator(parseFloat(operand1), parseFloat(operand2));
+                    operand2.setText(DisplayModel.getText());
+                    var answer = operator(operand1.getFloat(), operand2.getFloat());
 
-                    var numberOfDigitsAfterDecimalPointInOperand1 = 0;
-                    var indexOfDecimalPoint1 = operand1.indexOf(".");
-                    if (indexOfDecimalPoint1 === -1 ||
-                        indexOfDecimalPoint1 === (operand1.length - 1)) {
-                        numberOfDigitsAfterDecimalPointInOperand1 = 0;
-                    } else {
-                        numberOfDigitsAfterDecimalPointInOperand1 =
-                            operand1.substring(indexOfDecimalPoint1 + 1).length;
-                    }
-
-                    var numberOfDigitsAfterDecimalPointInOperand2 = 0;
-                    var indexOfDecimalPoint2 = operand2.indexOf(".");
-                    if (indexOfDecimalPoint2 === -1 ||
-                        indexOfDecimalPoint2 === (operand2.length - 1)) {
-                        numberOfDigitsAfterDecimalPointInOperand2 = 0;
-                    } else {
-                        numberOfDigitsAfterDecimalPointInOperand2 =
-                            operand2.substring(indexOfDecimalPoint2 + 1).length;
-                    }
+                    var operand1Precision = operand1.getPrecision(),
+                        operand2Precision = operand2.getPrecision();
 
                     var newPrecision;
                     if (operator === Operator.add ||
                         operator === Operator.subtract) {
-                        newPrecision = Math.max(numberOfDigitsAfterDecimalPointInOperand1, numberOfDigitsAfterDecimalPointInOperand2);
+                        newPrecision = Math.max(operand1Precision, operand2Precision);
                         DisplayModel.setText(answer.toFixed(newPrecision).toString());
                     } else if (operator === Operator.multiply) {
-                        newPrecision = numberOfDigitsAfterDecimalPointInOperand1 + numberOfDigitsAfterDecimalPointInOperand2;
+                        newPrecision = operand1Precision + operand2Precision;
                         DisplayModel.setText(answer.toFixed(newPrecision).toString());
                     } else {
                         DisplayModel.setText(answer.toString());
