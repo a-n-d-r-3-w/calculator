@@ -80,19 +80,19 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "2");
 
             dom.byId("plus").click();
-            strictEqual(display.innerHTML, "2");
+            strictEqual(display.innerHTML, "1.5");
 
             dom.byId("number8").click();
             strictEqual(display.innerHTML, "8");
 
             dom.byId("multiplyBy").click();
-            strictEqual(display.innerHTML, "8");
+            strictEqual(display.innerHTML, "9.5");
 
             dom.byId("number5").click();
             strictEqual(display.innerHTML, "5");
 
             dom.byId("minus").click();
-            strictEqual(display.innerHTML, "5");
+            strictEqual(display.innerHTML, "47.5");
 
             dom.byId("number6").click();
             strictEqual(display.innerHTML, "6");

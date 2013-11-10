@@ -25,19 +25,23 @@ require([
             display = dom.byId("display"),
 
             displayShowsResult = false,
+            displayShowsIntermediateResult = false,
 
             reset = function () {
                 operand1.setText("0");
                 operand2.setText("0");
                 activeOperand = operand1;
                 operator = null;
-//                display.innerHTML = operand1.getText();
             },
 
             addDigit = function (digit) {
                 if (displayShowsResult) {
                     reset();
                     displayShowsResult = false;
+                }
+                if (displayShowsIntermediateResult) {
+                    display.innerHTML = "";
+                    displayShowsIntermediateResult = false;
                 }
                 activeOperand.appendNumber(digit);
                 display.innerHTML = activeOperand.getText();
@@ -101,7 +105,9 @@ require([
                     operand2.setText(display.innerHTML);
                     computeResult();
                     display.innerHTML = result.getText();
+                    displayShowsIntermediateResult = true;
                     operand1 = result;
+                    activeOperand = operand2;
                 } else {
                     operand1.setText(display.innerHTML);
                     activeOperand = operand2;
