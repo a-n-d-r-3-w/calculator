@@ -3,16 +3,12 @@ require([
     "dojo/on",
     "CalculatorNumber.js",
     "Operator.js",
-    "DisplayModel.js",
-    "DisplayView.js",
     "dojo/domReady!"],
 
     function (dom,
               on,
               CalculatorNumber,
-              Operator,
-              DisplayModel,
-              DisplayView) {
+              Operator) {
 
         "use strict";
 
@@ -24,35 +20,34 @@ require([
 
             display = dom.byId("display"),
 
-            displayShowsResult = false,
-
-            reset = function () {
-                operand1.setText("0");
-                operand2.setText("0");
-                activeOperand = operand1;
-                operator = null;
-            },
-
             addDigit = function (digit) {
-                if (displayShowsResult) {
-                    reset();
-                    displayShowsResult = false;
-                }
                 activeOperand.appendNumber(digit);
                 display.innerHTML = activeOperand.getText();
             },
 
-            computeResultAndClearState = function () {
-                computeResult();
-                displayShowsResult = true;
-                reset();
+            computeResult = function () {
+                if (operator === Operator.PLUS) {
+                    result = operand1.plus(operand2);
+                } else if (operator === Operator.MINUS) {
+                    result = operand1.minus(operand2);
+                } else if (operator === Operator.MULTIPLY_BY) {
+                    result = operand1.multiplyBy(operand2);
+                } else if (operator === Operator.DIVIDE_BY) {
+                    result = operand1.divideBy(operand2);
+                } else {
+                    throw new Error("Unexpected operator.");
+                }
+                display.innerHTML = result.getText();
             },
 
             attachEventHandlerForClearButton = function () {
                 on(dom.byId("clear"), "click", function () {
-                    reset();
-                    DisplayModel.clear();
-                    DisplayView.update();
+                    operand1.setText("0");
+                    operand2.setText("0");
+                    operator = null;
+                    activeOperand = operand1;
+                    display.innerHTML = activeOperand.getText();;
+                    result = null;
                 });
             },
 
@@ -79,60 +74,51 @@ require([
                 });
             },
 
-            computeResult = function () {
-                if (operator === Operator.PLUS) {
-                    result = operand1.plus(operand2);
-                } else if (operator === Operator.MINUS) {
-                    result = operand1.minus(operand2);
-                } else if (operator === Operator.MULTIPLY_BY) {
-                    result = operand1.multiplyBy(operand2);
-                } else if (operator === Operator.DIVIDE_BY) {
-                    result = operand1.divideBy(operand2);
-                } else {
-                    throw new Error("Unexpected operator:" + operator.toString());
-                }
-                display.innerHTML = result.getText();
-            },
-
-            computeIntermediateResultIfNecessary = function () {
-                var theCurrentExpressionContainsAnOperator = (operator !== null);
-                if (theCurrentExpressionContainsAnOperator) {
-                    operand2.setText(display.innerHTML);
-                    computeResult();
-                    operand1 = result;
-                    activeOperand = operand2;
-                    operand2.setText("");
-                } else {
-                    operand1.setText(display.innerHTML);
-                    activeOperand = operand2;
-                }
-            },
-
             attachEventHandlersForOperatorButtons = function () {
                 on(dom.byId("plus"), "click", function () {
-                    computeIntermediateResultIfNecessary();
+                    if (operator !== null) {
+                        computeResult();
+                        operand1.setText(result.getText());
+                        operand2.setText("");
+                    }
                     operator = Operator.PLUS;
+                    activeOperand = operand2;
                 });
 
                 on(dom.byId("minus"), "click", function () {
-                    computeIntermediateResultIfNecessary();
+                    if (operator !== null) {
+                        computeResult();
+                        operand1.setText(result.getText());
+                        operand2.setText("");
+                    }
                     operator = Operator.MINUS;
+                    activeOperand = operand2;
                 });
 
                 on(dom.byId("multiplyBy"), "click", function () {
-                    computeIntermediateResultIfNecessary();
+                    if (operator !== null) {
+                        computeResult();
+                        operand1.setText(result.getText());
+                        operand2.setText("");
+                    }
                     operator = Operator.MULTIPLY_BY;
+                    activeOperand = operand2;
                 });
 
                 on(dom.byId("divideBy"), "click", function () {
-                    computeIntermediateResultIfNecessary();
+                    if (operator !== null) {
+                        computeResult();
+                        operand1.setText(result.getText());
+                        operand2.setText("");
+                    }
                     operator = Operator.DIVIDE_BY;
+                    activeOperand = operand2;
                 });
             },
 
             attachEventHandlerForEqualsButton = function () {
                 on(dom.byId("equals"), "click", function () {
-                    computeResultAndClearState();
+                    computeResult();
                 });
 
             },
@@ -145,6 +131,6 @@ require([
             };
 
         attachEventHandlers();
-        reset();
+        activeOperand = operand1;
 
     });

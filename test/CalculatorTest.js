@@ -69,6 +69,21 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "1.5");
         });
 
+        test("1 + 2 + 3 = ", function () {
+            dom.byId("number1").click();
+            strictEqual(display.innerHTML, "1");
+            dom.byId("plus").click();
+            strictEqual(display.innerHTML, "1");
+            dom.byId("number2").click();
+            strictEqual(display.innerHTML, "2");
+            dom.byId("plus").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("number3").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "6");
+        });
+
         test("3 / 2 + 8 * 5 - 6 = 41.5", function () {
             dom.byId("number3").click();
             strictEqual(display.innerHTML, "3");
