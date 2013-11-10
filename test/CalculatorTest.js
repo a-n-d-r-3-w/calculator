@@ -28,7 +28,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("1 + 4 = 5", function () {
             dom.byId("number1").click();
             strictEqual(display.innerHTML, "1");
-            dom.byId("add").click();
+            dom.byId("plus").click();
             strictEqual(display.innerHTML, "1");
             dom.byId("number4").click();
             strictEqual(display.innerHTML, "4");
@@ -39,7 +39,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("5 - 9 = -4", function () {
             dom.byId("number5").click();
             strictEqual(display.innerHTML, "5");
-            dom.byId("subtract").click();
+            dom.byId("minus").click();
             strictEqual(display.innerHTML, "5");
             dom.byId("number9").click();
             strictEqual(display.innerHTML, "9");
@@ -50,7 +50,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("2 * 7 = 14", function () {
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
-            dom.byId("multiply").click();
+            dom.byId("multiplyBy").click();
             strictEqual(display.innerHTML, "2");
             dom.byId("number7").click();
             strictEqual(display.innerHTML, "7");
@@ -61,7 +61,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("3 / 2 = 1.5", function () {
             dom.byId("number3").click();
             strictEqual(display.innerHTML, "3");
-            dom.byId("divide").click();
+            dom.byId("divideBy").click();
             strictEqual(display.innerHTML, "3");
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
@@ -73,25 +73,25 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             dom.byId("number3").click();
             strictEqual(display.innerHTML, "3");
 
-            dom.byId("divide").click();
+            dom.byId("divideBy").click();
             strictEqual(display.innerHTML, "3");
 
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
 
-            dom.byId("add").click();
+            dom.byId("plus").click();
             strictEqual(display.innerHTML, "2");
 
             dom.byId("number8").click();
             strictEqual(display.innerHTML, "8");
 
-            dom.byId("multiply").click();
+            dom.byId("multiplyBy").click();
             strictEqual(display.innerHTML, "8");
 
             dom.byId("number5").click();
             strictEqual(display.innerHTML, "5");
 
-            dom.byId("subtract").click();
+            dom.byId("minus").click();
             strictEqual(display.innerHTML, "5");
 
             dom.byId("number6").click();
@@ -129,14 +129,14 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("chain operations", function () {
             dom.byId("number3").click();
             strictEqual(display.innerHTML, "3");
-            dom.byId("divide").click();
+            dom.byId("divideBy").click();
             strictEqual(display.innerHTML, "3");
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
             dom.byId("equals").click();
             strictEqual(display.innerHTML, "1.5");
 
-            dom.byId("multiply").click();
+            dom.byId("multiplyBy").click();
             strictEqual(display.innerHTML, "1.5");
             dom.byId("number3").click();
             strictEqual(display.innerHTML, "3");
@@ -144,7 +144,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "4.5");
         });
 
-        test("Issue #7: Change sign then add fractional part point", function () {
+        test("Issue #7: Change sign then plus fractional part point", function () {
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
             dom.byId("toggleSign").click();
@@ -155,7 +155,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-2.8");
         });
 
-        test("Issue #7: Change sign then add digit", function () {
+        test("Issue #7: Change sign then plus digit", function () {
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
             dom.byId("toggleSign").click();
@@ -166,14 +166,14 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
 
         test("Start new operation by pressing number key", function () {
             dom.byId("number1").click();
-            dom.byId("add").click();
+            dom.byId("plus").click();
             dom.byId("number4").click();
             dom.byId("equals").click();
             strictEqual(display.innerHTML, "5");
 
             dom.byId("number2").click();
             strictEqual(display.innerHTML, "2");
-            dom.byId("add").click();
+            dom.byId("plus").click();
             dom.byId("number4").click();
             dom.byId("equals").click();
             strictEqual(display.innerHTML, "6");
@@ -181,7 +181,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             dom.byId("number6").click();
             dom.byId("toggleSign").click();
             strictEqual(display.innerHTML, "-6");
-            dom.byId("add").click();
+            dom.byId("plus").click();
             dom.byId("number4").click();
             dom.byId("toggleSign").click();
             dom.byId("equals").click();
@@ -190,7 +190,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
 
         test("Start new operation by pressing decimal point", function () {
             dom.byId("number1").click();
-            dom.byId("add").click();
+            dom.byId("plus").click();
             dom.byId("number4").click();
             dom.byId("equals").click();
             strictEqual(display.innerHTML, "5");
@@ -199,7 +199,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             dom.byId("number6").click();
             dom.byId("toggleSign").click();
             strictEqual(display.innerHTML, "-0.6");
-            dom.byId("add").click();
+            dom.byId("plus").click();
             dom.byId("number4").click();
             dom.byId("equals").click();
             strictEqual(display.innerHTML, "3.4");
@@ -215,7 +215,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
         test("Issue #1: 0.1 + 0.2", function () {
             dom.byId("decimalPoint").click();
             dom.byId("number1").click();
-            dom.byId("add").click();
+            dom.byId("plus").click();
             dom.byId("decimalPoint").click();
             dom.byId("number2").click();
             dom.byId("equals").click();

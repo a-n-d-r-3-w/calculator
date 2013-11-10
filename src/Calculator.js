@@ -9,92 +9,44 @@ require([
 
     function (dom,
               on,
-              Operand,
+              CalculatorNumber,
               Operator,
               DisplayModel,
               DisplayView) {
 
         "use strict";
 
-        var operand1 = new CalculatorNumber(""),
-            operand2 = new CalculatorNumber(""),
+        var operand1 = new CalculatorNumber("0"),
+            operand2 = new CalculatorNumber("0"),
             operator = null,
+            activeOperand = null,
+            result = null,
+
+            display = dom.byId("display"),
 
             displayShowsResult = false,
 
+            reset = function () {
+                operand1.setText("0");
+                operand2.setText("0");
+                activeOperand = operand1;
+                operator = null;
+//                display.innerHTML = operand1.getText();
+            },
+
             addDigit = function (digit) {
                 if (displayShowsResult) {
-                    DisplayModel.setText("0");
-                    DisplayView.update();
+                    reset();
                     displayShowsResult = false;
                 }
-                DisplayModel.addDigit(digit);
-                DisplayView.update();
-            },
-
-            setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
-                operand1.setText(DisplayModel.getText());
-                DisplayModel.clear();
-            },
-
-            computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
-                operand2.setText(DisplayModel.getText());
-                operand1.setText(operator(operand1.getFloat(), operand2.getFloat()).toString());
-                DisplayModel.clear();
-            },
-
-            setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary = function (newOperator) {
-                var theCurrentExpressionContainsAnOperator = (operator !== null);
-                if (theCurrentExpressionContainsAnOperator) {
-                    computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand();
-                } else {
-                    setOperand1AndGetReadyForTheUserToInputOperand2();
-                }
-                operator = newOperator;
-            },
-
-            reset = function () {
-                operand1.setText("");
-                operand2.setText("");
-                operator = null;
-            },
-
-            toggleSign = function () {
-                DisplayModel.toggleSign();
-                DisplayView.update();
-            },
-
-            addDecimalPoint = function () {
-                if (displayShowsResult) {
-                    DisplayModel.setText("0");
-                    DisplayView.update();
-                    displayShowsResult = false;
-                }
-                DisplayModel.addDecimalPoint();
-                DisplayView.update();
+                activeOperand.appendNumber(digit);
+                display.innerHTML = activeOperand.getText();
             },
 
             computeResultAndClearState = function () {
                 if (operator !== null) {
-                    operand2.setText(DisplayModel.getText());
-                    var answer = operator(operand1.getFloat(), operand2.getFloat());
-
-                    var operand1Precision = operand1.getPrecision(),
-                        operand2Precision = operand2.getPrecision();
-
-                    var newPrecision;
-                    if (operator === Operator.add ||
-                        operator === Operator.subtract) {
-                        newPrecision = Math.max(operand1Precision, operand2Precision);
-                        DisplayModel.setText(answer.toFixed(newPrecision).toString());
-                    } else if (operator === Operator.multiply) {
-                        newPrecision = operand1Precision + operand2Precision;
-                        DisplayModel.setText(answer.toFixed(newPrecision).toString());
-                    } else {
-                        DisplayModel.setText(answer.toString());
-                    }
-
-                    DisplayView.update();
+                    computeResult();
+                    display.innerHTML = result.getText();
                     displayShowsResult = true;
                     reset();
                 }
@@ -121,7 +73,7 @@ require([
                 }
 
                 on(dom.byId("toggleSign"), "click", function () {
-                    toggleSign();
+                    activeOperand.toggleSign();
                 });
 
                 on(dom.byId("decimalPoint"), "click", function () {
@@ -129,17 +81,53 @@ require([
                 });
             },
 
-            attachEventHandlerForOperatorButton = function (operatorName) {
-                on(dom.byId(operatorName), "click", function () {
-                    setOperatorAndSetOperandAndComputeIntermediateResultIfNecessary(Operator[operatorName]);
-                });
+            computeResult = function () {
+                if (operator === Operator.PLUS) {
+                    result = operand1.plus(operand2);
+                } else if (operator === Operator.MINUS) {
+                    result = operand1.minus(operand2);
+                } else if (operator === Operator.MULTIPLY_BY) {
+                    result = operand1.multiplyBy(operand2);
+                } else if (operator === Operator.DIVIDE_BY) {
+                    result = operand1.divideBy(operand2);
+                } else {
+                    throw new Error("Unexpected operator:" + operator.toString());
+                }
+            },
+
+            computeIntermediateResultIfNecessary = function () {
+                var theCurrentExpressionContainsAnOperator = (operator !== null);
+                if (theCurrentExpressionContainsAnOperator) {
+                    operand2.setText(display.innerHTML);
+                    computeResult();
+                    display.innerHTML = result.getText();
+                    operand1 = result;
+                } else {
+                    operand1.setText(display.innerHTML);
+                    activeOperand = operand2;
+                }
             },
 
             attachEventHandlersForOperatorButtons = function () {
-                attachEventHandlerForOperatorButton("add");
-                attachEventHandlerForOperatorButton("subtract");
-                attachEventHandlerForOperatorButton("multiply");
-                attachEventHandlerForOperatorButton("divide");
+                on(dom.byId("plus"), "click", function () {
+                    computeIntermediateResultIfNecessary();
+                    operator = Operator.PLUS;
+                });
+
+                on(dom.byId("minus"), "click", function () {
+                    computeIntermediateResultIfNecessary();
+                    operator = Operator.MINUS;
+                });
+
+                on(dom.byId("multiplyBy"), "click", function () {
+                    computeIntermediateResultIfNecessary();
+                    operator = Operator.MULTIPLY_BY;
+                });
+
+                on(dom.byId("divideBy"), "click", function () {
+                    computeIntermediateResultIfNecessary();
+                    operator = Operator.DIVIDE_BY;
+                });
             },
 
             attachEventHandlerForEqualsButton = function () {
