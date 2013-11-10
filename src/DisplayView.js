@@ -6,7 +6,7 @@ define(["dojo/dom", "DisplayModel.js"], function (dom, DisplayModel) {
 
     return {
         update : function () {
-            view.innerHTML = DisplayModel.getValue().toString();;
+            view.innerHTML = DisplayModel.getText();
         }
     };
 });

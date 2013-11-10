@@ -10,10 +10,6 @@ require(["../src/Operator.js"],
             strictEqual(Operator.add(7, 4), 11);
         });
 
-        test("add 0.1 and 0.2", function () {
-            strictEqual(Operator.add(0.1, 0.2), 0.3);
-        });
-
         test("subtract", function () {
             strictEqual(Operator.subtract(7, 4), 3);
         });

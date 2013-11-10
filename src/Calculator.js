@@ -18,34 +18,26 @@ require([
             operand2 = null,
             operator = null,
 
-            placeValueForNextDigit = 0,
-
-            enteringFractionalPart = false,
             displayShowsResult = false,
 
             addDigit = function (digit) {
                 if (displayShowsResult) {
-                    DisplayModel.setValue(0);
+                    DisplayModel.setText("");
                     DisplayView.update();
                     displayShowsResult = false;
                 }
-                if (enteringFractionalPart) {
-                    placeValueForNextDigit -= 1;
-                }
-                DisplayModel.addDigitAtPlaceValue(digit, placeValueForNextDigit);
+                DisplayModel.addDigit(digit);
                 DisplayView.update();
             },
 
             setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
-                operand1 = DisplayModel.getValue();
-                placeValueForNextDigit = 0;
+                operand1 = DisplayModel.getFloat();
                 DisplayModel.clear();
             },
 
             computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
-                operand2 = DisplayModel.getValue();
+                operand2 = DisplayModel.getFloat();
                 operand1 = operator(operand1, operand2);
-                placeValueForNextDigit = 0;
                 DisplayModel.clear();
             },
 
@@ -57,37 +49,38 @@ require([
                     setOperand1AndGetReadyForTheUserToInputOperand2();
                 }
                 operator = newOperator;
-                enteringFractionalPart = false;
             },
 
-            clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart = function () {
+            reset = function () {
                 operand1 = null;
                 operand2 = null;
                 operator = null;
-                placeValueForNextDigit = 0;
-                enteringFractionalPart = false;
             },
 
-            toggleSign = function toggleSign() {
+            toggleSign = function () {
                 DisplayModel.toggleSign();
+                DisplayView.update();
+            },
+
+            addDecimalPoint = function () {
+                DisplayModel.addDecimalPoint();
                 DisplayView.update();
             },
 
             computeResultAndClearState = function () {
                 if (operator !== null) {
-                    operand2 = DisplayModel.getValue();
+                    operand2 = DisplayModel.getFloat();
                     var answer = operator(operand1, operand2);
-                    console.log(answer);
-                    DisplayModel.setValue(answer);
+                    DisplayModel.setText(answer.toString());
                     DisplayView.update();
                     displayShowsResult = true;
-                    clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart();
+                    reset();
                 }
             },
 
             attachEventHandlerForClearButton = function () {
                 on(dom.byId("clear"), "click", function () {
-                    clearOperandsAndOperatorAndPlaceValueAndEnteringFractionalPart();
+                    reset();
                     DisplayModel.clear();
                     DisplayView.update();
                 });
@@ -110,7 +103,7 @@ require([
                 });
 
                 on(dom.byId("decimalPoint"), "click", function () {
-                    enteringFractionalPart = true;
+                    addDecimalPoint();
                 });
             },
 
@@ -142,5 +135,6 @@ require([
             };
 
         attachEventHandlers();
+        reset();
 
     });
