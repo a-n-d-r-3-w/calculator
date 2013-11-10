@@ -14,8 +14,8 @@ require([
 
         "use strict";
 
-        var operand1 = null,
-            operand2 = null,
+        var operand1 = "",
+            operand2 = "",
             operator = null,
 
             displayShowsResult = false,
@@ -31,13 +31,13 @@ require([
             },
 
             setOperand1AndGetReadyForTheUserToInputOperand2 = function () {
-                operand1 = DisplayModel.getFloat();
+                operand1 = DisplayModel.getText();
                 DisplayModel.clear();
             },
 
             computeIntermediateResultAndGetReadyForTheUserToInputTheNextOperand = function () {
-                operand2 = DisplayModel.getFloat();
-                operand1 = operator(operand1, operand2);
+                operand2 = DisplayModel.getText();
+                operand1 = operator(parseFloat(operand1), parseFloat(operand2)).toString();
                 DisplayModel.clear();
             },
 
@@ -52,8 +52,8 @@ require([
             },
 
             reset = function () {
-                operand1 = null;
-                operand2 = null;
+                operand1 = "";
+                operand2 = "";
                 operator = null;
             },
 
@@ -69,9 +69,44 @@ require([
 
             computeResultAndClearState = function () {
                 if (operator !== null) {
-                    operand2 = DisplayModel.getFloat();
-                    var answer = operator(operand1, operand2);
-                    DisplayModel.setText(answer.toString());
+                    operand2 = DisplayModel.getText();
+                    var answer = operator(parseFloat(operand1), parseFloat(operand2));
+
+                    var numberOfDigitsAfterDecimalPointInOperand1 = 0;
+                    var indexOfDecimalPoint1 = operand1.indexOf(".");
+                    if (indexOfDecimalPoint1 === -1 ||
+                        indexOfDecimalPoint1 === (operand1.length - 1)) {
+                        numberOfDigitsAfterDecimalPointInOperand1 = 0;
+                    } else {
+                        numberOfDigitsAfterDecimalPointInOperand1 =
+                            operand1.substring(indexOfDecimalPoint1 + 1).length;
+                    }
+
+                    var numberOfDigitsAfterDecimalPointInOperand2 = 0;
+                    var indexOfDecimalPoint2 = operand2.indexOf(".");
+                    if (indexOfDecimalPoint2 === -1 ||
+                        indexOfDecimalPoint2 === (operand2.length - 1)) {
+                        numberOfDigitsAfterDecimalPointInOperand2 = 0;
+                    } else {
+                        numberOfDigitsAfterDecimalPointInOperand2 =
+                            operand2.substring(indexOfDecimalPoint2 + 1).length;
+                    }
+
+                    var newPrecision;
+                    if (operator === Operator.add ||
+                        operator === Operator.subtract) {
+                        newPrecision = Math.max(numberOfDigitsAfterDecimalPointInOperand1, numberOfDigitsAfterDecimalPointInOperand2);
+                        DisplayModel.setText(answer.toFixed(newPrecision).toString());
+                    } else if (operator === Operator.multiply) {
+                        newPrecision = numberOfDigitsAfterDecimalPointInOperand1 + numberOfDigitsAfterDecimalPointInOperand2;
+                        DisplayModel.setText(answer.toFixed(newPrecision).toString());
+                    } else {
+                        DisplayModel.setText(answer.toString());
+                    }
+
+                    console.log(newPrecision);
+
+//                    DisplayModel.setText(answer.toFixed(newPrecision).toString());
                     DisplayView.update();
                     displayShowsResult = true;
                     reset();

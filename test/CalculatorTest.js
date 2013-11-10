@@ -188,11 +188,12 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-10");
         });
 
-        test("Issue #1: 0.3", function () {
-            dom.byId("decimalPoint").click();
-            dom.byId("number3").click();
-            strictEqual(display.innerHTML, "0.3");
-        });
+//        test("Issue #1: 0.3", function () {
+//            dom.byId("decimalPoint").click();
+//            strictEqual(display.innerHTML, "0.");
+//            dom.byId("number3").click();
+//            strictEqual(display.innerHTML, "0.3");
+//        });
 
         test("Issue #1: 0.1 + 0.2", function () {
             dom.byId("decimalPoint").click();
