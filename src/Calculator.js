@@ -70,10 +70,12 @@ require([
 
                 on(dom.byId("toggleSign"), "click", function () {
                     activeOperand.toggleSign();
+                    display.innerHTML = activeOperand.getText();
                 });
 
                 on(dom.byId("decimalPoint"), "click", function () {
-                    addDecimalPoint();
+                    activeOperand.appendDecimalPoint();
+                    display.innerHTML = activeOperand.getText();
                 });
             },
 
