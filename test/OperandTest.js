@@ -67,4 +67,9 @@ require(["../src/Operand.js"],
             strictEqual(operand.getPrecision(), 2);
         });
 
+        test("getFloat", function () {
+            var operand = new Operand("-3.1415926");
+            strictEqual(operand.getFloat(), -3.1415926);
+        })
+
     });

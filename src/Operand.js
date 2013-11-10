@@ -2,20 +2,25 @@ define(["dojo/_base/declare"], function (declare) {
     "use strict";
     var text;
     return declare(null, {
+
         constructor: function (newText) {
             this.setText(newText);
         },
+
         setText: function (newText) {
             text = newText;
         },
+
         getText: function () {
             return text;
         },
+
         appendDecimalPoint: function () {
             if (text.indexOf(".") === -1) {
                 text += ".";
             }
         },
+
         appendNumber: function (number) {
             if (text === "0") {
                 if (number === "0") {
@@ -27,6 +32,7 @@ define(["dojo/_base/declare"], function (declare) {
                 text += number;
             }
         },
+
         toggleSign: function () {
             if (text === "0" ||
                 text === "0.") {
@@ -38,6 +44,7 @@ define(["dojo/_base/declare"], function (declare) {
                 }
             }
         },
+
         getPrecision: function () {
             var precision,
                 indexOfDecimalPoint = text.indexOf(".");
@@ -48,6 +55,10 @@ define(["dojo/_base/declare"], function (declare) {
                 precision = (text.length - 1) - indexOfDecimalPoint;
             }
             return precision;
+        },
+
+        getFloat: function () {
+            return parseFloat(text);
         }
     });
 });
