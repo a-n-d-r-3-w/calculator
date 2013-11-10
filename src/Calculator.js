@@ -95,7 +95,7 @@ require([
             attachEventHandlersForNumberPadButtons = function () {
                 var i;
                 for (i = 0; i < 10; i += 1) {
-                    attachEventHandlerForNumberButton(i);
+                    attachEventHandlerForNumberButton(i.toString());
                 }
 
                 on(dom.byId("toggleSign"), "click", function () {

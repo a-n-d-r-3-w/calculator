@@ -150,7 +150,7 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             dom.byId("toggleSign").click();
             strictEqual(display.innerHTML, "-2");
             dom.byId("decimalPoint").click();
-            strictEqual(display.innerHTML, "-2");
+            strictEqual(display.innerHTML, "-2.");
             dom.byId("number8").click();
             strictEqual(display.innerHTML, "-2.8");
         });
