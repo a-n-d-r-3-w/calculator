@@ -27,21 +27,14 @@ require([
                 operand2 = new CalculatorNumber("");
                 operator = null;
                 activeOperand = operand1;
-                display = new Display();
-                display.setText(activeOperand.getText());
-                result = null;
+                display = new Display(activeOperand.getText());
+                result = new CalculatorNumber("");
                 lastButtonPressedWasEquals = false;
             },
 
             addDigit = function (digit) {
                 if (lastButtonPressedWasEquals) {
-                    operand1.setText("");
-                    operand2.setText("");
-                    operator = null;
-                    activeOperand = operand1;
-                    display.setText(activeOperand.getText());
-                    result = null;
-                    lastButtonPressedWasEquals = false;
+                    clear();
                 }
                 activeOperand.appendNumber(digit);
                 display.setText(activeOperand.getText());
