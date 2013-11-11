@@ -85,13 +85,7 @@ require([
 
                 on(dom.byId("decimalPoint"), "click", function () {
                     if (lastButtonPressedWasEquals) {
-                        operand1.setText("0");
-                        operand2.setText("0");
-                        operator = null;
-                        activeOperand = operand1;
-                        display.setText(activeOperand.getText());
-                        result = null;
-                        lastButtonPressedWasEquals = false;
+                        clear();
                     }
                     activeOperand.appendDecimalPoint();
                     display.setText(activeOperand.getText());
