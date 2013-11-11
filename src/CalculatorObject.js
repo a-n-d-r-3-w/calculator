@@ -29,25 +29,6 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
                 display.setText(activeOperand.getText());
             },
 
-            operatorExists: function () {
-                return operator !== null;
-            },
-
-            computeResult: function () {
-                if (operator === Operator.PLUS) {
-                    result = operand1.plus(operand2);
-                } else if (operator === Operator.MINUS) {
-                    result = operand1.minus(operand2);
-                } else if (operator === Operator.MULTIPLY_BY) {
-                    result = operand1.multiplyBy(operand2);
-                } else if (operator === Operator.DIVIDE_BY) {
-                    result = operand1.divideBy(operand2);
-                } else {
-                    throw new Error("Unexpected operator.");
-                }
-                display.setText(result.getText());
-            },
-
             toggleSign: function () {
                 activeOperand.toggleSign();
                 display.setText(activeOperand.getText());
@@ -113,6 +94,26 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
                     this.computeResult();
                 }
                 lastButtonPressedWasEquals = true;
+            },
+
+            operatorExists: function () {
+                return operator !== null;
+            },
+
+            computeResult: function () {
+                if (operator === Operator.PLUS) {
+                    result = operand1.plus(operand2);
+                } else if (operator === Operator.MINUS) {
+                    result = operand1.minus(operand2);
+                } else if (operator === Operator.MULTIPLY_BY) {
+                    result = operand1.multiplyBy(operand2);
+                } else if (operator === Operator.DIVIDE_BY) {
+                    result = operand1.divideBy(operand2);
+                } else {
+                    throw new Error("Unexpected operator.");
+                }
+                display.setText(result.getText());
             }
+
         });
     });

@@ -33,11 +33,9 @@ require([
                 for (i = 0; i < 10; i += 1) {
                     attachEventHandlerForNumberButton(i.toString());
                 }
-
                 on(dom.byId("toggleSign"), "click", function () {
                     calculator.toggleSign();
                 });
-
                 on(dom.byId("decimalPoint"), "click", function () {
                     calculator.addDecimalPoint();
                 });
@@ -47,15 +45,12 @@ require([
                 on(dom.byId("plus"), "click", function () {
                     calculator.plus();
                 });
-
                 on(dom.byId("minus"), "click", function () {
                     calculator.minus();
                 });
-
                 on(dom.byId("multiplyBy"), "click", function () {
                     calculator.multiplyBy();
                 });
-
                 on(dom.byId("divideBy"), "click", function () {
                     calculator.divideBy();
                 });
@@ -66,15 +61,11 @@ require([
                     calculator.equals();
                 });
 
-            },
-
-            attachEventHandlers = function () {
-                attachEventHandlerForClearButton();
-                attachEventHandlersForNumberPadButtons();
-                attachEventHandlersForOperatorButtons();
-                attachEventHandlerForEqualsButton();
             };
 
-        attachEventHandlers();
+        attachEventHandlerForClearButton();
+        attachEventHandlersForNumberPadButtons();
+        attachEventHandlersForOperatorButtons();
+        attachEventHandlerForEqualsButton();
         calculator.clear();
     });
