@@ -1,5 +1,8 @@
 define(["dojo/_base/declare"], function (declare) {
     "use strict";
+
+    var MAXIMUM_SUPPORTED_TEXT_LENGTH = 20;
+
     return declare(null, {
         text: "",
 
@@ -15,13 +18,27 @@ define(["dojo/_base/declare"], function (declare) {
             return this.text;
         },
 
+        textWillExceedMaximumSupportedLength: function () {
+            return this.text.length >= MAXIMUM_SUPPORTED_TEXT_LENGTH;
+        },
+
         appendDecimalPoint: function () {
+            if (this.textWillExceedMaximumSupportedLength()) {
+                alert("Sorry, I'm not designed to store numbers with more than 20 characters.");
+                return;
+            }
+
             if (this.text.indexOf(".") === -1) {
                 this.text += ".";
             }
         },
 
         appendNumber: function (number) {
+            if (this.textWillExceedMaximumSupportedLength()) {
+                alert("Sorry, I'm not designed to store numbers with more than 20 characters.");
+                return;
+            }
+
             if (this.text === "0") {
                 if (number === "0") {
                     // do nothing

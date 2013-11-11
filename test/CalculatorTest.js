@@ -353,4 +353,68 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "777");
         });
 
+        test("Issue #13: Very large positive numbers", function () {
+            var i;
+            for (i = 0; i < 20; i += 1) {
+                dom.byId("number5").click();
+            }
+            strictEqual(display.innerHTML, "55555555555555555555");
+            dom.byId("multiplyBy").click();
+            dom.byId("number9").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "500000000000000000000");
+            dom.byId("multiplyBy").click();
+            dom.byId("number5").click();
+            dom.byId("number6").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "2.8e+22");
+        });
+
+        test("Issue #13: Very large negative numbers", function () {
+            var i;
+            for (i = 0; i < 19; i += 1) {
+                dom.byId("number5").click();
+            }
+            dom.byId("toggleSign").click();
+            strictEqual(display.innerHTML, "-5555555555555555555");
+            dom.byId("multiplyBy").click();
+            dom.byId("number9").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "-50000000000000000000");
+            dom.byId("multiplyBy").click();
+            dom.byId("number5").click();
+            dom.byId("number6").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "-2.8e+21");
+        });
+
+        test("Issue #13: Very small numbers", function () {
+            dom.byId("decimalPoint").click();
+            var i;
+            for (i = 0; i < 17; i += 1) {
+                dom.byId("number0").click();
+            }
+            dom.byId("number5").click();
+            strictEqual(display.innerHTML, "0.000000000000000005");
+            dom.byId("divideBy").click();
+            dom.byId("number9").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "5.555555555555556e-19");
+        });
+
+        test("Issue #13: Very small negative numbers", function () {
+            dom.byId("decimalPoint").click();
+            var i;
+            for (i = 0; i < 16; i += 1) {
+                dom.byId("number0").click();
+            }
+            dom.byId("number5").click();
+            dom.byId("toggleSign").click();
+            strictEqual(display.innerHTML, "-0.00000000000000005");
+            dom.byId("divideBy").click();
+            dom.byId("number9").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "-5.5555555555555555e-18");
+        });
+
     });
