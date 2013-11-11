@@ -44,7 +44,7 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
             },
 
             plus: function () {
-                if (this.operatorExists()) {
+                if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
                     operand1.setText(result.getText());
                     operand2.setText("0");
@@ -55,7 +55,7 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
             },
 
             minus: function () {
-                if (this.operatorExists()) {
+                if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
                     operand1.setText(result.getText());
                     operand2.setText("0");
@@ -66,7 +66,7 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
             },
 
             multiplyBy: function () {
-                if (this.operatorExists()) {
+                if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
                     operand1.setText(result.getText());
                     operand2.setText("0");
@@ -77,7 +77,7 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
             },
 
             divideBy: function () {
-                if (this.operatorExists()) {
+                if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
                     operand1.setText(result.getText());
                     operand2.setText("0");
@@ -85,10 +85,6 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
                 operator = Operator.DIVIDE_BY;
                 activeOperand = operand2;
                 lastButtonPressedWasEquals = false;
-            },
-
-            operand2HasContent: function () {
-                return operand2.getText() !== "";
             },
 
             equals: function () {
@@ -100,6 +96,10 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
 
             operatorExists: function () {
                 return operator !== null;
+            },
+
+            operand2HasContent: function () {
+                return operand2.getText() !== "";
             },
 
             computeResult: function () {

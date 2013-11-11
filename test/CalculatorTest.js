@@ -266,4 +266,91 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "3");
         });
 
+        test("Issue #16: 6, *, /, 2 = should display 3", function () {
+            dom.byId("number6").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("multiplyBy").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("divideBy").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("number2").click();
+            strictEqual(display.innerHTML, "2");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "3");
+        });
+
+        test("Issue #16: 6, /, * should display 6", function () {
+            dom.byId("number6").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("divideBy").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("multiplyBy").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "6");
+        });
+
+        test("Issue #16: 5, *, -, 6 should display -1", function () {
+            dom.byId("number5").click();
+            strictEqual(display.innerHTML, "5");
+            dom.byId("multiplyBy").click();
+            strictEqual(display.innerHTML, "5");
+            dom.byId("minus").click();
+            strictEqual(display.innerHTML, "5");
+            dom.byId("number6").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "-1");
+        });
+
+        test("Issue #16: 5, /, - should display 5", function () {
+            dom.byId("number5").click();
+            strictEqual(display.innerHTML, "5");
+            dom.byId("divideBy").click();
+            strictEqual(display.innerHTML, "5");
+            dom.byId("minus").click();
+            strictEqual(display.innerHTML, "5");
+        });
+
+        test("Issue #16: 8.9, *, / should display 8.9", function () {
+            dom.byId("number8").click();
+            strictEqual(display.innerHTML, "8");
+            dom.byId("decimalPoint").click();
+            strictEqual(display.innerHTML, "8.");
+            dom.byId("number9").click();
+            strictEqual(display.innerHTML, "8.9");
+            dom.byId("multiplyBy").click();
+            strictEqual(display.innerHTML, "8.9");
+            dom.byId("divideBy").click();
+            strictEqual(display.innerHTML, "8.9");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "8.9");
+        });
+
+        test("Issue #16: 777, *, * should display 777", function () {
+            dom.byId("number7").click();
+            strictEqual(display.innerHTML, "7");
+            dom.byId("number7").click();
+            strictEqual(display.innerHTML, "77");
+            dom.byId("number7").click();
+            strictEqual(display.innerHTML, "777");
+            dom.byId("multiplyBy").click();
+            strictEqual(display.innerHTML, "777");
+            dom.byId("multiplyBy").click();
+            strictEqual(display.innerHTML, "777");
+        });
+
+        test("Issue #16: 777, /, / should display 777", function () {
+            dom.byId("number7").click();
+            strictEqual(display.innerHTML, "7");
+            dom.byId("number7").click();
+            strictEqual(display.innerHTML, "77");
+            dom.byId("number7").click();
+            strictEqual(display.innerHTML, "777");
+            dom.byId("divideBy").click();
+            strictEqual(display.innerHTML, "777");
+            dom.byId("divideBy").click();
+            strictEqual(display.innerHTML, "777");
+        });
+
     });
