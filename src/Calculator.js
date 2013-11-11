@@ -3,36 +3,52 @@ require([
     "dojo/on",
     "CalculatorNumber.js",
     "Operator.js",
+    "Display.js",
     "dojo/domReady!"],
 
     function (dom,
               on,
               CalculatorNumber,
-              Operator) {
+              Operator,
+              Display) {
 
         "use strict";
 
-        var operand1 = new CalculatorNumber("0"),
-            operand2 = new CalculatorNumber("0"),
-            operator = null,
-            activeOperand = null,
-            result = null,
-            lastButtonPressedWasEquals = false,
+        var operand1,
+            operand2,
+            operator,
+            activeOperand,
+            result,
+            lastButtonPressedWasEquals,
+            display,
 
-            display = dom.byId("display"),
+            clear = function () {
+                operand1 = new CalculatorNumber("0");
+                operand2 = new CalculatorNumber("");
+                operator = null;
+                activeOperand = operand1;
+                display = new Display();
+                display.setText(activeOperand.getText());
+                result = null;
+                lastButtonPressedWasEquals = false;
+            },
 
             addDigit = function (digit) {
                 if (lastButtonPressedWasEquals) {
-                    operand1.setText("0");
-                    operand2.setText("0");
+                    operand1.setText("");
+                    operand2.setText("");
                     operator = null;
                     activeOperand = operand1;
-                    display.innerHTML = activeOperand.getText();
+                    display.setText(activeOperand.getText());
                     result = null;
                     lastButtonPressedWasEquals = false;
                 }
                 activeOperand.appendNumber(digit);
-                display.innerHTML = activeOperand.getText();
+                display.setText(activeOperand.getText());
+            },
+
+            operatorExists = function () {
+                return operator !== null;
             },
 
             computeResult = function () {
@@ -47,18 +63,12 @@ require([
                 } else {
                     throw new Error("Unexpected operator.");
                 }
-                display.innerHTML = result.getText();
+                display.setText(result.getText());
             },
 
             attachEventHandlerForClearButton = function () {
                 on(dom.byId("clear"), "click", function () {
-                    operand1.setText("0");
-                    operand2.setText("0");
-                    operator = null;
-                    activeOperand = operand1;
-                    display.innerHTML = activeOperand.getText();;
-                    result = null;
-                    lastButtonPressedWasEquals = false;
+                    clear();
                 });
             },
 
@@ -76,7 +86,7 @@ require([
 
                 on(dom.byId("toggleSign"), "click", function () {
                     activeOperand.toggleSign();
-                    display.innerHTML = activeOperand.getText();
+                    display.setText(activeOperand.getText());
                     lastButtonPressedWasEquals = false;
                 });
 
@@ -86,18 +96,18 @@ require([
                         operand2.setText("0");
                         operator = null;
                         activeOperand = operand1;
-                        display.innerHTML = activeOperand.getText();
+                        display.setText(activeOperand.getText());
                         result = null;
                         lastButtonPressedWasEquals = false;
                     }
                     activeOperand.appendDecimalPoint();
-                    display.innerHTML = activeOperand.getText();
+                    display.setText(activeOperand.getText());
                 });
             },
 
             attachEventHandlersForOperatorButtons = function () {
                 on(dom.byId("plus"), "click", function () {
-                    if (operator !== null) {
+                    if (operatorExists()) {
                         computeResult();
                         operand1.setText(result.getText());
                         operand2.setText("0");
@@ -108,7 +118,7 @@ require([
                 });
 
                 on(dom.byId("minus"), "click", function () {
-                    if (operator !== null) {
+                    if (operatorExists()) {
                         computeResult();
                         operand1.setText(result.getText());
                         operand2.setText("0");
@@ -119,7 +129,7 @@ require([
                 });
 
                 on(dom.byId("multiplyBy"), "click", function () {
-                    if (operator !== null) {
+                    if (operatorExists()) {
                         computeResult();
                         operand1.setText(result.getText());
                         operand2.setText("0");
@@ -130,7 +140,7 @@ require([
                 });
 
                 on(dom.byId("divideBy"), "click", function () {
-                    if (operator !== null) {
+                    if (operatorExists()) {
                         computeResult();
                         operand1.setText(result.getText());
                         operand2.setText("0");
@@ -143,7 +153,11 @@ require([
 
             attachEventHandlerForEqualsButton = function () {
                 on(dom.byId("equals"), "click", function () {
-                    computeResult();
+                    if (operand1.getText() !== "" &&
+                        operatorExists() &&
+                        operand2.getText() !== "") {
+                        computeResult();
+                    }
                     lastButtonPressedWasEquals = true;
                 });
 
@@ -157,6 +171,5 @@ require([
             };
 
         attachEventHandlers();
-        activeOperand = operand1;
-
+        clear();
     });

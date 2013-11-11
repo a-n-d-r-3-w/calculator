@@ -246,4 +246,24 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "3");
         });
 
+        test("Issue #15: 6, =, 0 should display 0", function () {
+            dom.byId("number6").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "6");
+            dom.byId("number0").click();
+            strictEqual(display.innerHTML, "0");
+        });
+
+        test("Issue #16: 3, *, /, = should display 3", function () {
+            dom.byId("number3").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("multiplyBy").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("divideBy").click();
+            strictEqual(display.innerHTML, "3");
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "3");
+        });
+
     });
