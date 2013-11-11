@@ -87,10 +87,12 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
                 lastButtonPressedWasEquals = false;
             },
 
+            operand2HasContent: function () {
+                return operand2.getText() !== "";
+            },
+
             equals: function () {
-                if (operand1.getText() !== "" &&
-                    this.operatorExists() &&
-                    operand2.getText() !== "") {
+                if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
                 }
                 lastButtonPressedWasEquals = true;
