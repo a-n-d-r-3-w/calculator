@@ -1,71 +1,119 @@
-require([
-    "dojo/dom",
-    "dojo/on",
-    "CalculatorNumber.js",
-    "Operator.js",
-    "CalculatorObject.js",
-    "dojo/domReady!"],
-
-    function (dom,
-              on,
-              CalculatorNumber,
-              Operator,
-              CalculatorObject) {
-
+define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", "Display.js"],
+    function (dom, declare, CalculatorNumber, Operator, Display) {
         "use strict";
 
-        var calculator = new CalculatorObject(),
+        var operand1,
+            operand2,
+            operator,
+            activeOperand,
+            result,
+            lastButtonPressedWasEquals,
+            display;
 
-            attachEventHandlerForClearButton = function () {
-                on(dom.byId("clear"), "click", function () {
-                    calculator.clear();
-                });
+        return declare(null, {
+            clear: function () {
+                operand1 = new CalculatorNumber("0");
+                operand2 = new CalculatorNumber("");
+                operator = null;
+                activeOperand = operand1;
+                display = new Display(activeOperand.getText());
+                result = new CalculatorNumber("");
+                lastButtonPressedWasEquals = false;
             },
 
-            attachEventHandlerForNumberButton = function (digit) {
-                on(dom.byId("number" + digit), "click", function () {
-                    calculator.addDigit(digit);
-                });
-            },
-
-            attachEventHandlersForNumberPadButtons = function () {
-                var i;
-                for (i = 0; i < 10; i += 1) {
-                    attachEventHandlerForNumberButton(i.toString());
+            addDigit: function (digit) {
+                if (lastButtonPressedWasEquals) {
+                    this.clear();
                 }
-                on(dom.byId("toggleSign"), "click", function () {
-                    calculator.toggleSign();
-                });
-                on(dom.byId("decimalPoint"), "click", function () {
-                    calculator.addDecimalPoint();
-                });
+                activeOperand.appendNumber(digit);
+                display.setText(activeOperand.getText());
             },
 
-            attachEventHandlersForOperatorButtons = function () {
-                on(dom.byId("plus"), "click", function () {
-                    calculator.plus();
-                });
-                on(dom.byId("minus"), "click", function () {
-                    calculator.minus();
-                });
-                on(dom.byId("multiplyBy"), "click", function () {
-                    calculator.multiplyBy();
-                });
-                on(dom.byId("divideBy"), "click", function () {
-                    calculator.divideBy();
-                });
+            toggleSign: function () {
+                activeOperand.toggleSign();
+                display.setText(activeOperand.getText());
+                lastButtonPressedWasEquals = false;
             },
 
-            attachEventHandlerForEqualsButton = function () {
-                on(dom.byId("equals"), "click", function () {
-                    calculator.equals();
-                });
+            addDecimalPoint: function () {
+                if (lastButtonPressedWasEquals) {
+                    this.clear();
+                }
+                activeOperand.appendDecimalPoint();
+                display.setText(activeOperand.getText());
+            },
 
-            };
+            plus: function () {
+                if (this.operatorExists()) {
+                    this.computeResult();
+                    operand1.setText(result.getText());
+                    operand2.setText("0");
+                }
+                operator = Operator.PLUS;
+                activeOperand = operand2;
+                lastButtonPressedWasEquals = false;
+            },
 
-        attachEventHandlerForClearButton();
-        attachEventHandlersForNumberPadButtons();
-        attachEventHandlersForOperatorButtons();
-        attachEventHandlerForEqualsButton();
-        calculator.clear();
+            minus: function () {
+                if (this.operatorExists()) {
+                    this.computeResult();
+                    operand1.setText(result.getText());
+                    operand2.setText("0");
+                }
+                operator = Operator.MINUS;
+                activeOperand = operand2;
+                lastButtonPressedWasEquals = false;
+            },
+
+            multiplyBy: function () {
+                if (this.operatorExists()) {
+                    this.computeResult();
+                    operand1.setText(result.getText());
+                    operand2.setText("0");
+                }
+                operator = Operator.MULTIPLY_BY;
+                activeOperand = operand2;
+                lastButtonPressedWasEquals = false;
+            },
+
+            divideBy: function () {
+                if (this.operatorExists()) {
+                    this.computeResult();
+                    operand1.setText(result.getText());
+                    operand2.setText("0");
+                }
+                operator = Operator.DIVIDE_BY;
+                activeOperand = operand2;
+                lastButtonPressedWasEquals = false;
+            },
+
+            equals: function () {
+                if (operand1.getText() !== "" &&
+                    this.operatorExists() &&
+                    operand2.getText() !== "") {
+                    this.computeResult();
+                }
+                lastButtonPressedWasEquals = true;
+            },
+
+            operatorExists: function () {
+                return operator !== null;
+            },
+
+            computeResult: function () {
+                if (operator === Operator.PLUS) {
+                    result = operand1.plus(operand2);
+                } else if (operator === Operator.MINUS) {
+                    result = operand1.minus(operand2);
+                } else if (operator === Operator.MULTIPLY_BY) {
+                    result = operand1.multiplyBy(operand2);
+                } else if (operator === Operator.DIVIDE_BY) {
+                    result = operand1.divideBy(operand2);
+                } else {
+                    throw new Error("Unexpected operator.");
+                }
+                display.setText(result.getText());
+            }
+
+        });
     });
