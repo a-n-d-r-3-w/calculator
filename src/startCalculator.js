@@ -1,15 +1,11 @@
 require([
     "dojo/dom",
     "dojo/on",
-    "NumberAsText.js",
-    "Operator.js",
     "Calculator.js",
     "dojo/domReady!"],
 
     function (dom,
               on,
-              NumberAsTexts,
-              Operator,
               Calculator) {
 
         "use strict";
