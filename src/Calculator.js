@@ -47,45 +47,37 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
                 this.operand2.setText("");
             },
 
-            plus: function () {
+            ifExpressionIsCompleteThenComputeIntermediateResult: function () {
                 if (this.expressionIsComplete()) {
-                    this.computeResult();
+                    this.computeAndDisplayResult();
                     this.copyResultIntoOperand1();
                     this.clearOperand2();
                 }
+            },
+
+            plus: function () {
+                this.ifExpressionIsCompleteThenComputeIntermediateResult();
                 this.operator = Operator.PLUS;
                 this.activeOperand = this.operand2;
                 this.lastButtonPressedWasEquals = false;
             },
 
             minus: function () {
-                if (this.expressionIsComplete()) {
-                    this.computeResult();
-                    this.copyResultIntoOperand1();
-                    this.clearOperand2();
-                }
+                this.ifExpressionIsCompleteThenComputeIntermediateResult();
                 this.operator = Operator.MINUS;
                 this.activeOperand = this.operand2;
                 this.lastButtonPressedWasEquals = false;
             },
 
             multiplyBy: function () {
-                if (this.expressionIsComplete()) {
-                    this.computeResult();
-                    this.copyResultIntoOperand1();
-                    this.clearOperand2();
-                }
+                this.ifExpressionIsCompleteThenComputeIntermediateResult();
                 this.operator = Operator.MULTIPLY_BY;
                 this.activeOperand = this.operand2;
                 this.lastButtonPressedWasEquals = false;
             },
 
             divideBy: function () {
-                if (this.expressionIsComplete()) {
-                    this.computeResult();
-                    this.copyResultIntoOperand1();
-                    this.clearOperand2();
-                }
+                this.ifExpressionIsCompleteThenComputeIntermediateResult();
                 this.operator = Operator.DIVIDE_BY;
                 this.activeOperand = this.operand2;
                 this.lastButtonPressedWasEquals = false;
@@ -93,28 +85,28 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
 
             equals: function () {
                 if (this.expressionIsComplete()) {
-                    this.computeResult();
+                    this.computeAndDisplayResult();
                 }
                 this.lastButtonPressedWasEquals = true;
             },
 
-            operatorExists: function () {
+            expressionHasOperator: function () {
                 return this.operator !== null;
             },
 
-            operand1HasContent: function () {
+            expressionHasOperand1: function () {
                 return this.operand1.getText() !== "";
             },
 
-            operand2HasContent: function () {
+            expressionHasOperand2: function () {
                 return this.operand2.getText() !== "";
             },
 
             expressionIsComplete: function () {
-                return this.operand1HasContent() && this.operatorExists() && this.operand2HasContent();
+                return this.expressionHasOperand1() && this.expressionHasOperator() && this.expressionHasOperand2();
             },
 
-            computeResult: function () {
+            computeAndDisplayResult: function () {
                 if (this.operator === Operator.PLUS) {
                     this.result = this.operand1.plus(this.operand2);
                 } else if (this.operator === Operator.MINUS) {
