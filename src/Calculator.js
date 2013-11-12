@@ -13,17 +13,21 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
                 this.lastButtonPressedWasEquals = false;
             },
 
+            updateDisplayWithActiveOperand: function () {
+                this.display.setText(this.activeOperand.getText());
+            },
+
             addDigit: function (digit) {
                 if (this.lastButtonPressedWasEquals) {
                     this.clear();
                 }
                 this.activeOperand.appendDigit(digit);
-                this.display.setText(this.activeOperand.getText());
+                this.updateDisplayWithActiveOperand();
             },
 
             toggleSign: function () {
                 this.activeOperand.toggleSign();
-                this.display.setText(this.activeOperand.getText());
+                this.updateDisplayWithActiveOperand();
                 this.lastButtonPressedWasEquals = false;
             },
 
@@ -32,14 +36,22 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
                     this.clear();
                 }
                 this.activeOperand.appendDecimalPoint();
-                this.display.setText(this.activeOperand.getText());
+                this.updateDisplayWithActiveOperand();
+            },
+
+            copyResultIntoOperand1: function () {
+                this.operand1.setText(this.result.getText());
+            },
+
+            clearOperand2: function () {
+                this.operand2.setText("");
             },
 
             plus: function () {
-                if (this.operatorExists() && this.operand2HasContent()) {
+                if (this.expressionIsComplete()) {
                     this.computeResult();
-                    this.operand1.setText(this.result.getText());
-                    this.operand2.setText("0");
+                    this.copyResultIntoOperand1();
+                    this.clearOperand2();
                 }
                 this.operator = Operator.PLUS;
                 this.activeOperand = this.operand2;
@@ -47,10 +59,10 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
             },
 
             minus: function () {
-                if (this.operatorExists() && this.operand2HasContent()) {
+                if (this.expressionIsComplete()) {
                     this.computeResult();
-                    this.operand1.setText(this.result.getText());
-                    this.operand2.setText("0");
+                    this.copyResultIntoOperand1();
+                    this.clearOperand2();
                 }
                 this.operator = Operator.MINUS;
                 this.activeOperand = this.operand2;
@@ -58,10 +70,10 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
             },
 
             multiplyBy: function () {
-                if (this.operatorExists() && this.operand2HasContent()) {
+                if (this.expressionIsComplete()) {
                     this.computeResult();
-                    this.operand1.setText(this.result.getText());
-                    this.operand2.setText("0");
+                    this.copyResultIntoOperand1();
+                    this.clearOperand2();
                 }
                 this.operator = Operator.MULTIPLY_BY;
                 this.activeOperand = this.operand2;
@@ -69,10 +81,10 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
             },
 
             divideBy: function () {
-                if (this.operatorExists() && this.operand2HasContent()) {
+                if (this.expressionIsComplete()) {
                     this.computeResult();
-                    this.operand1.setText(this.result.getText());
-                    this.operand2.setText("0");
+                    this.copyResultIntoOperand1();
+                    this.clearOperand2();
                 }
                 this.operator = Operator.DIVIDE_BY;
                 this.activeOperand = this.operand2;
@@ -80,7 +92,7 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
             },
 
             equals: function () {
-                if (this.operatorExists() && this.operand2HasContent()) {
+                if (this.expressionIsComplete()) {
                     this.computeResult();
                 }
                 this.lastButtonPressedWasEquals = true;
@@ -90,8 +102,16 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
                 return this.operator !== null;
             },
 
+            operand1HasContent: function () {
+                return this.operand1.getText() !== "";
+            },
+
             operand2HasContent: function () {
                 return this.operand2.getText() !== "";
+            },
+
+            expressionIsComplete: function () {
+                return this.operand1HasContent() && this.operatorExists() && this.operand2HasContent();
             },
 
             computeResult: function () {
@@ -106,6 +126,10 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
                 } else {
                     throw new Error("Unexpected operator.");
                 }
+                this.updateDisplayWithResult();
+            },
+
+            updateDisplayWithResult: function () {
                 this.display.setText(this.result.getText());
             }
 
