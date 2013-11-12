@@ -1,14 +1,14 @@
 require([
     "dojo/dom",
     "dojo/on",
-    "CalculatorNumber.js",
+    "NumberAsText.js",
     "Operator.js",
     "Calculator.js",
     "dojo/domReady!"],
 
     function (dom,
               on,
-              CalculatorNumber,
+              NumberAsTexts,
               Operator,
               Calculator) {
 

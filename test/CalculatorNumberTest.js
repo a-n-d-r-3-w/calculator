@@ -1,28 +1,28 @@
-require(["../src/CalculatorNumber.js"],
-    function (CalculatorNumber) {
+require(["../src/NumberAsText.js"],
+    function (NumberAsText) {
 
         "use strict";
 
         module("Operand");
 
         test("constructor", function () {
-            var operand = new CalculatorNumber("2");
+            var operand = new NumberAsText("2");
             ok(true);
         });
 
         test("getText", function () {
-            var operand = new CalculatorNumber("2");
+            var operand = new NumberAsText("2");
             strictEqual(operand.getText(), "2");
         });
 
         test("setText", function () {
-            var operand = new CalculatorNumber("2");
+            var operand = new NumberAsText("2");
             operand.setText("3");
             strictEqual(operand.getText(), "3");
         });
 
         test("appendDecimalPoint", function () {
-            var operand = new CalculatorNumber("2");
+            var operand = new NumberAsText("2");
             operand.appendDecimalPoint();
             strictEqual(operand.getText(), "2.");
             operand.appendDecimalPoint();
@@ -30,7 +30,7 @@ require(["../src/CalculatorNumber.js"],
         });
 
         test("appendNumber", function () {
-            var operand = new CalculatorNumber("2");
+            var operand = new NumberAsText("2");
             operand.appendNumber("3");
             strictEqual(operand.getText(), "23");
             operand.setText("0");
@@ -42,7 +42,7 @@ require(["../src/CalculatorNumber.js"],
         });
 
         test("toggleSign", function () {
-            var operand = new CalculatorNumber("2");
+            var operand = new NumberAsText("2");
             operand.toggleSign();
             strictEqual(operand.getText(), "-2");
             operand.toggleSign();
@@ -57,7 +57,7 @@ require(["../src/CalculatorNumber.js"],
         });
 
         test("getPrecision", function () {
-            var operand = new CalculatorNumber("2");
+            var operand = new NumberAsText("2");
             strictEqual(operand.getPrecision(), 0);
             operand.setText("2.");
             strictEqual(operand.getPrecision(), 0);
@@ -68,13 +68,13 @@ require(["../src/CalculatorNumber.js"],
         });
 
         test("getFloat", function () {
-            var operand = new CalculatorNumber("-3.1415926");
+            var operand = new NumberAsText("-3.1415926");
             strictEqual(operand.getFloat(), -3.1415926);
         });
 
         test("plus", function () {
-            var operand1 = new CalculatorNumber("2"),
-                operand2 = new CalculatorNumber("5"),
+            var operand1 = new NumberAsText("2"),
+                operand2 = new NumberAsText("5"),
                 result = operand1.plus(operand2);
             strictEqual(result.getText(), "7");
 
@@ -90,8 +90,8 @@ require(["../src/CalculatorNumber.js"],
         });
 
         test("minus", function () {
-            var operand1 = new CalculatorNumber("2"),
-                operand2 = new CalculatorNumber("5"),
+            var operand1 = new NumberAsText("2"),
+                operand2 = new NumberAsText("5"),
                 result = operand1.minus(operand2);
             strictEqual(result.getText(), "-3");
 
@@ -107,8 +107,8 @@ require(["../src/CalculatorNumber.js"],
         });
 
         test("multiplyBy", function () {
-            var operand1 = new CalculatorNumber("2"),
-                operand2 = new CalculatorNumber("5"),
+            var operand1 = new NumberAsText("2"),
+                operand2 = new NumberAsText("5"),
                 result = operand1.multiplyBy(operand2);
             strictEqual(result.getText(), "10");
 
@@ -124,8 +124,8 @@ require(["../src/CalculatorNumber.js"],
         });
 
         test("divideBy", function () {
-            var operand1 = new CalculatorNumber("2"),
-                operand2 = new CalculatorNumber("5"),
+            var operand1 = new NumberAsText("2"),
+                operand2 = new NumberAsText("5"),
                 result = operand1.divideBy(operand2);
             strictEqual(result.getText(), "0.4");
 

@@ -1,5 +1,5 @@
-define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", "Display.js"],
-    function (dom, declare, CalculatorNumber, Operator, Display) {
+define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Display.js"],
+    function (dom, declare, NumberAsText, Operator, Display) {
         "use strict";
 
         var operand1,
@@ -12,12 +12,12 @@ define(["dojo/dom", "dojo/_base/declare", "CalculatorNumber.js", "Operator.js", 
 
         return declare(null, {
             clear: function () {
-                operand1 = new CalculatorNumber("0");
-                operand2 = new CalculatorNumber("");
+                operand1 = new NumberAsText("0");
+                operand2 = new NumberAsText("");
                 operator = null;
                 activeOperand = operand1;
                 display = new Display(activeOperand.getText());
-                result = new CalculatorNumber("");
+                result = new NumberAsText("");
                 lastButtonPressedWasEquals = false;
             },
 
