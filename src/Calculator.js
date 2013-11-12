@@ -29,9 +29,10 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
             },
 
             toggleSign: function () {
-                this.activeOperand.toggleSign();
-                this.updateDisplayWithActiveOperand();
-                this.lastButtonPressedWasEquals = false;
+                if (!this.lastButtonPressedWasEquals) {
+                    this.activeOperand.toggleSign();
+                    this.updateDisplayWithActiveOperand();
+                }
             },
 
             addDecimalPoint: function () {

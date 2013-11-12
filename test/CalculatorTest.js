@@ -417,4 +417,21 @@ require(["dojo/dom", "dojo/_base/window", "dojo/domReady!"],
             strictEqual(display.innerHTML, "-5.5555555555555555e-18");
         });
 
+        test("Issue #17 4, +, 6, =, toggleSign should show 10", function () {
+            dom.byId("number4").click();
+            dom.byId("plus").click();
+            dom.byId("number6").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "10");
+            dom.byId("toggleSign").click();
+            strictEqual(display.innerHTML, "10");
+
+            dom.byId("number4").click();
+            dom.byId("toggleSign").click();
+            dom.byId("plus").click();
+            dom.byId("number6").click();
+            dom.byId("equals").click();
+            strictEqual(display.innerHTML, "2");
+        });
+
     });
