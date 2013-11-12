@@ -5,11 +5,6 @@ require(["../src/NumberAsText.js"],
 
         module("Operand");
 
-        test("constructor", function () {
-            var operand = new NumberAsText("2");
-            ok(true);
-        });
-
         test("getText", function () {
             var operand = new NumberAsText("2");
             strictEqual(operand.getText(), "2");
