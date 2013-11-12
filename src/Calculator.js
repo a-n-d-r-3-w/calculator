@@ -2,119 +2,111 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
     function (dom, declare, NumberAsText, Operator, Display) {
         "use strict";
 
-        var operand1,
-            operand2,
-            operator,
-            activeOperand,
-            result,
-            lastButtonPressedWasEquals,
-            display;
-
         return declare(null, {
             clear: function () {
-                operand1 = new NumberAsText("0");
-                operand2 = new NumberAsText("");
-                operator = null;
-                activeOperand = operand1;
-                display = new Display(activeOperand.getText());
-                result = new NumberAsText("");
-                lastButtonPressedWasEquals = false;
+                this.operand1 = new NumberAsText("0");
+                this.operand2 = new NumberAsText("");
+                this.operator = null;
+                this.activeOperand = this.operand1;
+                this.display = new Display(this.activeOperand.getText());
+                this.result = new NumberAsText("");
+                this.lastButtonPressedWasEquals = false;
             },
 
             addDigit: function (digit) {
-                if (lastButtonPressedWasEquals) {
+                if (this.lastButtonPressedWasEquals) {
                     this.clear();
                 }
-                activeOperand.appendDigit(digit);
-                display.setText(activeOperand.getText());
+                this.activeOperand.appendDigit(digit);
+                this.display.setText(this.activeOperand.getText());
             },
 
             toggleSign: function () {
-                activeOperand.toggleSign();
-                display.setText(activeOperand.getText());
-                lastButtonPressedWasEquals = false;
+                this.activeOperand.toggleSign();
+                this.display.setText(this.activeOperand.getText());
+                this.lastButtonPressedWasEquals = false;
             },
 
             addDecimalPoint: function () {
-                if (lastButtonPressedWasEquals) {
+                if (this.lastButtonPressedWasEquals) {
                     this.clear();
                 }
-                activeOperand.appendDecimalPoint();
-                display.setText(activeOperand.getText());
+                this.activeOperand.appendDecimalPoint();
+                this.display.setText(this.activeOperand.getText());
             },
 
             plus: function () {
                 if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
-                    operand1.setText(result.getText());
-                    operand2.setText("0");
+                    this.operand1.setText(this.result.getText());
+                    this.operand2.setText("0");
                 }
-                operator = Operator.PLUS;
-                activeOperand = operand2;
-                lastButtonPressedWasEquals = false;
+                this.operator = Operator.PLUS;
+                this.activeOperand = this.operand2;
+                this.lastButtonPressedWasEquals = false;
             },
 
             minus: function () {
                 if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
-                    operand1.setText(result.getText());
-                    operand2.setText("0");
+                    this.operand1.setText(this.result.getText());
+                    this.operand2.setText("0");
                 }
-                operator = Operator.MINUS;
-                activeOperand = operand2;
-                lastButtonPressedWasEquals = false;
+                this.operator = Operator.MINUS;
+                this.activeOperand = this.operand2;
+                this.lastButtonPressedWasEquals = false;
             },
 
             multiplyBy: function () {
                 if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
-                    operand1.setText(result.getText());
-                    operand2.setText("0");
+                    this.operand1.setText(this.result.getText());
+                    this.operand2.setText("0");
                 }
-                operator = Operator.MULTIPLY_BY;
-                activeOperand = operand2;
-                lastButtonPressedWasEquals = false;
+                this.operator = Operator.MULTIPLY_BY;
+                this.activeOperand = this.operand2;
+                this.lastButtonPressedWasEquals = false;
             },
 
             divideBy: function () {
                 if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
-                    operand1.setText(result.getText());
-                    operand2.setText("0");
+                    this.operand1.setText(this.result.getText());
+                    this.operand2.setText("0");
                 }
-                operator = Operator.DIVIDE_BY;
-                activeOperand = operand2;
-                lastButtonPressedWasEquals = false;
+                this.operator = Operator.DIVIDE_BY;
+                this.activeOperand = this.operand2;
+                this.lastButtonPressedWasEquals = false;
             },
 
             equals: function () {
                 if (this.operatorExists() && this.operand2HasContent()) {
                     this.computeResult();
                 }
-                lastButtonPressedWasEquals = true;
+                this.lastButtonPressedWasEquals = true;
             },
 
             operatorExists: function () {
-                return operator !== null;
+                return this.operator !== null;
             },
 
             operand2HasContent: function () {
-                return operand2.getText() !== "";
+                return this.operand2.getText() !== "";
             },
 
             computeResult: function () {
-                if (operator === Operator.PLUS) {
-                    result = operand1.plus(operand2);
-                } else if (operator === Operator.MINUS) {
-                    result = operand1.minus(operand2);
-                } else if (operator === Operator.MULTIPLY_BY) {
-                    result = operand1.multiplyBy(operand2);
-                } else if (operator === Operator.DIVIDE_BY) {
-                    result = operand1.divideBy(operand2);
+                if (this.operator === Operator.PLUS) {
+                    this.result = this.operand1.plus(this.operand2);
+                } else if (this.operator === Operator.MINUS) {
+                    this.result = this.operand1.minus(this.operand2);
+                } else if (this.operator === Operator.MULTIPLY_BY) {
+                    this.result = this.operand1.multiplyBy(this.operand2);
+                } else if (this.operator === Operator.DIVIDE_BY) {
+                    this.result = this.operand1.divideBy(this.operand2);
                 } else {
                     throw new Error("Unexpected operator.");
                 }
-                display.setText(result.getText());
+                this.display.setText(this.result.getText());
             }
 
         });

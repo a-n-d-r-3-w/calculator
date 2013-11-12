@@ -4,8 +4,6 @@ define(["dojo/_base/declare"], function (declare) {
     var MAXIMUM_SUPPORTED_TEXT_LENGTH = 20;
 
     return declare(null, {
-        text: "",
-
         constructor: function (newText) {
             this.setText(newText);
         },
