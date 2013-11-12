@@ -1,9 +1,11 @@
 define(["dojo/_base/declare"], function (declare) {
+
     "use strict";
 
     var MAXIMUM_SUPPORTED_TEXT_LENGTH = 20;
 
     return declare(null, {
+
         constructor: function (newText) {
             this.setText(newText);
         },
@@ -107,5 +109,7 @@ define(["dojo/_base/declare"], function (declare) {
             var result = this.getFloat() / operand2.getFloat();
             return new this.constructor(result.toString());
         }
+
     });
+
 });

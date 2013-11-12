@@ -1,8 +1,11 @@
 define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Display.js"],
+
     function (dom, declare, NumberAsText, Operator, Display) {
+
         "use strict";
 
         return declare(null, {
+
             clear: function () {
                 this.operand1 = new NumberAsText("0");
                 this.operand2 = new NumberAsText("");
@@ -126,4 +129,5 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
             }
 
         });
+
     });
