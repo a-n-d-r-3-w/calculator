@@ -28,31 +28,38 @@ define(["dojo/_base/declare"], function (declare) {
                 return;
             }
 
-            if (this.text.indexOf(".") === -1) {
+            if (this.textDoesNotContainDecimalPoint()) {
                 this.text += ".";
             }
         },
 
-        appendNumber: function (number) {
+        textDoesNotContainDecimalPoint: function () {
+            return this.text.indexOf(".") === -1;
+        },
+
+        textEndsWithDecimalPoint: function () {
+            return (this.text.indexOf(".") === this.text.length - 1);
+        },
+
+        appendDigit: function (digit) {
             if (this.textWillExceedMaximumSupportedLength()) {
                 alert("Sorry, I'm not designed to store numbers with more than 20 characters.");
                 return;
             }
 
             if (this.text === "0") {
-                if (number === "0") {
+                if (digit === "0") {
                     // do nothing
                 } else {
-                    this.text = number;
+                    this.text = digit;
                 }
             } else {
-                this.text += number;
+                this.text += digit;
             }
         },
 
         toggleSign: function () {
-            if (this.text === "0" ||
-                this.text === "0.") {
+            if (parseFloat(this.text) === 0) {
                 // do nothing
             } else {
                 this.text = "-" + this.text;
@@ -64,11 +71,11 @@ define(["dojo/_base/declare"], function (declare) {
 
         getPrecision: function () {
             var precision,
-                indexOfDecimalPoint = this.text.indexOf(".");
-            if (indexOfDecimalPoint === -1 ||
-                indexOfDecimalPoint === this.text.length - 1) {
+                indexOfDecimalPoint;
+            if (this.textDoesNotContainDecimalPoint() || this.textEndsWithDecimalPoint()) {
                 precision = 0;
             } else {
+                indexOfDecimalPoint = this.text.indexOf(".");
                 precision = (this.text.length - 1) - indexOfDecimalPoint;
             }
             return precision;
@@ -80,20 +87,26 @@ define(["dojo/_base/declare"], function (declare) {
 
         plus: function (operand2) {
             var result = this.getFloat() + operand2.getFloat(),
-                newPrecision = Math.max(this.getPrecision(), operand2.getPrecision());
-            return new this.constructor(result.toFixed(newPrecision).toString());
+                precisionOfOperand1 = this.getPrecision(),
+                precisionOfOperand2 = operand2.getPrecision(),
+                precisionOfResult = Math.max(precisionOfOperand1, precisionOfOperand2);
+            return new this.constructor(result.toFixed(precisionOfResult).toString());
         },
 
         minus: function (operand2) {
             var result = this.getFloat() - operand2.getFloat(),
-                newPrecision = Math.max(this.getPrecision(), operand2.getPrecision());
-            return new this.constructor(result.toFixed(newPrecision).toString());
+                precisionOfOperand1 = this.getPrecision(),
+                precisionOfOperand2 = operand2.getPrecision(),
+                precisionOfResult = Math.max(precisionOfOperand1, precisionOfOperand2);
+            return new this.constructor(result.toFixed(precisionOfResult).toString());
         },
 
         multiplyBy: function (operand2) {
             var result = this.getFloat() * operand2.getFloat(),
-                newPrecision = this.getPrecision() + operand2.getPrecision();
-            return new this.constructor(result.toFixed(newPrecision).toString());
+                precisionOfOperand1 = this.getPrecision(),
+                precisionOfOperand2 = operand2.getPrecision(),
+                precisionOfResult = precisionOfOperand1 + precisionOfOperand2;
+            return new this.constructor(result.toFixed(precisionOfResult).toString());
         },
 
         divideBy: function (operand2) {

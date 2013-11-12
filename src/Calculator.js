@@ -25,7 +25,7 @@ define(["dojo/dom", "dojo/_base/declare", "NumberAsText.js", "Operator.js", "Dis
                 if (lastButtonPressedWasEquals) {
                     this.clear();
                 }
-                activeOperand.appendNumber(digit);
+                activeOperand.appendDigit(digit);
                 display.setText(activeOperand.getText());
             },
 

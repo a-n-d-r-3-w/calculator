@@ -24,15 +24,15 @@ require(["../src/NumberAsText.js"],
             strictEqual(operand.getText(), "2.");
         });
 
-        test("appendNumber", function () {
+        test("appendDigit", function () {
             var operand = new NumberAsText("2");
-            operand.appendNumber("3");
+            operand.appendDigit("3");
             strictEqual(operand.getText(), "23");
             operand.setText("0");
-            operand.appendNumber("0");
-            operand.appendNumber("0");
+            operand.appendDigit("0");
+            operand.appendDigit("0");
             strictEqual(operand.getText(), "0");
-            operand.appendNumber("7");
+            operand.appendDigit("7");
             strictEqual(operand.getText(), "7");
         });
 
