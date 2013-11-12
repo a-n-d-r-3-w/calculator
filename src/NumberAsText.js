@@ -18,12 +18,12 @@ define(["dojo/_base/declare"], function (declare) {
             return this.text;
         },
 
-        textWillExceedMaximumSupportedLength: function () {
+        textLengthMeetsOrExceedsMaxSupportedLength: function () {
             return this.text.length >= MAXIMUM_SUPPORTED_TEXT_LENGTH;
         },
 
         appendDecimalPoint: function () {
-            if (this.textWillExceedMaximumSupportedLength()) {
+            if (this.textLengthMeetsOrExceedsMaxSupportedLength()) {
                 alert("Sorry, I'm not designed to store numbers with more than 20 characters.");
                 return;
             }
@@ -42,15 +42,13 @@ define(["dojo/_base/declare"], function (declare) {
         },
 
         appendDigit: function (digit) {
-            if (this.textWillExceedMaximumSupportedLength()) {
+            if (this.textLengthMeetsOrExceedsMaxSupportedLength()) {
                 alert("Sorry, I'm not designed to store numbers with more than 20 characters.");
                 return;
             }
 
             if (this.text === "0") {
-                if (digit === "0") {
-                    // do nothing
-                } else {
+                if (digit !== "0") {
                     this.text = digit;
                 }
             } else {
@@ -59,9 +57,7 @@ define(["dojo/_base/declare"], function (declare) {
         },
 
         toggleSign: function () {
-            if (parseFloat(this.text) === 0) {
-                // do nothing
-            } else {
+            if (this.getFloat() !== 0) {
                 this.text = "-" + this.text;
                 if (this.text.substring(0, 2) === "--") {
                     this.text = this.text.substring(2);
