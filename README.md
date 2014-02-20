@@ -1,5 +1,3 @@
-# Whoa, really?
-
 # calculator
 
 **calculator** is an arithmetic calculator implemented using JavaScript, HTML, LESS, and Dojo Toolkit, and tested using QUnit.
