@@ -2,7 +2,7 @@
 
 **calculator** is an arithmetic calculator implemented using JavaScript, HTML, LESS, and Dojo Toolkit, and tested using QUnit.
 
-You can try it [here](http://dl.dropboxusercontent.com/u/1085829/calculator-master/src/calculator.html).
+You can try it [here](https://db.tt/RMSuCWjQ).
 
 For more information, please see the documents listed below.
 
